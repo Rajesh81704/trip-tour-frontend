@@ -42,7 +42,7 @@ const packages = [
   },
   {
     id: 3,
-    title: "Europe Golden Trip | Switzerland, Amsterdam & Paris Tour",
+    title: "Europe Golden Trip | Amsterdam & Paris Tour",
     location: "Europe",
     destinations: ["Amsterdam", "Paris", "Lucerne", "Zurich"],
     duration: "8 days & 7 nights",
@@ -137,7 +137,7 @@ export const FeaturedPackages = () => {
               onClick={() => handlePackageClick(pkg.id)}
             >
               {/* Image Section */}
-              <div className="relative h-56 rounded-t-3xl overflow-hidden">
+              <div className="relative h-52 rounded-t-3xl overflow-hidden">
                 <Image
                   width={100}
                   height={100}
@@ -186,13 +186,13 @@ export const FeaturedPackages = () => {
                     <span className="text-xs font-medium">{pkg.duration}</span>
                   </div>
                 </div>
-                <h3 className="font-extrabold text-lg md:text-xl text-blue-900 mb-2 line-clamp-2 group-hover:text-orange-500 transition-colors">
+                <h3 className="font-extrabold text-lg md:text-xl text-black">
                   {pkg.title}
                 </h3>
                 {/* Destinations */}
                 <div className="flex flex-wrap items-center gap-2 mb-4">
                   <span className="inline-block bg-blue-50 text-blue-600 px-2 py-0.5 rounded text-xs font-semibold">
-                    {pkg.destinations.length} Destinations
+                    {pkg.destinations.length}D
                   </span>
                   <span className="text-gray-300">|</span>
                   <div className="flex flex-wrap gap-1">
@@ -202,9 +202,10 @@ export const FeaturedPackages = () => {
                         className="text-xs text-blue-700 font-medium bg-blue-100/60 px-2 py-0.5 rounded"
                       >
                         {dest}
-                        {idx < pkg.destinations.length - 1 && (
+
+                        {/* {idx < pkg.destinations.length - 1 && (
                           <span className="text-blue-300 ml-1">•</span>
-                        )}
+                        )} */}
                       </span>
                     ))}
                   </div>
@@ -212,7 +213,7 @@ export const FeaturedPackages = () => {
                 {/* Price Section */}
                 <div className="mb-5">
                   <div className="flex items-end gap-2">
-                    <span className="text-2xl font-extrabold text-orange-600">
+                    <span className="text-2xl font-extrabold text-black">
                       ₹{pkg.price.toLocaleString()}
                     </span>
                     <span className="text-sm text-gray-400 line-through">
@@ -227,7 +228,6 @@ export const FeaturedPackages = () => {
                 <div className="flex gap-2">
                   <Button
                     variant="outline"
-                    size="sm"
                     className="flex-1 border-orange-200 text-orange-500 hover:bg-orange-50 font-semibold"
                     onClick={(e) => e.stopPropagation()}
                   >
@@ -235,7 +235,6 @@ export const FeaturedPackages = () => {
                     Call
                   </Button>
                   <Button
-                    size="sm"
                     className="flex-1 bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white font-semibold shadow"
                     onClick={(e) => e.stopPropagation()}
                   >

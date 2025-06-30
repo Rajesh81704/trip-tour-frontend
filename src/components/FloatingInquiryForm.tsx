@@ -43,7 +43,7 @@ export const FloatingInquiryForm = () => {
   };
 
   return (
-    <Card className="w-full max-w-3xl bg-white/95 backdrop-blur-lg shadow-2xl border-0 rounded-3xl py-0">
+    <Card className="w-full max-w-sm bg-white/95 backdrop-blur-lg shadow-2xl border-0 rounded-3xl py-0">
       <CardHeader className="bg-gradient-to-r from-orange-500/90 to-red-500/90 text-white rounded-t-3xl pb-6 pt-6">
         <CardTitle className="text-center text-2xl font-extrabold tracking-tight drop-shadow-lg">
           ✈️ Plan Your Dream Trip
