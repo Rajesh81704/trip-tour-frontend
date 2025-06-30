@@ -211,7 +211,7 @@ export const FeaturedPackages = () => {
                   </div>
                 </div>
                 {/* Price Section */}
-                <div className="mb-5">
+                {/* <div className="mb-5">
                   <div className="flex items-end gap-2">
                     <span className="text-2xl font-extrabold text-black">
                       ₹{pkg.price.toLocaleString()}
@@ -223,7 +223,7 @@ export const FeaturedPackages = () => {
                   <div className="text-xs text-green-600 font-semibold mt-1">
                     Save ₹{pkg.savings.toLocaleString()}
                   </div>
-                </div>
+                </div> */}
                 {/* Action Buttons */}
                 <div className="flex gap-2">
                   <Button
