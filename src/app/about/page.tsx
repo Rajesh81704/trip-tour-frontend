@@ -164,8 +164,8 @@ const About = () => {
               Why Choose TravelQuest?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We don't just plan trips, we create life-changing experiences that
-              stay with you forever
+              We don&apos;t just plan trips, we create life-changing experiences
+              that stay with you forever
             </p>
           </div>
 
@@ -205,13 +205,13 @@ const About = () => {
                   🌟 <strong>Founded in 2008</strong>, TravelQuest began as a
                   small dream to make extraordinary travel accessible to
                   everyone. What started as a passion project has grown into
-                  India's most trusted travel companion.
+                  India&apos;s most trusted travel companion.
                 </p>
                 <p>
                   🎯 We believe that travel is more than just visiting places –
-                  it's about <strong>connecting with cultures</strong>, creating
-                  lasting memories, and discovering new perspectives that enrich
-                  your life forever.
+                  it&apos;s about <strong>connecting with cultures</strong>,
+                  creating lasting memories, and discovering new perspectives
+                  that enrich your life forever.
                 </p>
                 <p>
                   ✨ Today, we continue to craft{" "}
