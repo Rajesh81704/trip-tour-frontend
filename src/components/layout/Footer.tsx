@@ -11,7 +11,7 @@ import {
 
 export const Footer = () => {
   return (
-    <footer className="relative bg-gradient-to-tr from-blue-950 via-blue-900 to-blue-800 text-white pt-16 pb-8 overflow-hidden px-10 w-[95%] mx-auto rounded-t-4xl shadow-2xl shadow-black/60">
+    <footer className="bg-gradient-to-tr from-blue-950 via-blue-900 to-blue-800 text-white pt-16 pb-8 overflow-hidden px-10 w-[95%] mx-auto rounded-t-4xl shadow-2xl shadow-black/60 relative">
       <div className="relative z-10 max-w- mx-auto px-4 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand & Social */}

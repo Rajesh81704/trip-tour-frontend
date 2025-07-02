@@ -1,5 +1,3 @@
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Users,
@@ -96,8 +94,6 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar />
-
       {/* Hero Section with Video Background */}
       <section className="relative h-[60vh] overflow-hidden">
         <div className="absolute inset-0">
@@ -279,8 +275,6 @@ const About = () => {
           </div>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 };
