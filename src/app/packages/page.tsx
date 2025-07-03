@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Filter } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { packageData } from "@/data";
+import { PackageData } from "@/components/packages/types";
 
 const Packages = () => {
   const router = useRouter();
@@ -21,103 +23,10 @@ const Packages = () => {
     { id: "budget", label: "Budget" },
   ];
 
-  const packages = [
-    {
-      id: "1",
-      title: "Himalayan Adventure Trek",
-      location: "Nepal, Himalayas",
-      duration: "7 Days / 6 Nights",
-      price: 1299,
-      originalPrice: 1499,
-      rating: 4.9,
-      reviews: 127,
-      groupSize: "8-12 people",
-      category: "adventure",
-      image:
-        "https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      features: ["Mountain Views", "Cultural Sites", "Expert Guide"],
-    },
-    {
-      id: "2",
-      title: "Rajasthan Royal Heritage",
-      location: "Rajasthan, India",
-      duration: "10 Days / 9 Nights",
-      price: 1899,
-      originalPrice: 2199,
-      rating: 4.8,
-      reviews: 89,
-      groupSize: "6-15 people",
-      category: "cultural",
-      image:
-        "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      features: ["Palace Tours", "Desert Safari", "Local Cuisine"],
-    },
-    {
-      id: "3",
-      title: "Maldives Luxury Escape",
-      location: "Maldives",
-      duration: "5 Days / 4 Nights",
-      price: 2999,
-      originalPrice: 3499,
-      rating: 5.0,
-      reviews: 156,
-      groupSize: "2-4 people",
-      category: "luxury",
-      image:
-        "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      features: ["Overwater Villa", "Spa Treatment", "Private Beach"],
-    },
-    {
-      id: "4",
-      title: "Thailand Budget Explorer",
-      location: "Thailand",
-      duration: "12 Days / 11 Nights",
-      price: 899,
-      originalPrice: 1099,
-      rating: 4.6,
-      reviews: 203,
-      groupSize: "10-20 people",
-      category: "budget",
-      image:
-        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      features: ["Street Food Tours", "Island Hopping", "Temple Visits"],
-    },
-    {
-      id: "5",
-      title: "African Safari Adventure",
-      location: "Kenya & Tanzania",
-      duration: "8 Days / 7 Nights",
-      price: 2499,
-      originalPrice: 2899,
-      rating: 4.9,
-      reviews: 94,
-      groupSize: "6-12 people",
-      category: "adventure",
-      image:
-        "https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      features: ["Big Five Safari", "Masai Culture", "Migration Season"],
-    },
-    {
-      id: "6",
-      title: "European Grand Tour",
-      location: "Europe Multi-City",
-      duration: "14 Days / 13 Nights",
-      price: 3299,
-      originalPrice: 3799,
-      rating: 4.7,
-      reviews: 167,
-      groupSize: "8-16 people",
-      category: "cultural",
-      image:
-        "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      features: ["Historic Cities", "Art Museums", "Local Cuisine"],
-    },
-  ];
-
   const filteredPackages =
     selectedCategory === "all"
-      ? packages
-      : packages.filter((pkg) => pkg.category === selectedCategory);
+      ? packageData
+      : packageData.filter((pkg) => pkg.features.includes(selectedCategory));
 
   return (
     <div className="min-h-screen bg-white">
@@ -175,7 +84,7 @@ const Packages = () => {
             {filteredPackages.map((pkg) => (
               <PackageCard
                 key={pkg.id}
-                pkg={pkg}
+                pkg={pkg as PackageData}
                 handlePackageClick={() => handlePackageClick(Number(pkg.id))}
               />
             ))}

@@ -1,61 +1,68 @@
-"use client";
-
 import {
   PackageHeader,
   ImageGallery,
   PackageDetails,
   InquiryForm,
   RelatedPackages,
-  packageData,
   relatedPackages,
 } from "@/components/packages";
+import { packageData } from "@/data";
+import { notFound } from "next/navigation";
 
-export default function PackageDetailPage() {
+interface PackageDetailPageProps {
+  params: {
+    id: string;
+  };
+}
+
+export default async function PackageDetailPage({
+  params,
+}: PackageDetailPageProps) {
+  const { id } = await params;
+
+  const package_data = packageData.find((p) => p.id === parseInt(id));
+  if (!package_data) {
+    return notFound();
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50 mt-20">
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main Content */}
           <div className="lg:col-span-2 space-y-6">
-            {/* Package Header */}
             <PackageHeader
-              title={packageData.title}
-              location={packageData.location}
-              duration={packageData.duration}
-              rating={packageData.rating}
-              reviews={packageData.reviews}
-              features={packageData.features}
-              discount={packageData.discount}
+              title={package_data.title}
+              location={package_data.location}
+              duration={package_data.duration}
+              rating={package_data.rating}
+              reviews={package_data.reviews}
+              features={package_data.features}
+              discount={package_data.discount}
             />
 
-            {/* Image Gallery */}
             <ImageGallery
-              images={packageData.images}
-              title={packageData.title}
+              images={package_data.images}
+              title={package_data.title}
             />
 
-            {/* Package Details */}
             <PackageDetails
-              description={packageData.description}
-              highlights={packageData.highlights}
-              itinerary={packageData.itinerary}
-              inclusions={packageData.inclusions}
-              exclusions={packageData.exclusions}
-              rating={packageData.rating}
-              reviews={packageData.reviews}
+              description={package_data.description}
+              highlights={package_data.highlights}
+              itinerary={package_data.itinerary}
+              inclusions={package_data.inclusions}
+              exclusions={package_data.exclusions}
+              rating={package_data.rating}
+              reviews={package_data.reviews}
             />
           </div>
 
-          {/* Sidebar */}
           <div className="space-y-6">
-            {/* Inquiry Form */}
             <InquiryForm
-              price={packageData.price}
-              originalPrice={packageData.originalPrice}
-              discount={packageData.discount}
+              price={package_data.price}
+              originalPrice={package_data.originalPrice}
+              discount={package_data.discount}
             />
 
-            {/* Related Packages */}
             <RelatedPackages packages={relatedPackages} />
           </div>
         </div>

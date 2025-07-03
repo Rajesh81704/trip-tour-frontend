@@ -75,7 +75,7 @@ export const FeaturedPackages = () => {
   const router = useRouter();
 
   const handlePackageClick = (id: number) => {
-    router.push(`/package/${id}`);
+    router.push(`/packages/${id}`);
   };
 
   return (

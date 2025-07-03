@@ -3,24 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Clock, Heart, Phone, Star } from "lucide-react";
 import Image from "next/image";
-
-type Package = {
-  id: string;
-  title: string;
-  location: string;
-  duration: string;
-  price: number;
-  originalPrice: number;
-  rating: number;
-  reviews: number;
-  groupSize: string;
-  category: string;
-  image: string;
-  features: string[];
-};
+import { PackageData } from "@/components/packages/types";
 
 interface PackageCardProps {
-  pkg: Package;
+  pkg: PackageData;
   handlePackageClick: () => void;
 }
 
@@ -36,7 +22,7 @@ export const PackageCard = ({ pkg, handlePackageClick }: PackageCardProps) => {
         <Image
           width={100}
           height={100}
-          src={pkg.image}
+          src={pkg.images[0]}
           alt={pkg.title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
@@ -44,7 +30,7 @@ export const PackageCard = ({ pkg, handlePackageClick }: PackageCardProps) => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
         {/* Category Badge */}
         <Badge className="absolute top-5 left-5 bg-blue-600/90 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg z-10">
-          {pkg.category}
+          {pkg.features[0]}
         </Badge>
         {/* Favorite Button */}
         <Button
@@ -57,7 +43,7 @@ export const PackageCard = ({ pkg, handlePackageClick }: PackageCardProps) => {
         </Button>
         {/* Group Size Badge */}
         <Badge className="absolute bottom-5 left-5 bg-green-600/90 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg z-10">
-          {pkg.groupSize}
+          {pkg.duration}
         </Badge>
       </div>
 
