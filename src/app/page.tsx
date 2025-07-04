@@ -4,6 +4,8 @@ import { Destinations } from "@/components/home/Destinations";
 import Testimonials from "@/components/home/Testimonials";
 import { WhyChooseUs } from "@/components/home/WhyChooseUs";
 import DestinationPackages from "@/components/DestinationPackages";
+import { WhatsSpecial } from "@/components/home/WhatsSpecial";
+import { IndianCities } from "@/components/home/IndianCities";
 
 export default function Index() {
   return (
@@ -12,6 +14,9 @@ export default function Index() {
       <FeaturedPackages />
       <Destinations />
       <DestinationPackages />
+      <WhatsSpecial />
+
+      <IndianCities />
 
       <WhyChooseUs />
       <Testimonials />

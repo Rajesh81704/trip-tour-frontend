@@ -10,9 +10,9 @@ import { packageData } from "@/data";
 import { notFound } from "next/navigation";
 
 interface PackageDetailPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default async function PackageDetailPage({
