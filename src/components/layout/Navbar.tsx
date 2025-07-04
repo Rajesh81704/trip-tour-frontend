@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Plane, Calendar, Search, User, Globe } from "lucide-react";
+import { Menu, X, Plane, Calendar, User } from "lucide-react";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -75,39 +75,24 @@ export const Navbar = () => {
 
           {/* Desktop Actions */}
           <div className="hidden lg:flex items-center gap-2">
-            <Button
-              variant="ghost"
-              size="sm"
-              className={`rounded-full transition-all duration-200 ${
-                isScrolled || !isHomePage
-                  ? "text-gray-600 hover:text-orange-500 hover:bg-orange-50"
-                  : "text-white hover:text-orange-300 hover:bg-white/10"
-              }`}
-            >
-              <Search className="h-4 w-4" />
-            </Button>
-
-            <Button
-              variant="ghost"
-              size="sm"
-              className={`rounded-full transition-all duration-200 ${
-                isScrolled || !isHomePage
-                  ? "text-gray-600 hover:text-orange-500 hover:bg-orange-50"
-                  : "text-white hover:text-orange-300 hover:bg-white/10"
-              }`}
-            >
-              <Globe className="h-4 w-4" />
-            </Button>
+            <Link href={"/b2b"}>
+              <Button
+                size="sm"
+                className=" cursor-pointer bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center gap-2  "
+              >
+                B2B
+              </Button>
+            </Link>
 
             <div className="w-px h-6 bg-gray-300/30 mx-2" />
 
             <Button
               variant="outline"
               size="sm"
-              className={`rounded-full border-2 transition-all duration-200 ${
+              className={` cursor-pointer rounded-full border-2 transition-all duration-200  ${
                 isScrolled || isHomePage
                   ? "border-gray-300 text-gray-700 hover:border-orange-500 hover:text-orange-500 hover:bg-orange-50"
-                  : "border-white/30 text-white hover:border-orange-300 hover:text-orange-300 hover:bg-white/10"
+                  : "border-white/30 text-black hover:border-orange-300 hover:text-orange-300 hover:bg-white/10"
               }`}
             >
               <User className="h-4 w-4 mr-2" />
@@ -116,7 +101,7 @@ export const Navbar = () => {
 
             <Button
               size="sm"
-              className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center gap-2"
+              className=" cursor-pointer bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center gap-2"
             >
               <Calendar className="h-4 w-4" />
               Book Now

@@ -44,7 +44,7 @@ export const FloatingInquiryForm = () => {
 
   return (
     <Card className="w-full max-w-sm bg-white/95 backdrop-blur-lg shadow-2xl border-0 rounded-3xl py-0">
-      <CardHeader className="bg-gradient-to-r from-orange-500/90 to-red-500/90 text-white rounded-t-3xl pb-6 pt-6">
+      <CardHeader className="bg-gradient-to-r from-orange-500/90 to-red-500/90 text-white rounded-t-3xl pb-3 pt-3">
         <CardTitle className="text-center text-2xl font-extrabold tracking-tight drop-shadow-lg">
           ✈️ Plan Your Dream Trip
         </CardTitle>
@@ -53,7 +53,7 @@ export const FloatingInquiryForm = () => {
         </p>
       </CardHeader>
 
-      <CardContent className="p-8">
+      <CardContent className="p-4">
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* Name */}
           <div className="relative">
