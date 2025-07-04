@@ -71,7 +71,7 @@ const categories = [
 
 export const FeaturedPackages = () => {
   const [activeCategory, setActiveCategory] = useState("Explore");
-  const [activeTab, setActiveTab] = useState("Tours");
+  // const [activeTab, setActiveTab] = useState("Tours");
   const router = useRouter();
 
   const handlePackageClick = (id: number) => {
@@ -105,25 +105,9 @@ export const FeaturedPackages = () => {
           <div className="bg-white rounded-lg p-1 shadow-md flex">
             <Button
               variant="ghost"
-              className={`px-8 py-2 rounded-lg font-medium transition-all duration-300 ${
-                activeTab === "Tours"
-                  ? "bg-orange-500 text-white shadow-md"
-                  : "text-blue-600 hover:text-orange-500"
-              }`}
-              onClick={() => setActiveTab("Tours")}
+              className="px-8 py-2 rounded-lg font-medium transition-all duration-300  bg-orange-500 text-white shadow-md  hover:bg-orange-600 hover:shadow-lg"
             >
-              Tours
-            </Button>
-            <Button
-              variant="ghost"
-              className={`px-8 py-2 rounded-lg font-medium transition-all duration-300 ${
-                activeTab === "Activities"
-                  ? "bg-orange-500 text-white shadow-md"
-                  : "text-blue-600 hover:text-orange-500"
-              }`}
-              onClick={() => setActiveTab("Activities")}
-            >
-              Activities
+              Trending Tours
             </Button>
           </div>
         </div>
