@@ -18,7 +18,7 @@ export const Navbar = () => {
   ];
 
   const isActive = (path: string) => location === path;
-  const isHomePage = location === "/";
+  // const isHomePage = location === "/";
 
   useEffect(() => {
     const handleScroll = () => {
