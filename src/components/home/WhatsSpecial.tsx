@@ -78,19 +78,19 @@ export const WhatsSpecial = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+    <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-sm text-gray-500 mb-2">/About Us</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <p className="text-sm text-blue-600 mb-2">/About Us</p>
+          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
             What&apos;s So Special About This?
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-8">
             Save more on your trips with exclusive discounts, seasonal
             promotions, and unbeatable deals for unforgettable adventures.
           </p>
-          <Button className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-3 rounded-full">
+          <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
             Learn More →
           </Button>
         </div>
@@ -122,7 +122,7 @@ export const WhatsSpecial = () => {
                 <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                   {slides[currentSlide].title}
                 </h3>
-                <p className="text-lg text-gray-600 leading-relaxed">
+                <p className="text-lg text-gray-700 leading-relaxed">
                   {slides[currentSlide].description}
                 </p>
               </div>
@@ -136,8 +136,8 @@ export const WhatsSpecial = () => {
                       onClick={() => goToSlide(index)}
                       className={`w-3 h-3 rounded-full transition-all duration-300 ${
                         index === currentSlide
-                          ? "bg-gray-900 w-12"
-                          : "bg-gray-300 hover:bg-gray-400"
+                          ? "bg-gradient-to-r from-blue-600 to-purple-600 w-12"
+                          : "bg-gray-300 hover:bg-blue-200"
                       }`}
                     />
                   ))}
@@ -146,13 +146,13 @@ export const WhatsSpecial = () => {
                 <div className="flex space-x-2">
                   <button
                     onClick={prevSlide}
-                    className="p-3 rounded-full bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-gray-50"
+                    className="p-3 rounded-full bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-blue-50 border border-gray-200"
                   >
-                    <ChevronLeft className="h-5 w-5 text-gray-600" />
+                    <ChevronLeft className="h-5 w-5 text-blue-600" />
                   </button>
                   <button
                     onClick={nextSlide}
-                    className="p-3 rounded-full bg-gray-900 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-gray-800"
+                    className="p-3 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg hover:shadow-xl transition-all duration-300 hover:from-blue-700 hover:to-purple-700"
                   >
                     <ChevronRight className="h-5 w-5 text-white" />
                   </button>

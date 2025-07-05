@@ -95,7 +95,7 @@ const DestinationPackages = () => {
               {destination.packages.map((pkg) => (
                 <Card
                   key={pkg.id}
-                  className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
+                  className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer p-0"
                   // onClick={() => handlePackageClick(pkg.id)}
                 >
                   <div className="relative h-80 overflow-hidden">

@@ -59,16 +59,18 @@ export function InquiryForm({
   };
 
   return (
-    <Card className="sticky top-28">
+    <Card className="sticky top-28 lg:sticky lg:top-28">
       <CardHeader>
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <div>
-            <div className="text-3xl font-bold text-orange-500">${price}</div>
+            <div className="text-2xl sm:text-3xl font-bold text-orange-500">
+              ${price}
+            </div>
             <div className="text-sm text-gray-500 line-through">
               ${originalPrice}
             </div>
           </div>
-          <Badge className="bg-orange-500 hover:bg-orange-600">
+          <Badge className="bg-orange-500 hover:bg-orange-600 self-start sm:self-auto">
             {discount}
           </Badge>
         </div>
@@ -76,7 +78,7 @@ export function InquiryForm({
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <Label htmlFor="checkIn">Check In</Label>
               <Input
@@ -85,6 +87,7 @@ export function InquiryForm({
                 value={inquiryForm.checkIn}
                 onChange={(e) => handleInputChange("checkIn", e.target.value)}
                 required
+                className="w-full"
               />
             </div>
             <div>
@@ -95,18 +98,19 @@ export function InquiryForm({
                 value={inquiryForm.checkOut}
                 onChange={(e) => handleInputChange("checkOut", e.target.value)}
                 required
+                className="w-full"
               />
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <Label htmlFor="adults">Adults</Label>
               <Select
                 value={inquiryForm.adults}
                 onValueChange={(value) => handleInputChange("adults", value)}
               >
-                <SelectTrigger>
+                <SelectTrigger className="w-full">
                   <SelectValue placeholder="Adults" />
                 </SelectTrigger>
                 <SelectContent>
@@ -123,7 +127,7 @@ export function InquiryForm({
                 value={inquiryForm.children}
                 onValueChange={(value) => handleInputChange("children", value)}
               >
-                <SelectTrigger>
+                <SelectTrigger className="w-full">
                   <SelectValue placeholder="Children" />
                 </SelectTrigger>
                 <SelectContent>
@@ -144,6 +148,7 @@ export function InquiryForm({
               onChange={(e) => handleInputChange("name", e.target.value)}
               placeholder="Your full name"
               required
+              className="w-full"
             />
           </div>
 
@@ -156,6 +161,7 @@ export function InquiryForm({
               onChange={(e) => handleInputChange("email", e.target.value)}
               placeholder="your@email.com"
               required
+              className="w-full"
             />
           </div>
 
@@ -167,6 +173,7 @@ export function InquiryForm({
               onChange={(e) => handleInputChange("phone", e.target.value)}
               placeholder="Your phone number"
               required
+              className="w-full"
             />
           </div>
 
@@ -178,19 +185,20 @@ export function InquiryForm({
               onChange={(e) => handleInputChange("message", e.target.value)}
               placeholder="Any special requests or questions..."
               rows={3}
+              className="w-full resize-none"
             />
           </div>
 
           <Button
             type="submit"
-            className="w-full bg-orange-500 hover:bg-orange-600"
+            className="w-full bg-orange-500 hover:bg-orange-600 text-sm sm:text-base py-2 sm:py-3"
           >
             Send Inquiry
           </Button>
         </form>
 
         <div className="mt-4 text-center">
-          <p className="text-sm text-gray-600">
+          <p className="text-xs sm:text-sm text-gray-600">
             Free cancellation up to 24 hours before departure
           </p>
         </div>
