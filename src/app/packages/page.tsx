@@ -80,14 +80,19 @@ const Packages = () => {
       {/* Packages Grid */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPackages.map((pkg) => (
-              <PackageCard
-                key={pkg.id}
-                pkg={pkg as PackageData}
-                handlePackageClick={() => handlePackageClick(Number(pkg.id))}
-              />
-            ))}
+          <div className="md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8">
+            <div className="flex gap-4 overflow-x-auto pb-4 md:overflow-visible md:pb-0 scrollbar-hide">
+              {filteredPackages.map((pkg) => (
+                <div key={pkg.id} className="flex-shrink-0 w-[280px] md:w-auto">
+                  <PackageCard
+                    pkg={pkg as PackageData}
+                    handlePackageClick={() =>
+                      handlePackageClick(Number(pkg.id))
+                    }
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
