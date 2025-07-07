@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Clock, Heart, Phone, Star } from "lucide-react";
 import Image from "next/image";
 import { PackageData } from "@/components/packages/types";
+// import { InquiryForm } from "../packages";
 
 interface PackageCardProps {
   pkg: PackageData;
@@ -11,6 +12,7 @@ interface PackageCardProps {
 }
 
 export const PackageCard = ({ pkg, handlePackageClick }: PackageCardProps) => {
+  // const [showInquiry, setShowInquiry] = useState(false);
   return (
     <Card
       key={pkg.id}
@@ -112,11 +114,9 @@ export const PackageCard = ({ pkg, handlePackageClick }: PackageCardProps) => {
             <Phone className="h-3 w-3 mr-1" />
             Call
           </Button>
-          <Button
-            className="h-8 text-xs flex-1 bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white font-semibold shadow"
-            onClick={(e) => e.stopPropagation()}
-          >
-            Request
+
+          <Button className=" cursor-pointer h-8 text-xs flex-1 bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white font-semibold shadow">
+            Request call
           </Button>
         </div>
       </CardContent>

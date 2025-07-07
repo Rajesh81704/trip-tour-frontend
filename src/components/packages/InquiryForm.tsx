@@ -1,208 +1,192 @@
 "use client";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
-import type React from "react";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { X, Users, Mail, Phone, User, MessageCircle } from "lucide-react";
+import { toast } from "sonner";
 
 interface InquiryFormProps {
-  price: number;
-  originalPrice: number;
-  discount: string;
+  packageTitle: string;
+  onClose: () => void;
 }
 
-interface InquiryFormData {
-  name: string;
-  email: string;
-  phone: string;
-  checkIn: string;
-  checkOut: string;
-  adults: string;
-  children: string;
-  message: string;
-}
-
-export function InquiryForm({
-  price,
-  originalPrice,
-  discount,
-}: InquiryFormProps) {
-  const [inquiryForm, setInquiryForm] = useState<InquiryFormData>({
+export const InquiryForm = ({ packageTitle, onClose }: InquiryFormProps) => {
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    checkIn: "",
-    checkOut: "",
-    adults: "",
-    children: "",
+    guests: "2",
     message: "",
   });
 
-  const handleInputChange = (field: string, value: string) => {
-    setInquiryForm((prev) => ({ ...prev, [field]: value }));
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Inquiry submitted:", inquiryForm);
-    // Handle form submission
+    toast.success(
+      "🎉 Inquiry submitted successfully! Our travel expert will contact you within 24 hours."
+    );
+    onClose();
+  };
+
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
   return (
-    <Card className="sticky top-28 lg:sticky lg:top-28">
-      <CardHeader>
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-          <div>
-            <div className="text-2xl sm:text-3xl font-bold text-orange-500">
-              ${price}
-            </div>
-            <div className="text-sm text-gray-500 line-through">
-              ${originalPrice}
-            </div>
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+      <Card className="w-full max-w-lg max-h-[90vh] overflow-y-auto shadow-2xl border-0">
+        <CardHeader className="bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-t-lg">
+          <div className="flex items-center justify-between">
+            <CardTitle className="text-2xl font-bold">
+              Get Custom Quote
+            </CardTitle>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={onClose}
+              className="text-white hover:bg-white/20"
+            >
+              <X className="h-6 w-6" />
+            </Button>
           </div>
-          <Badge className="bg-orange-500 hover:bg-orange-600 self-start sm:self-auto">
-            {discount}
-          </Badge>
-        </div>
-        <div className="text-sm text-gray-600">per person</div>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="checkIn">Check In</Label>
-              <Input
-                id="checkIn"
-                type="date"
-                value={inquiryForm.checkIn}
-                onChange={(e) => handleInputChange("checkIn", e.target.value)}
-                required
-                className="w-full"
-              />
-            </div>
-            <div>
-              <Label htmlFor="checkOut">Check Out</Label>
-              <Input
-                id="checkOut"
-                type="date"
-                value={inquiryForm.checkOut}
-                onChange={(e) => handleInputChange("checkOut", e.target.value)}
-                required
-                className="w-full"
-              />
-            </div>
+        </CardHeader>
+
+        <CardContent className="p-8">
+          <div className="mb-6 p-4 bg-gradient-to-r from-orange-50 to-red-50 rounded-lg border-l-4 border-orange-500">
+            <h3 className="font-bold text-orange-900 mb-1">{packageTitle}</h3>
+            <p className="text-orange-700 text-sm">
+              💎 Exclusive deals available! Fill the form below and save up to
+              20%
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="adults">Adults</Label>
-              <Select
-                value={inquiryForm.adults}
-                onValueChange={(value) => handleInputChange("adults", value)}
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <User className="h-4 w-4 inline mr-2 text-orange-500" />
+                  Full Name *
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
+                  placeholder="Enter your full name"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <Mail className="h-4 w-4 inline mr-2 text-orange-500" />
+                  Email Address *
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
+                  placeholder="Enter your email"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <Phone className="h-4 w-4 inline mr-2 text-orange-500" />
+                  Phone Number *
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  required
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
+                  placeholder="Enter your phone number"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <Users className="h-4 w-4 inline mr-2 text-orange-500" />
+                  Number of Travelers *
+                </label>
+                <select
+                  name="guests"
+                  required
+                  value={formData.guests}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
+                >
+                  <option value="1">1 Traveler</option>
+                  <option value="2">2 Travelers</option>
+                  <option value="3">3 Travelers</option>
+                  <option value="4">4 Travelers</option>
+                  <option value="5">5+ Travelers</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <MessageCircle className="h-4 w-4 inline mr-2 text-orange-500" />
+                  Special Requirements
+                </label>
+                <textarea
+                  name="message"
+                  rows={3}
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
+                  placeholder="Tell us about dietary restrictions, special occasions, or any specific requirements..."
+                />
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-4 mb-6">
+              <div className="flex items-center space-x-2 text-sm text-gray-700">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="font-medium">
+                  ✨ Limited Time Offer: Get instant callback within 15 minutes!
+                </span>
+              </div>
+            </div>
+
+            <div className="flex space-x-4">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={onClose}
+                className="flex-1 border-gray-300 hover:bg-gray-50"
               >
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Adults" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="1">1 Adult</SelectItem>
-                  <SelectItem value="2">2 Adults</SelectItem>
-                  <SelectItem value="3">3 Adults</SelectItem>
-                  <SelectItem value="4">4+ Adults</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <div>
-              <Label htmlFor="children">Children</Label>
-              <Select
-                value={inquiryForm.children}
-                onValueChange={(value) => handleInputChange("children", value)}
+                Maybe Later
+              </Button>
+              <Button
+                type="submit"
+                className="flex-1 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-medium shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Children" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="0">0 Children</SelectItem>
-                  <SelectItem value="1">1 Child</SelectItem>
-                  <SelectItem value="2">2 Children</SelectItem>
-                  <SelectItem value="3">3+ Children</SelectItem>
-                </SelectContent>
-              </Select>
+                Get My Quote Now! 🚀
+              </Button>
             </div>
+          </form>
+
+          <div className="mt-6 text-center">
+            <p className="text-xs text-gray-500">
+              🔒 Your information is secure and will never be shared with third
+              parties
+            </p>
           </div>
-
-          <div>
-            <Label htmlFor="name">Full Name</Label>
-            <Input
-              id="name"
-              value={inquiryForm.name}
-              onChange={(e) => handleInputChange("name", e.target.value)}
-              placeholder="Your full name"
-              required
-              className="w-full"
-            />
-          </div>
-
-          <div>
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              value={inquiryForm.email}
-              onChange={(e) => handleInputChange("email", e.target.value)}
-              placeholder="your@email.com"
-              required
-              className="w-full"
-            />
-          </div>
-
-          <div>
-            <Label htmlFor="phone">Phone Number</Label>
-            <Input
-              id="phone"
-              value={inquiryForm.phone}
-              onChange={(e) => handleInputChange("phone", e.target.value)}
-              placeholder="Your phone number"
-              required
-              className="w-full"
-            />
-          </div>
-
-          <div>
-            <Label htmlFor="message">Special Requests</Label>
-            <Textarea
-              id="message"
-              value={inquiryForm.message}
-              onChange={(e) => handleInputChange("message", e.target.value)}
-              placeholder="Any special requests or questions..."
-              rows={3}
-              className="w-full resize-none"
-            />
-          </div>
-
-          <Button
-            type="submit"
-            className="w-full bg-orange-500 hover:bg-orange-600 text-sm sm:text-base py-2 sm:py-3"
-          >
-            Send Inquiry
-          </Button>
-        </form>
-
-        <div className="mt-4 text-center">
-          <p className="text-xs sm:text-sm text-gray-600">
-            Free cancellation up to 24 hours before departure
-          </p>
-        </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </div>
   );
-}
+};
