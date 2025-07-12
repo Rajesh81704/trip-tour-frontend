@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import ReduxStoreProvider from "@/store/store";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,14 +31,25 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased 
            [&::-webkit-scrollbar]:w-1
-  [&::-webkit-scrollbar-track]:bg-gray-100
-  [&::-webkit-scrollbar-thumb]:bg-gray-300`}
+         [&::-webkit-scrollbar-track]:bg-gray-100
+         [&::-webkit-scrollbar-thumb]:bg-gray-300`}
       >
-        <Navbar />
-        {children}
-        <Footer />
-        <Toaster />
+        <ReduxStoreProvider>
+          <Navbar />
+          {children}
+          <Footer />
+          <Toaster />
+        </ReduxStoreProvider>
       </body>
     </html>
   );
 }
+
+// BOHUT CHUTIYA CODE LIKHA HAI
+// AUR LIFE M KABHI NHI KRUGA
+// WAISE MAI BAS LIKH RHA HU
+// AI SE CODE SUBHODEEP NE LIKHWAYA HAI
+// MAI LIFE M PAHLI BAAR AI SE LIKHA HUWA CODE KE SATH KAAM KR RHA
+// AI SE CODE MAI BHI LIKHWATA HU, LEKIN AISE NHI
+// YEH POORA FRONTEND AI SE LIKHWAYA HAI , KAMSE KAM KHUD START KRTE TOH ACCHA REHTA
+N
