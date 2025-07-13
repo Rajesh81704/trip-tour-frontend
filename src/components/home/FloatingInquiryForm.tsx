@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
 import { User, Phone, Mail, MapPin, MessageCircle, Send } from "lucide-react";
+import api from "@/lib/api";
 
 const popularDestinations = [
   "Goa",
@@ -20,7 +21,7 @@ const popularDestinations = [
 export const FloatingInquiryForm = () => {
   const [formData, setFormData] = useState({
     name: "",
-    mobile: "",
+    mobileNumber: "",
     email: "",
     destination: "",
     message: "",
@@ -28,10 +29,21 @@ export const FloatingInquiryForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Your inquiry has been submitted! We'll contact you soon.");
+    api
+      .post("/inquiries", formData)
+      .then(() => {
+        toast.success(
+          "🎉 Inquiry submitted successfully! Our travel expert will contact you within 24 hours."
+        );
+      })
+      .catch((error) => {
+        toast.error("❌ Failed to submit inquiry. Please try again later.");
+        console.error("Inquiry submission error:", error);
+      });
+
     setFormData({
       name: "",
-      mobile: "",
+      mobileNumber: "",
       email: "",
       destination: "",
       message: "",
@@ -75,8 +87,10 @@ export const FloatingInquiryForm = () => {
             <input
               type="tel"
               required
-              value={formData.mobile}
-              onChange={(e) => handleInputChange("mobile", e.target.value)}
+              value={formData.mobileNumber}
+              onChange={(e) =>
+                handleInputChange("mobileNumber", e.target.value)
+              }
               className="w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-white/80 placeholder-gray-400 text-base transition"
               placeholder="Mobile Number"
               autoComplete="tel"
