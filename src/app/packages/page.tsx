@@ -1,17 +1,44 @@
 "use client";
 import { PackageCard } from "@/components/cards/package";
 import { Button } from "@/components/ui/button";
-import { Filter } from "lucide-react";
-import { useState } from "react";
+import { Filter, Loader2, AlertCircle } from "lucide-react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { packageData } from "@/data";
 import { PackageData } from "@/components/packages/types";
+import api from "@/lib/api";
 
 const Packages = () => {
   const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [packageData, setPackageData] = useState<PackageData[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const handlePackageClick = (id: number) => {
+  useEffect(() => {
+    // Fetch package data from API
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const response = await api.get<{ success: boolean; packages: PackageData[] }>("/packages");
+        if (response.data.success && response.data.packages) {
+          setPackageData(response.data.packages);
+        } else {
+          setPackageData([]);
+        }
+      } catch (error) {
+        console.error("Error fetching package data:", error);
+        setError("Failed to load packages. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handlePackageClick = (id: string) => {
     router.push(`/packages/${id}`);
   };
 
@@ -27,6 +54,37 @@ const Packages = () => {
     selectedCategory === "all"
       ? packageData
       : packageData.filter((pkg) => pkg.features.includes(selectedCategory));
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4 text-blue-600" />
+          <p className="text-gray-600">Loading packages...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-center max-w-md mx-auto px-4">
+          <AlertCircle className="h-12 w-12 text-red-500 mx-auto mb-4" />
+          <h2 className="text-xl font-semibold text-gray-900 mb-2">
+            Error Loading Packages
+          </h2>
+          <p className="text-gray-600 mb-4">{error}</p>
+          <Button
+            onClick={() => window.location.reload()}
+            className="bg-blue-600 hover:bg-blue-700"
+          >
+            Try Again
+          </Button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -80,20 +138,31 @@ const Packages = () => {
       {/* Packages Grid */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8">
-            <div className="flex gap-4 overflow-x-auto pb-4 md:overflow-visible md:pb-0 scrollbar-hide">
-              {filteredPackages.map((pkg) => (
-                <div key={pkg.id} className="flex-shrink-0 w-[280px] md:w-auto">
-                  <PackageCard
-                    pkg={pkg as PackageData}
-                    handlePackageClick={() =>
-                      handlePackageClick(Number(pkg.id))
-                    }
-                  />
-                </div>
-              ))}
+          {filteredPackages.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-gray-600 text-lg">
+                {selectedCategory === "all"
+                  ? "No packages available at the moment."
+                  : `No packages found in the "${selectedCategory}" category.`}
+              </p>
             </div>
-          </div>
+          ) : (
+            <div className="md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8">
+              <div className="flex gap-4 overflow-x-auto pb-4 md:overflow-visible md:pb-0 scrollbar-hide">
+                {filteredPackages.map((pkg) => (
+                  <div
+                    key={pkg._id}
+                    className="flex-shrink-0 w-[280px] md:w-auto"
+                  >
+                    <PackageCard
+                      pkg={pkg as PackageData}
+                      handlePackageClick={() => handlePackageClick(pkg._id)}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
     </div>

@@ -15,7 +15,7 @@ export const PackageCard = ({ pkg, handlePackageClick }: PackageCardProps) => {
   // const [showInquiry, setShowInquiry] = useState(false);
   return (
     <Card
-      key={pkg.id}
+      key={pkg._id}
       className="group relative overflow-visible bg-white border-0 shadow-lg rounded-xl sm:rounded-2xl transition-all duration-500 hover:-translate-y-1 hover:shadow-xl cursor-pointer w-full"
       onClick={handlePackageClick}
     >
@@ -45,7 +45,7 @@ export const PackageCard = ({ pkg, handlePackageClick }: PackageCardProps) => {
         </Button>
         {/* Duration Badge */}
         <Badge className="absolute bottom-2 left-2 bg-green-600/90 text-white px-2 py-0.5 rounded-full text-xs font-semibold shadow-lg z-10">
-          {pkg.duration}
+          {pkg.duration.day}D {pkg.duration.night}N
         </Badge>
       </div>
 
@@ -58,11 +58,13 @@ export const PackageCard = ({ pkg, handlePackageClick }: PackageCardProps) => {
             <span className="font-semibold text-blue-900 text-xs">
               {pkg.rating}
             </span>
-            <span className="text-gray-400 text-xs">({pkg.reviews})</span>
+            <span className="text-gray-400 text-xs">({Array.isArray(pkg.reviews) ? pkg.reviews.length : pkg.reviews})</span>
           </div>
           <div className="flex items-center gap-1 text-blue-500">
             <Clock className="h-3 w-3" />
-            <span className="text-xs font-medium">{pkg.duration}</span>
+            <span className="text-xs font-medium">
+              {pkg.duration.day}D {pkg.duration.night}N
+            </span>
           </div>
         </div>
         <h3 className="font-bold text-sm sm:text-base text-black line-clamp-1">
@@ -71,7 +73,7 @@ export const PackageCard = ({ pkg, handlePackageClick }: PackageCardProps) => {
         {/* Location */}
         <div className="flex items-center gap-1 mb-1">
           <span className="text-xs text-gray-600 font-medium line-clamp-1">
-            📍 {pkg.location}
+            📍 {pkg.location.destination}
           </span>
         </div>
         {/* Features */}

@@ -1,94 +1,11 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { packageData } from "@/data";
+// import { packageData } from "@/data";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PackageCard } from "../cards/package";
-
-// const packages = [
-//   {
-//     id: 1,
-//     title: "Best Of Switzerland & Italy With FREE Excursion To Mount Titlis",
-//     location: "Europe",
-//     destinations: ["Rome", "Florence", "Venice", "Zurich"],
-//     duration: "9 days & 8 nights",
-//     originalPrice: 265185,
-//     price: 143200,
-//     savings: 121985,
-//     rating: 4.9,
-//     reviews: 523,
-//     image:
-//       "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-//     trending: true,
-//     tag: "FREE Mount Titlis",
-//   },
-
-//   {
-//     id: 2,
-//     title: "Best Of Scandinavia | FREE Amusement Park Tickets",
-//     location: "Scandinavia",
-//     destinations: ["Copenhagen", "Geilo", "Oslo", "Stockholm"],
-//     duration: "9 days & 8 nights",
-//     originalPrice: 397030,
-//     price: 291000,
-//     savings: 96030,
-//     rating: 4.8,
-//     reviews: 240,
-//     image:
-//       "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-//     trending: true,
-//     tag: "FREE Park Tickets",
-//   },
-//   {
-//     id: 3,
-//     title: "Europe Golden Trip | Amsterdam & Paris Tour",
-//     location: "Europe",
-//     destinations: ["Amsterdam", "Paris", "Lucerne", "Zurich"],
-//     duration: "8 days & 7 nights",
-//     originalPrice: 224900,
-//     price: 173000,
-//     savings: 51900,
-//     rating: 4.5,
-//     reviews: 32,
-//     image:
-//       "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-//     trending: false,
-//     tag: "Golden Trip",
-//   },
-
-//   {
-//     id: 4,
-//     title: "Best Of Europe | Paris, Rome & Venice Tour",
-//     location: "Europe",
-//     destinations: ["Paris", "Rome", "Venice", "Florence"],
-//     duration: "10 days & 9 nights",
-//     originalPrice: 299900,
-//     price: 249000,
-//     savings: 50900,
-//     rating: 4.7,
-//     reviews: 150,
-//     image:
-//       "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-//     trending: false,
-//     tag: "Best Of Europe",
-//   },
-//   {
-//     id: 5,
-//     title: "Discover Japan | Tokyo & Kyoto Tour",
-//     location: "Japan",
-//     destinations: ["Tokyo", "Kyoto", "Osaka", "Hiroshima"],
-//     duration: "7 days & 6 nights",
-//     originalPrice: 180000,
-//     price: 150000,
-//     savings: 30000,
-//     rating: 4.6,
-//     reviews: 75,
-//     image:
-//       "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-//     trending: false,
-//     tag: "Discover Japan",
-//   },
-// ];
+import api from "@/lib/api";
+import { PackageData } from "../packages";
 
 const categories = [
   // Indian States
@@ -124,10 +41,36 @@ const categories = [
 
 export const FeaturedPackages = () => {
   const [activeCategory, setActiveCategory] = useState("trending");
-  // const [activeTab, setActiveTab] = useState("Tours");
+  const [packageData, setPackageData] = useState<PackageData[]>([]);
+
+  // Fetch package data from API
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        console.log("Fetching packages from API...");
+        const response = await api.get<{ success: boolean; packages: PackageData[] }>("/packages");
+        console.log("API Response:", response);
+        
+        if (response.data.success && response.data.packages) {
+          const data = response.data.packages;
+          console.log("Processed packages:", data);
+          setPackageData(data);
+        } else {
+          console.log("No packages found or API error");
+          setPackageData([]);
+        }
+      } catch (error) {
+        console.error("Error fetching package data:", error);
+        setPackageData([]); // Set empty array on error
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const router = useRouter();
 
-  const handlePackageClick = (id: number) => {
+  const handlePackageClick = (id: string) => {
     router.push(`/packages/${id}`);
   };
 
@@ -195,11 +138,11 @@ export const FeaturedPackages = () => {
         {/* Package Cards */}
         <div className="flex gap-4 overflow-x-auto pb-4 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-10 md:overflow-visible md:pb-0 scrollbar-hide">
           {packageData.map((pkg) => (
-            <div key={pkg.id} className="flex-shrink-0 w-[280px] md:w-auto">
-              <PackageCard
-                pkg={pkg}
-                handlePackageClick={() => handlePackageClick(Number(pkg.id))}
-              />
+            <div key={pkg._id} className="flex-shrink-0 w-[280px] md:w-auto">
+                              <PackageCard
+                  pkg={pkg}
+                  handlePackageClick={() => handlePackageClick(pkg._id)}
+                />
             </div>
           ))}
         </div>
