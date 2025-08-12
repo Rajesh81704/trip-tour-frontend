@@ -48,9 +48,12 @@ export const FeaturedPackages = () => {
     const fetchData = async () => {
       try {
         console.log("Fetching packages from API...");
-        const response = await api.get<{ success: boolean; packages: PackageData[] }>("/packages");
+        const response = await api.get<{
+          success: boolean;
+          packages: PackageData[];
+        }>("/packages");
         console.log("API Response:", response);
-        
+
         if (response.data.success && response.data.packages) {
           const data = response.data.packages;
           console.log("Processed packages:", data);
@@ -139,10 +142,10 @@ export const FeaturedPackages = () => {
         <div className="flex gap-4 overflow-x-auto pb-4 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-10 md:overflow-visible md:pb-0 scrollbar-hide">
           {packageData.map((pkg) => (
             <div key={pkg._id} className="flex-shrink-0 w-[280px] md:w-auto">
-                              <PackageCard
-                  pkg={pkg}
-                  handlePackageClick={() => handlePackageClick(pkg._id)}
-                />
+              <PackageCard
+                pkg={pkg}
+                handlePackageClick={() => handlePackageClick(pkg._id)}
+              />
             </div>
           ))}
         </div>

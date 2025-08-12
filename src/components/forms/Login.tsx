@@ -10,6 +10,7 @@ import api from "@/lib/api";
 import { setUser } from "@/store/slice";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface User {
   id: string;
@@ -250,40 +251,42 @@ export default function Login({ onClose }: { onClose?: () => void }) {
               {tab === "login" ? "Login" : "Sign Up"}
             </Button>
             <Separator className="my-2" />
-            <Button
-              type="button"
-              variant="outline"
-              className="w-full flex items-center justify-center gap-2 font-semibold"
-              // TODO: Add Google OAuth handler
-            >
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 48 48"
-                className="inline-block"
-                aria-hidden="true"
+            <Link href={"https:api.naturevacation.in/auth/google"}>
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full flex items-center justify-center gap-2 font-semibold"
+                // TODO: Add Google OAuth handler
               >
-                <g>
-                  <path
-                    fill="#4285F4"
-                    d="M43.6 20.5h-1.9V20H24v8h11.3c-1.6 4.3-5.7 7-11.3 7-6.6 0-12-5.4-12-12s5.4-12 12-12c2.6 0 5 .8 7 2.3l5.7-5.7C34.1 6.5 29.3 4.5 24 4.5 12.7 4.5 3.5 13.7 3.5 25S12.7 45.5 24 45.5c10.5 0 20-8.5 20-20 0-1.3-.1-2.2-.4-3z"
-                  />
-                  <path
-                    fill="#34A853"
-                    d="M6.3 14.1l6.6 4.8C14.5 16.1 18.8 13 24 13c2.6 0 5 .8 7 2.3l5.7-5.7C34.1 6.5 29.3 4.5 24 4.5c-7.1 0-13.2 4.1-16.3 10.1z"
-                  />
-                  <path
-                    fill="#FBBC05"
-                    d="M24 45.5c5.3 0 10.1-1.8 13.8-4.9l-6.4-5.2c-2 1.4-4.5 2.2-7.4 2.2-5.6 0-10.3-3.7-12-8.7l-6.6 5.1C7.1 41.1 14.9 45.5 24 45.5z"
-                  />
-                  <path
-                    fill="#EA4335"
-                    d="M43.6 20.5h-1.9V20H24v8h11.3c-1.1 3-3.6 5.2-6.6 6.1l6.4 5.2c3.7-3.4 6-8.4 6-14.3 0-1.3-.1-2.2-.4-3z"
-                  />
-                </g>
-              </svg>
-              Continue with Google
-            </Button>
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 48 48"
+                  className="inline-block"
+                  aria-hidden="true"
+                >
+                  <g>
+                    <path
+                      fill="#4285F4"
+                      d="M43.6 20.5h-1.9V20H24v8h11.3c-1.6 4.3-5.7 7-11.3 7-6.6 0-12-5.4-12-12s5.4-12 12-12c2.6 0 5 .8 7 2.3l5.7-5.7C34.1 6.5 29.3 4.5 24 4.5 12.7 4.5 3.5 13.7 3.5 25S12.7 45.5 24 45.5c10.5 0 20-8.5 20-20 0-1.3-.1-2.2-.4-3z"
+                    />
+                    <path
+                      fill="#34A853"
+                      d="M6.3 14.1l6.6 4.8C14.5 16.1 18.8 13 24 13c2.6 0 5 .8 7 2.3l5.7-5.7C34.1 6.5 29.3 4.5 24 4.5c-7.1 0-13.2 4.1-16.3 10.1z"
+                    />
+                    <path
+                      fill="#FBBC05"
+                      d="M24 45.5c5.3 0 10.1-1.8 13.8-4.9l-6.4-5.2c-2 1.4-4.5 2.2-7.4 2.2-5.6 0-10.3-3.7-12-8.7l-6.6 5.1C7.1 41.1 14.9 45.5 24 45.5z"
+                    />
+                    <path
+                      fill="#EA4335"
+                      d="M43.6 20.5h-1.9V20H24v8h11.3c-1.1 3-3.6 5.2-6.6 6.1l6.4 5.2c3.7-3.4 6-8.4 6-14.3 0-1.3-.1-2.2-.4-3z"
+                    />
+                  </g>
+                </svg>
+                Continue with Google
+              </Button>
+            </Link>
             {tab === "login" && (
               <div className="text-right text-sm mt-2">
                 <a href="#" className="text-blue-600 hover:underline">

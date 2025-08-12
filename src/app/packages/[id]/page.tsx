@@ -4,10 +4,11 @@ import {
   PackageHeader,
   ImageGallery,
   PackageDetails,
-  InquiryForm,
+  // InquiryForm,
   // RelatedPackages,
   PackageData,
 } from "@/components/packages";
+import { InquiryForm } from "@/components/home/InquiryForm";
 import api from "@/lib/api";
 import { notFound } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -22,19 +23,24 @@ export default function PackageDetailPage({ params }: PackageDetailPageProps) {
   const [packageData, setPackageData] = useState<PackageData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [showInquiryForm, setShowInquiryForm] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
         setError(null);
-        
+
         const { id } = await params;
         console.log("Fetching package with ID:", id);
-        
-        const response = await api.get<{ success: boolean; package: PackageData; reviews: any[] }>(`/packages/${id}`);
+
+        const response = await api.get<{
+          success: boolean;
+          package: PackageData;
+          reviews: any[];
+        }>(`/packages/${id}`);
         console.log("API Response:", response);
-        
+
         if (response.data.success && response.data.package) {
           setPackageData(response.data.package);
           console.log("Package data set:", response.data.package);
@@ -81,7 +87,11 @@ export default function PackageDetailPage({ params }: PackageDetailPageProps) {
               location={packageData.location.destination}
               duration={`${packageData.duration.day} Days ${packageData.duration.night} Nights`}
               rating={packageData.rating || 0}
-              reviews={Array.isArray(packageData.reviews) ? packageData.reviews.length : (packageData.reviews || 0)}
+              reviews={
+                Array.isArray(packageData.reviews)
+                  ? packageData.reviews.length
+                  : packageData.reviews || 0
+              }
               features={packageData.features}
               discount={`${packageData.discount}% OFF`}
             />
@@ -98,15 +108,21 @@ export default function PackageDetailPage({ params }: PackageDetailPageProps) {
               inclusions={packageData.inclusions}
               exclusions={packageData.exclusions}
               rating={packageData.rating || 0}
-              reviews={Array.isArray(packageData.reviews) ? packageData.reviews.length : (packageData.reviews || 0)}
+              reviews={
+                Array.isArray(packageData.reviews)
+                  ? packageData.reviews.length
+                  : packageData.reviews || 0
+              }
             />
           </div>
 
           <div className="space-y-6">
-            {/* <InquiryForm
-              packageTitle={packageData.title}
-              onClose={() => {}}
-            /> */}
+            {showInquiryForm && (
+              <InquiryForm
+                packageTitle={packageData.title}
+                onClose={() => setShowInquiryForm(false)}
+              />
+            )}
 
             {/* <RelatedPackages packages={relatedPackages} /> */}
           </div>

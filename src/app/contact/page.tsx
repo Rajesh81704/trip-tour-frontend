@@ -5,22 +5,31 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Phone, Mail, Clock, MessageCircle, Send } from "lucide-react";
 import { toast } from "sonner";
+import api from "@/lib/api";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
+   
     subject: "",
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+   try {
+    const response = await api.post("/contacts", formData);
     toast.success(
       "Message sent successfully! We'll get back to you within 24 hours. 🎉"
     );
-    setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+    setFormData({ name: "", email: "", subject: "", message: "" });
+   } catch (error) {
+    toast.error("Failed to send message. Please try again.");
+   }
+
+    
   };
 
   const handleInputChange = (
@@ -178,7 +187,7 @@ const Contact = () => {
                         <label className="block text-sm font-semibold text-gray-700 mb-3">
                           Phone Number *
                         </label>
-                        <input
+                        {/* <input
                           type="tel"
                           name="phone"
                           required
@@ -186,7 +195,7 @@ const Contact = () => {
                           onChange={handleInputChange}
                           className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-lg"
                           placeholder="+91-9876543210"
-                        />
+                        /> */}
                       </div>
                     </div>
 

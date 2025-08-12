@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Plane, Calendar, User, Globe, Sparkles } from "lucide-react";
+import { Menu, X, Plane, Calendar, User, Globe, Sparkles, MountainSnow } from "lucide-react";
 import Login from "../forms/Login";
 
 const NAV_ITEMS = [
@@ -93,7 +93,7 @@ export const Navbar = () => {
           <Link href="/" className="flex items-center gap-2 lg:gap-3 group">
             <div className="relative">
               <div className="bg-gradient-to-tr from-orange-400 via-pink-500 to-purple-600 p-1.5 lg:p-2 rounded-xl lg:rounded-2xl shadow-lg group-hover:scale-110 transition-all duration-300 ease-out">
-                <Plane className="h-5 w-5 lg:h-7 lg:w-7 text-white drop-shadow-lg" />
+                <MountainSnow className="h-5 w-5 lg:h-7 lg:w-7 text-white drop-shadow-lg" />
               </div>
               <div className="absolute inset-0 bg-gradient-to-tr from-orange-400 via-pink-500 to-purple-600 rounded-xl lg:rounded-2xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity duration-300" />
             </div>
@@ -102,7 +102,7 @@ export const Navbar = () => {
                 isScrolled ? "text-gray-800" : "text-white"
               }`}
             >
-              TravelQuest
+              NatureVacation
             </span>
           </Link>
 
