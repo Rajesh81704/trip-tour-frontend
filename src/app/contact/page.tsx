@@ -21,12 +21,14 @@ const Contact = () => {
 
    try {
     const response = await api.post("/contacts", formData);
-    toast.success(
-      "Message sent successfully! We'll get back to you within 24 hours. 🎉"
-    );
+    if(response.status === 201){
+      toast.success("Message sent successfully! We'll get back to you within 24 hours. 🎉");
+    }
+   
     setFormData({ name: "", email: "", subject: "", message: "" });
    } catch (error) {
-    toast.error("Failed to send message. Please try again.");
+    toast.error("Failed to send message. Please try again."+error);
+    
    }
 
     

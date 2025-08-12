@@ -16,6 +16,25 @@ export interface LocationData {
 // }
 
 
+export interface IReview {
+    _id: string;
+    rating: number;
+    comment: string;
+    user: {
+        _id: string;
+        name: string;
+        email: string;
+    };
+    package: {
+        _id: string;
+        title: string;
+        description: string;
+    };
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+    id: string;
+}
 export interface DurationData {
     day: number;
     night: number;
@@ -36,7 +55,7 @@ export interface PackageData {
     price: number;
     originalPrice: number;
     rating?: number;
-    reviews?: any[];
+    reviews?: string[];
     images: string[];
     features: string[];
     discount: number;

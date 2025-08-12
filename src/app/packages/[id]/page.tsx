@@ -7,6 +7,7 @@ import {
   // InquiryForm,
   // RelatedPackages,
   PackageData,
+  IReview,
 } from "@/components/packages";
 import { InquiryForm } from "@/components/home/InquiryForm";
 import api from "@/lib/api";
@@ -37,7 +38,7 @@ export default function PackageDetailPage({ params }: PackageDetailPageProps) {
         const response = await api.get<{
           success: boolean;
           package: PackageData;
-          reviews: any[];
+          reviews: IReview[];
         }>(`/packages/${id}`);
         console.log("API Response:", response);
 
