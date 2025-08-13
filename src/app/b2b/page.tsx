@@ -42,12 +42,22 @@ import {
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
+import api from "@/lib/api";
+
+enum InquiryType {
+  CorporatePackages = "Corporate Packages",
+  GroupTours = "Group Tours",
+  MICE = "MICE (Meetings, Incentives, Conferences, Events)",
+  CustomItineraries = "Custom Itineraries",
+  PartnershipOpportunities = "Partnership Opportunities",
+  Other = "Other",
+}
 
 const B2B = () => {
   const [formData, setFormData] = useState({
     companyName: "",
     contactName: "",
-    contactRole: "",
+
     email: "",
     phone: "",
     website: "",
@@ -57,8 +67,20 @@ const B2B = () => {
 
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    try {
+      const resposnse = await api.post("/b2b-requests", formData);
+      if (resposnse.status === 201) {
+        toast.success("Inquiry Submitted Successfully!", {
+          description: "Our B2B team will contact you within 24 hours.",
+        });
+      }
+    } catch (error) {
+      console.error("Error submitting B2B inquiry:", error);
+      toast.error("Failed to submit inquiry. Please try again later.");
+      return;
+    }
 
     toast.success("Inquiry Submitted Successfully!", {
       description: "Our B2B team will contact you within 24 hours.",
@@ -67,7 +89,6 @@ const B2B = () => {
     setFormData({
       companyName: "",
       contactName: "",
-      contactRole: "",
       email: "",
       phone: "",
       website: "",
@@ -230,20 +251,25 @@ const B2B = () => {
                           <SelectValue placeholder="Select inquiry type" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="corporate-packages">
-                            Corporate Packages
+                          <SelectItem value={InquiryType.CorporatePackages}>
+                            {InquiryType.CorporatePackages}
                           </SelectItem>
-                          <SelectItem value="group-tours">
-                            Group Tours
+                          <SelectItem value={InquiryType.GroupTours}>
+                            {InquiryType.GroupTours}
                           </SelectItem>
-                          <SelectItem value="mice">
-                            MICE (Meetings, Incentives, Conferences, Events)
+                          <SelectItem value={InquiryType.MICE}>
+                            {InquiryType.MICE}
                           </SelectItem>
-                          <SelectItem value="custom-itineraries">
-                            Custom Itineraries
+                          <SelectItem value={InquiryType.CustomItineraries}>
+                            {InquiryType.CustomItineraries}
                           </SelectItem>
-                          <SelectItem value="partnership">
-                            Partnership Opportunities
+                          <SelectItem
+                            value={InquiryType.PartnershipOpportunities}
+                          >
+                            {InquiryType.PartnershipOpportunities}
+                          </SelectItem>
+                          <SelectItem value={InquiryType.Other}>
+                            {InquiryType.Other}
                           </SelectItem>
                         </SelectContent>
                       </Select>
