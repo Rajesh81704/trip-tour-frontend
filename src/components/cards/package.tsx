@@ -104,7 +104,10 @@ export const PackageCard = ({ pkg, handlePackageClick }: PackageCardProps) => {
           <Button
             variant="outline"
             className="h-10 text-sm flex-1 border-2 border-orange-200 text-orange-500 hover:bg-orange-50 font-semibold rounded-xl"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) => {
+              e.stopPropagation();
+              window.location.href = "tel:9800087901";
+            }}
           >
             <Phone className="h-4 w-4 mr-2" />
             Call Now
