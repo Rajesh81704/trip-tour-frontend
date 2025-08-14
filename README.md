@@ -14,6 +14,7 @@ A modern, responsive travel agency website built with Next.js 15, TypeScript, an
 - 🎨 **Modern UI/UX** with smooth animations and gradients
 - 🌙 **Dark/Light Mode** support with next-themes
 - 📝 **Inquiry Forms** for customer lead generation
+- end----------------------------------------------
 
 ## 🛠️ Technology Stack
 
@@ -75,12 +76,14 @@ travel-agency-frontend/
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    cd travel-agency-frontend
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    # or
@@ -92,6 +95,7 @@ travel-agency-frontend/
    ```
 
 3. **Run the development server**
+
    ```bash
    npm run dev
    # or
@@ -103,7 +107,7 @@ travel-agency-frontend/
    ```
 
 4. **Open your browser**
-   
+
    Navigate to [http://localhost:3000](http://localhost:3000) to see the application.
 
 ## 📜 Available Scripts
@@ -116,6 +120,7 @@ travel-agency-frontend/
 ## 🎯 Key Components
 
 ### Core Components
+
 - **Hero**: Landing section with video background and CTA
 - **Navbar**: Navigation with responsive design
 - **FeaturedPackages**: Display travel packages with pricing
@@ -125,10 +130,12 @@ travel-agency-frontend/
 - **Footer**: Contact information and links
 
 ### Form Components
+
 - **InquiryForm**: Main contact form for leads
 - **FloatingInquiryForm**: Compact floating form variant
 
 ### UI Components
+
 - **Button**: Customizable button with variants
 - **Card**: Reusable card container
 - **Badge**: Status and category indicators
@@ -172,6 +179,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Contact
 
 For any inquiries or support, please contact:
+
 - Phone: +91-9876543210
 - Email: info@travelagency.com
 
