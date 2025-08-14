@@ -500,7 +500,7 @@ const B2B = () => {
             <div>
               <Phone className="h-12 w-12 mx-auto mb-4" />
               <h3 className="font-semibold mb-2">Call Us</h3>
-              <p>+1 (555) 123-4567</p>
+              <p>1234567890</p>
             </div>
             <div>
               <Mail className="h-12 w-12 mx-auto mb-4" />
