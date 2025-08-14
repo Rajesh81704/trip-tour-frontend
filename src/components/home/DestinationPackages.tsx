@@ -1,6 +1,8 @@
+"use client";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const destinationPackages = [
   {
@@ -82,11 +84,18 @@ const destinationPackages = [
 ];
 
 const DestinationPackages = () => {
+  const router = useRouter();
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {destinationPackages.map((destination) => (
-          <div key={destination.id} className="mb-16">
+          <div
+            key={destination.id}
+            onClick={() => {
+              router.push(`/packages`);
+            }}
+            className="mb-16"
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
               {destination.title}
             </h2>
