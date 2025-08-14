@@ -24,7 +24,7 @@ export default function PackageDetailPage({ params }: PackageDetailPageProps) {
   const [packageData, setPackageData] = useState<PackageData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [showInquiryForm, setShowInquiryForm] = useState(true);
+  const [showInquiryForm, setShowInquiryForm] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -114,6 +114,7 @@ export default function PackageDetailPage({ params }: PackageDetailPageProps) {
                   ? packageData.reviews.length
                   : packageData.reviews || 0
               }
+              packageId={packageData._id}
             />
           </div>
 

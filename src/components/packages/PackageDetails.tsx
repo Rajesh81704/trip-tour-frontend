@@ -11,6 +11,7 @@ interface PackageDetailsProps {
   exclusions: string[];
   rating: number;
   reviews: number;
+  packageId: string;
 }
 
 export function PackageDetails({
@@ -19,6 +20,7 @@ export function PackageDetails({
   itinerary,
   inclusions,
   exclusions,
+  packageId,
 }: // rating,
 // reviews,
 PackageDetailsProps) {
@@ -162,7 +164,7 @@ PackageDetailsProps) {
         </TabsContent>
 
         <TabsContent value="reviews" className="mt-6 sm:mt-8">
-          <ReviewSection />
+          <ReviewSection packageId={packageId} />
         </TabsContent>
       </Tabs>
     </div>

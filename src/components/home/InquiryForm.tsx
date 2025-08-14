@@ -41,7 +41,7 @@ export const InquiryForm = ({
         packageId: formData.packageId,
         guests: formData.guests, // Added missing guests field
       });
-      if (response.status === 200) {
+      if (response.status === 200 || response.status === 201) {
         toast.success(
           "🎉 Inquiry submitted successfully! Our travel expert will contact you within 24 hours."
         );
