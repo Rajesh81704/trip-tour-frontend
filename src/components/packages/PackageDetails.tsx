@@ -23,7 +23,7 @@ export function PackageDetails({
 // reviews,
 PackageDetailsProps) {
   return (
-    <div className="bg-white/95 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-2xl border border-gray-100/50">
+    <div className="bg-white/95 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-2xl border border-gray-100/50">
       <Tabs defaultValue="overview" className="w-full">
         <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 bg-gradient-to-r from-blue-50 to-orange-50 p-1 sm:p-1.5 h-auto sm:h-12 rounded-xl sm:rounded-2xl border border-gray-200/50">
           <TabsTrigger
@@ -87,7 +87,7 @@ PackageDetailsProps) {
 
         <TabsContent value="itinerary" className="mt-6 sm:mt-8">
           <div className="space-y-6 sm:space-y-8">
-            <h3 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 sm:mb-8">
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800 mb-6 sm:mb-8">
               🗺️ Day-by-Day Itinerary
             </h3>
             <div className="relative">
@@ -102,10 +102,10 @@ PackageDetailsProps) {
                       {day.day}
                     </span>
                   </div>
-                  <h4 className="font-bold text-lg sm:text-2xl text-gray-900 mb-2 sm:mb-3">
+                  <h4 className="font-bold text-lg sm:text-xl lg:text-2xl text-gray-900 mb-2 sm:mb-3">
                     {day.title}
                   </h4>
-                  <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                  <p className="text-gray-700 text-sm sm:text-base lg:text-lg leading-relaxed">
                     {day.description}
                   </p>
                 </div>
@@ -115,10 +115,10 @@ PackageDetailsProps) {
         </TabsContent>
 
         <TabsContent value="inclusions" className="mt-6 sm:mt-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-green-100/50">
-              <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600 flex items-center">
-                <Check className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" />
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-4 sm:mb-6 text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600 flex items-center">
+                <Check className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 mr-2 sm:mr-3" />
                 Inclusions
               </h3>
               <ul className="space-y-3 sm:space-y-4">
@@ -138,8 +138,8 @@ PackageDetailsProps) {
               </ul>
             </div>
             <div className="bg-gradient-to-br from-red-50 to-pink-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-red-100/50">
-              <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-pink-600 flex items-center">
-                <X className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" />
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-4 sm:mb-6 text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-pink-600 flex items-center">
+                <X className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 mr-2 sm:mr-3" />
                 Exclusions
               </h3>
               <ul className="space-y-3 sm:space-y-4">

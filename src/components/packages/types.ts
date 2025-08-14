@@ -5,7 +5,7 @@ export interface LocationData {
 }
 
 // export interface IReview {
-   
+
 //     rating: number;
 //     review: string;
 //     user: string; // Using string for ObjectId representation in frontend
@@ -56,7 +56,10 @@ export interface PackageData {
     originalPrice: number;
     rating?: number;
     reviews?: string[];
-    images: string[];
+    images: {
+        url: string;
+        public_id: string;
+    }[];
     features: string[];
     discount: number;
     description: string;
