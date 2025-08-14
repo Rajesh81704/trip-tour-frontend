@@ -11,27 +11,26 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-   
+
     subject: "",
     message: "",
   });
 
-   const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-   try {
-    const response = await api.post("/contacts", formData);
-    if(response.status === 201){
-      toast.success("Message sent successfully! We'll get back to you within 24 hours. 🎉");
-    }
-   
-    setFormData({ name: "", email: "", subject: "", message: "" });
-   } catch (error) {
-    toast.error("Failed to send message. Please try again."+error);
-    
-   }
+    try {
+      const response = await api.post("/contacts", formData);
+      if (response.status === 201) {
+        toast.success(
+          "Message sent successfully! We'll get back to you within 24 hours. 🎉"
+        );
+      }
 
-    
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch (error) {
+      toast.error("Failed to send message. Please try again." + error);
+    }
   };
 
   const handleInputChange = (
@@ -59,7 +58,7 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email Us",
-      details: ["hello@travelquest.com", "support@travelquest.com"],
+      details: ["naturevacation@gmail.com", "naturevacationsupport@gmail.com"],
       color: "from-purple-500 to-pink-500",
     },
     {

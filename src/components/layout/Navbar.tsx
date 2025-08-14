@@ -3,7 +3,16 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Plane, Calendar, User, Globe, Sparkles, MountainSnow } from "lucide-react";
+import {
+  Menu,
+  X,
+  Plane,
+  Calendar,
+  User,
+  Globe,
+  Sparkles,
+  MountainSnow,
+} from "lucide-react";
 import Login from "../forms/Login";
 
 const NAV_ITEMS = [
@@ -212,7 +221,7 @@ export const Navbar = () => {
                 <Plane className="h-5 w-5 text-white" />
               </div>
               <span className="text-lg font-extrabold text-gray-800">
-                TravelQuest
+                NatureVAcation
               </span>
             </Link>
             <button

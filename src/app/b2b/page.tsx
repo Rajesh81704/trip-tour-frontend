@@ -421,8 +421,8 @@ const B2B = () => {
                   ))}
                 </div>
                 <p className="text-gray-600 mb-4">
-                  &ldquo;TravelQuest has been our reliable partner for corporate
-                  travel. Highly recommended!&rdquo;
+                  &ldquo;NatureVacation has been our reliable partner for
+                  corporate travel. Highly recommended!&rdquo;
                 </p>
                 <div className="font-semibold">Michael Chen</div>
                 <div className="text-sm text-gray-500">
@@ -505,7 +505,7 @@ const B2B = () => {
             <div>
               <Mail className="h-12 w-12 mx-auto mb-4" />
               <h3 className="font-semibold mb-2">Email Us</h3>
-              <p>b2b@travelquest.com</p>
+              <p>naturevacationb2b@gmail.com</p>
             </div>
             <div>
               <MessageCircle className="h-12 w-12 mx-auto mb-4" />

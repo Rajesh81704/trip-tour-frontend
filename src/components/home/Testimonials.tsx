@@ -8,7 +8,7 @@ const testimonials = [
     name: "Sarah Johnson",
     location: "New York, USA",
     rating: 5,
-    text: "TravelQuest made our Himalayan trek absolutely unforgettable. The guides were knowledgeable, the accommodations perfect, and every detail was handled with care.",
+    text: "NatureVAcation made our Himalayan trek absolutely unforgettable. The guides were knowledgeable, the accommodations perfect, and every detail was handled with care.",
     image:
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
   },
