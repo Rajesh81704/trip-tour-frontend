@@ -251,7 +251,10 @@ export default function Login({ onClose }: { onClose?: () => void }) {
               {tab === "login" ? "Login" : "Sign Up"}
             </Button>
             <Separator className="my-2" />
-            <Link href={"https://api.naturevacation.in/auth/google"}>
+            <Link
+              href={"http://api.naturevacation.in/auth/google"}
+              target="_blank"
+            >
               <Button
                 type="button"
                 variant="outline"
