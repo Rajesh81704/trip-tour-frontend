@@ -16,7 +16,7 @@ export const Footer = () => {
           <div className="flex items-center space-x-2">
             <MapPin className="h-8 w-8 text-blue-400" />
             <span className="text-2xl font-bold text-white">
-              TravelQuest.com
+              NatureVacation.in
             </span>
           </div>
 
@@ -57,7 +57,7 @@ export const Footer = () => {
           {/* Copyright Text */}
           <div className="text-center">
             <p className="text-gray-400 text-sm mb-4">
-              © 2025 TravelQuest.com All rights reserved.
+              © 2025 NatureVacation.com All rights reserved.
             </p>
             <p className="text-gray-500 text-xs leading-relaxed max-w-4xl">
               The content and images used on this site are copyright protected
