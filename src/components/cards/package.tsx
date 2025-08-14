@@ -100,7 +100,7 @@ export const PackageCard = ({ pkg, handlePackageClick }: PackageCardProps) => {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-3 mt-2">
+        <div className="flex gap- mt-2">
           <Button
             variant="outline"
             className="h-10 text-sm flex-1 border-2 border-orange-200 text-orange-500 hover:bg-orange-50 font-semibold rounded-xl"
@@ -113,8 +113,11 @@ export const PackageCard = ({ pkg, handlePackageClick }: PackageCardProps) => {
             Call Now
           </Button>
 
-          <Button className="h-10 text-sm flex-1 bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white font-semibold shadow-lg shadow-orange-200/50 rounded-xl">
-            Request Callback
+          <Button
+            className="h-9 sm:h-10 text-xs sm:text-sm flex-1 bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white font-semibold shadow-md shadow-orange-200/50 rounded-xl px-2 sm:px-3"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <span className="whitespace-nowrap">Request Callback</span>
           </Button>
         </div>
       </CardContent>
