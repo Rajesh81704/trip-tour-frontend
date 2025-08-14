@@ -141,7 +141,7 @@ export default function PackageDetailPage({ params }: PackageDetailPageProps) {
                 <InquiryForm
                   packageTitle={packageData.title}
                   packageId={packageData._id}
-                  destination={String(packageData.location)}
+                  destination={`${packageData.location.city}, ${packageData.location.state}, ${packageData.location.destination}`}
                   onClose={() => setShowInquiryForm(false)}
                 />
               </div>
