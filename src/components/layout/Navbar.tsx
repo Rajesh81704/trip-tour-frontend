@@ -12,8 +12,10 @@ import {
   Globe,
   Sparkles,
   MountainSnow,
+  LogOut,
 } from "lucide-react";
 import Login from "../forms/Login";
+import { useAppSelector, useAppDispatch, logout } from "@/store";
 
 const NAV_ITEMS = [
   { name: "Home", path: "/", icon: Plane },
@@ -51,6 +53,8 @@ export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const location = usePathname();
+  const dispatch = useAppDispatch();
+  const { isLoggedIn, isLoading } = useAppSelector((state) => state.auth);
 
   const isActive = useCallback((path: string) => location === path, [location]);
 
@@ -87,6 +91,7 @@ export const Navbar = () => {
   const handleMenuClose = useCallback(() => setIsMenuOpen(false), []);
   const handleLoginOpen = useCallback(() => setIsLoginOpen(true), []);
   const handleLoginClose = useCallback(() => setIsLoginOpen(false), []);
+  const handleLogout = useCallback(() => dispatch(logout()), [dispatch]);
 
   return (
     <nav
@@ -151,17 +156,33 @@ export const Navbar = () => {
                 isScrolled ? "bg-gray-300" : "bg-white/30"
               }`}
             />
-            <Button
-              variant="outline"
-              size="sm"
-              className={`${DESKTOP_SIGNIN_BTN} ${
-                isScrolled ? DESKTOP_SIGNIN_SCROLLED : DESKTOP_SIGNIN_DEFAULT
-              }`}
-              onClick={handleLoginOpen}
-            >
-              <User className="h-4 w-4 mr-2" />
-              Sign In
-            </Button>
+            {isLoggedIn ? (
+              <Button
+                variant="outline"
+                size="sm"
+                className={`${DESKTOP_SIGNIN_BTN} ${
+                  isScrolled ? DESKTOP_SIGNIN_SCROLLED : DESKTOP_SIGNIN_DEFAULT
+                }`}
+                onClick={handleLogout}
+                disabled={isLoading}
+              >
+                <LogOut className="h-4 w-4 mr-2" />
+                {isLoading ? "Loading..." : "Logout"}
+              </Button>
+            ) : (
+              <Button
+                variant="outline"
+                size="sm"
+                className={`${DESKTOP_SIGNIN_BTN} ${
+                  isScrolled ? DESKTOP_SIGNIN_SCROLLED : DESKTOP_SIGNIN_DEFAULT
+                }`}
+                onClick={handleLoginOpen}
+                disabled={isLoading}
+              >
+                <User className="h-4 w-4 mr-2" />
+                {isLoading ? "Loading..." : "Sign In"}
+              </Button>
+            )}
             <Button
               size="sm"
               className={`${DESKTOP_ACTION_BTN} flex items-center gap-2`}
@@ -265,15 +286,29 @@ export const Navbar = () => {
                 </Button>
               </Link>
               <div className="flex gap-2 mt-2">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="flex-1 border-2 border-orange-500 text-orange-600 bg-orange-50 hover:border-orange-600 font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out"
-                  onClick={handleLoginOpen}
-                >
-                  <User className="h-4 w-4 mr-2" />
-                  Sign In
-                </Button>
+                {isLoggedIn ? (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="flex-1 border-2 border-orange-500 text-orange-600 bg-orange-50 hover:border-orange-600 font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out"
+                    onClick={handleLogout}
+                    disabled={isLoading}
+                  >
+                    <LogOut className="h-4 w-4 mr-2" />
+                    {isLoading ? "Loading..." : "Logout"}
+                  </Button>
+                ) : (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="flex-1 border-2 border-orange-500 text-orange-600 bg-orange-50 hover:border-orange-600 font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out"
+                    onClick={handleLoginOpen}
+                    disabled={isLoading}
+                  >
+                    <User className="h-4 w-4 mr-2" />
+                    {isLoading ? "Loading..." : "Sign In"}
+                  </Button>
+                )}
                 <Button
                   size="sm"
                   className="flex-1 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out"

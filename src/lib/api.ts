@@ -1,6 +1,7 @@
 /* eslint-disable */
 
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
+import { MOCK_AUTHENTICATED_USER, MOCK_USER_DATA } from './auth-config';
 
 class ApiClient {
     private client: AxiosInstance;
@@ -26,6 +27,29 @@ class ApiClient {
 
     async get<T>(url: string, params?: Record<string, any>): Promise<{ data: T; status: number }> {
         try {
+            // Mock response for development
+            if (process.env.NODE_ENV === 'development' && url === '/auth/me') {
+                // Simulate API delay
+                await new Promise(resolve => setTimeout(resolve, 1000));
+
+                // Mock user data - you can modify this for testing
+                // Set to null to simulate unauthenticated user
+                const mockUser = MOCK_AUTHENTICATED_USER ? MOCK_USER_DATA : null;
+
+                if (mockUser) {
+                    return {
+                        data: {
+                            success: true,
+                            user: mockUser
+                        } as T,
+                        status: 200
+                    };
+                } else {
+                    // Simulate unauthenticated user
+                    throw new Error('Not authenticated');
+                }
+            }
+
             const response: AxiosResponse<T> = await this.client.get(url, { params });
             return { data: response.data, status: response.status };
         } catch (error) {

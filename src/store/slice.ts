@@ -1,35 +1,85 @@
 "use client";
 
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { configureStore, createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import api from "@/lib/api";
 
 interface User {
     id: string;
+    email?: string;
+    name?: string;
 }
 
 interface AuthState {
     user: User | null;
     isLoggedIn: boolean;
+    isLoading: boolean;
+    error: string | null;
 }
+
+// Async thunk to check user authentication status
+export const checkAuthStatus = createAsyncThunk(
+    'auth/checkAuthStatus',
+    async (_, { rejectWithValue }) => {
+        try {
+            const response = await api.get('/auth/me');
+            return response.data;
+        } catch (error) {
+            console.error('Auth check failed:', error);
+            return rejectWithValue('Not authenticated');
+        }
+    }
+);
 
 const authSlice = createSlice({
     name: "auth",
     initialState: {
         user: null,
         isLoggedIn: false,
+        isLoading: true,
+        error: null,
     } as AuthState,
     reducers: {
         setUser: (state, action: { payload: User | null }) => {
             state.user = action.payload;
             state.isLoggedIn = action.payload !== null;
+            state.isLoading = false;
+            state.error = null;
         },
         logout: (state) => {
             state.user = null;
             state.isLoggedIn = false;
+            state.isLoading = false;
+            state.error = null;
         },
+        setLoading: (state, action: { payload: boolean }) => {
+            state.isLoading = action.payload;
+        },
+        clearError: (state) => {
+            state.error = null;
+        },
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(checkAuthStatus.pending, (state) => {
+                state.isLoading = true;
+                state.error = null;
+            })
+            .addCase(checkAuthStatus.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.user = (action.payload as { user: User }).user;
+                state.isLoggedIn = true;
+                state.error = null;
+            })
+            .addCase(checkAuthStatus.rejected, (state, action) => {
+                state.isLoading = false;
+                state.user = null;
+                state.isLoggedIn = false;
+                state.error = action.payload as string;
+            });
     },
 });
 
-export const { setUser, logout } = authSlice.actions;
+export const { setUser, logout, setLoading, clearError } = authSlice.actions;
 
 export const store = configureStore({
     reducer: {

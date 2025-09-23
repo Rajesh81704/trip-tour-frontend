@@ -4,7 +4,8 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import ReduxStoreProvider from "@/store/store";
+import { UserWrapper } from "@/components/layout/UserWrapper";
+import { ReduxStoreProvider } from "@/store";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,10 +37,12 @@ export default function RootLayout({
          [&::-webkit-scrollbar-thumb]:bg-gray-300`}
       >
         <ReduxStoreProvider>
-          <Navbar />
-          {children}
-          <Footer />
-          <Toaster />
+          <UserWrapper>
+            <Navbar />
+            {children}
+            <Footer />
+            <Toaster />
+          </UserWrapper>
         </ReduxStoreProvider>
       </body>
     </html>

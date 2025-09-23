@@ -7,8 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import api from "@/lib/api";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store/slice";
+import { useAppSelector } from "@/store";
 
 export interface Review {
   id: number;
@@ -32,7 +31,7 @@ const ReviewSection = ({ packageId }: { packageId: string }) => {
   const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const user = useSelector((state: RootState) => state.auth.user);
+  const user = useAppSelector((state) => state.auth.user);
 
   useEffect(() => {
     const fetchReviews = async () => {
