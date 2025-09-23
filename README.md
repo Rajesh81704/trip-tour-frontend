@@ -1,4 +1,4 @@
-# Travel Agency Frontend
+# Travel Agency Frontend site
 
 A modern, responsive travel agency website built with Next.js 15, TypeScript, and Tailwind CSS. This application showcases beautiful travel destinations, packages, and provides seamless user experience for travel bookings and inquiries.
 
