@@ -2,7 +2,7 @@
 
 A modern, responsive travel agency website built with Next.js 15, TypeScript, and Tailwind CSS. This application showcases beautiful travel destinations, packages, and provides seamless user experience for travel bookings and inquiries.
 
-## ✨ Features
+## ✨ Features,,,
 
 - 🏠 **Hero Section** with video background and floating inquiry form
 - 📦 **Featured Travel Packages** with detailed information
