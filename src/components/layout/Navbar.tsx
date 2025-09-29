@@ -11,7 +11,6 @@ import {
   User,
   Globe,
   Sparkles,
-  MountainSnow,
   LogOut,
 } from "lucide-react";
 import Login from "../forms/Login";
