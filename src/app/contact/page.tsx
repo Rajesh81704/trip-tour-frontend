@@ -53,7 +53,7 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Call Us Now",
-      details: ["+91-9876543210", "+91-9876543211"],
+      details: ["+91-9800087910", "+91-9800087910"],
       color: "from-green-500 to-emerald-500",
     },
     {

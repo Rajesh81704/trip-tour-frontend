@@ -21,6 +21,11 @@ export const metadata: Metadata = {
   title: "Nature Vacation - Explore the Beauty of Nature",
   description:
     "Discover breathtaking destinations and unforgettable experiences with Nature Vacation. Your adventure starts here!",
+  icons: {
+    icon: "/logo.png", // Default favicon
+    shortcut: "/logo.png", // Optional
+    apple: "/logo.png", // Optional (for iOS)
+  },
 };
 
 export default function RootLayout({
@@ -30,10 +35,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/logo.png" type="image/png" />
-      </head>
-      
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased 
            [&::-webkit-scrollbar]:w-1
