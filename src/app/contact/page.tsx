@@ -12,7 +12,6 @@ const Contact = () => {
     name: "",
     email: "",
     phone: "",
-
     subject: "",
     message: "",
   });
@@ -47,13 +46,14 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Visit Our Office",
-      details: ["123 Travel Street, Adventure City", "Delhi, India - 110001"],
+      details: ["Gate Bazar, Old Matigara Rd, Ward 1", "Patiram Jote, Siliguri, Darjeeling, WB - 734003"],
       color: "from-blue-500 to-cyan-500",
     },
     {
       icon: Phone,
       title: "Call Us Now",
-      details: ["+91-9800087910", "+91-9800087910"],
+      // 👇 AAPKA NAYA NUMBER YAHAN UPDATE HO GAYA HAI
+      details: ["+91-6295177225", "+91-6295177225"], 
       color: "from-green-500 to-emerald-500",
     },
     {
@@ -190,13 +190,13 @@ const Contact = () => {
                           Phone Number *
                         </label>
                         <input
-                          type="tel"
+                          type="text"
                           name="phone"
                           required
                           value={formData.phone}
                           onChange={handleInputChange}
                           className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-lg"
-                          placeholder="+91-9876543210"
+                          placeholder="Your phone number"
                         />
                       </div>
                     </div>
@@ -279,8 +279,8 @@ const Contact = () => {
                       <p className="text-gray-600 text-lg font-medium">
                         Interactive Map Coming Soon
                       </p>
-                      <p className="text-gray-500">
-                        123 Travel Street, Adventure City
+                      <p className="text-gray-500 px-4 text-sm">
+                        Gate Bazar, Old Matigara Rd, Ward 1, Siliguri, Darjeeling, WB 734003
                       </p>
                     </div>
                   </div>
