@@ -23,7 +23,7 @@ const Contact = () => {
       const response = await api.post("/contacts", formData);
       if (response.status === 201) {
         toast.success(
-          "Message sent successfully! We'll get back to you within 24 hours. 🎉"
+          "Message sent successfully! We will get back to you within 24 hours. 🎉"
         );
       }
 
@@ -52,7 +52,6 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Call Us Now",
-      // 👇 AAPKA NAYA NUMBER YAHAN UPDATE HO GAYA HAI
       details: ["+91-6295177225", "+91-6295177225"], 
       color: "from-green-500 to-emerald-500",
     },
@@ -95,15 +94,14 @@ const Contact = () => {
 
         <div className="relative z-10 h-full flex items-center justify-center">
           <div className="text-center text-white max-w-4xl px-4">
-            <h1 className="text-6xl md:text-7xl font-bold mb-6 animate-fade-in">
-              Let&apos;s Plan Your{" "}
+            <h1 className="text-6xl md:text-7xl font-bold mb-6">
+              Let{"'"}s Plan Your{" "}
               <span className="bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent">
                 Dream Trip
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-200 leading-relaxed animate-fade-in">
-              Ready to start your next adventure? We&apos;re here 24/7 to make
-              it happen
+            <p className="text-xl md:text-2xl text-gray-200 leading-relaxed">
+              Ready to start your next adventure? We are here 24/7 to make it happen
             </p>
           </div>
         </div>
@@ -162,8 +160,7 @@ const Contact = () => {
                   Send us a Message
                 </h2>
                 <p className="text-lg text-gray-600">
-                  Fill out the form below and we&apos;ll get back to you within
-                  24 hours with a personalized travel plan.
+                  Fill out the form below and we will get back to you within 24 hours with a personalized travel plan.
                 </p>
               </div>
 
@@ -265,8 +262,7 @@ const Contact = () => {
                   Find Us
                 </h2>
                 <p className="text-lg text-gray-600 mb-8">
-                  Visit our office or reach out through any of these quick
-                  options.
+                  Visit our office or reach out through any of these quick options.
                 </p>
               </div>
 
