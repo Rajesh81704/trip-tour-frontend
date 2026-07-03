@@ -112,8 +112,8 @@ export const Navbar = () => {
                 <Image
                   alt="logo"
                   src={"/logo-new.png"}
-                  height={64}
-                  width={64}
+                  height={36}
+                  width={36}
                 />
               </div>
               {/* <div className="absolute inset-0 bg-gradient-to-tr from-orange-400 via-pink-500 to-purple-600 rounded-xl lg:rounded-2xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity duration-300" /> */}
