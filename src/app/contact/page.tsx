@@ -2,10 +2,26 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { MapPin, Phone, Mail, Clock, MessageCircle, Send } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  MessageCircle,
+  Send,
+  CheckCircle2,
+  Shield,
+  Headphones,
+} from "lucide-react";
 import { toast } from "sonner";
 import api from "@/lib/api";
+
+const benefits = [
+  { icon: CheckCircle2, text: "Personalized travel recommendations", color: "text-[#22C55E]" },
+  { icon: CheckCircle2, text: "Exclusive discounts & offers", color: "text-[#F59E0B]" },
+  { icon: CheckCircle2, text: "Customized itineraries", color: "text-[#2563EB]" },
+  { icon: CheckCircle2, text: "Expert travel support", color: "text-purple-500" },
+];
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -18,7 +34,6 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     try {
       const response = await api.post("/contacts", formData);
       if (response.status === 201) {
@@ -26,7 +41,6 @@ const Contact = () => {
           "Message sent successfully! We will get back to you within 24 hours. 🎉"
         );
       }
-
       setFormData({ name: "", phone: "", email: "", subject: "", message: "" });
     } catch (error) {
       toast.error("Failed to send message. Please try again." + error);
@@ -42,285 +56,260 @@ const Contact = () => {
     });
   };
 
-  const contactInfo = [
-    {
-      icon: MapPin,
-      title: "Visit Our Office",
-      details: ["Gate Bazar, Old Matigara Rd, Ward 1", "Patiram Jote, Siliguri, Darjeeling, WB - 734003"],
-      color: "from-blue-500 to-cyan-500",
-    },
-    {
-      icon: Phone,
-      title: "Call Us Now",
-      details: ["+91-6295177225", "+91-6295177225"], 
-      color: "from-green-500 to-emerald-500",
-    },
-    {
-      icon: Mail,
-      title: "Email Us",
-      details: ["support@triptootravels.com", "info@triptootravels.com"],
-      color: "from-purple-500 to-pink-500",
-    },
-    {
-      icon: Clock,
-      title: "Office Hours",
-      details: [
-        "Mon - Fri: 9:00 AM - 8:00 PM",
-        "Sat - Sun: 10:00 AM - 6:00 PM",
-      ],
-      color: "from-orange-500 to-red-500",
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section with Video Background */}
-      <section className="relative h-[60vh] overflow-hidden">
-        <div className="absolute inset-0">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
+    <div className="min-h-screen bg-[#F8FAFC]">
+      {/* ── Hero Banner ── */}
+      <section className="relative overflow-visible pt-[68px]">
+        <div className="relative h-[240px] overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+            alt="Contact us"
             className="w-full h-full object-cover"
-          >
-            <source
-              src="https://videos.pexels.com/video-files/2736469/2736469-uhd_2560_1440_30fps.mp4"
-              type="video/mp4"
-            />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60"></div>
-        </div>
+            style={{ objectPosition: "center 35%" }}
+          />
+          <div className="absolute inset-0 bg-linear-to-b from-black/50 via-black/40 to-black/65" />
 
-        <div className="relative z-10 h-full flex items-center justify-center">
-          <div className="text-center text-white max-w-4xl px-4">
-            <h1 className="text-6xl md:text-7xl font-bold mb-6">
-              Let{"'"}s Plan Your{" "}
-              <span className="bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent">
-                Dream Trip
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-200 leading-relaxed">
-              Ready to start your next adventure? We are here 24/7 to make it happen
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Info Cards */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-gray-900 mb-6">
-              Get In Touch
-            </h2>
-            <p className="text-xl text-gray-600">
-              Multiple ways to reach us - choose what works best for you
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {contactInfo.map((info, index) => (
-              <Card
-                key={index}
-                className="text-center hover:shadow-2xl transition-all duration-300 group border-0 shadow-lg"
-              >
-                <CardContent className="p-8">
-                  <div
-                    className={`bg-gradient-to-r ${info.color} w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform shadow-lg`}
-                  >
-                    <info.icon className="h-10 w-10 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">
-                    {info.title}
-                  </h3>
-                  {info.details.map((detail, detailIndex) => (
-                    <p
-                      key={detailIndex}
-                      className="text-gray-600 mb-2 font-medium"
-                    >
-                      {detail}
-                    </p>
-                  ))}
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Form & Map */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Contact Form */}
-            <div>
-              <div className="mb-8">
-                <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                  Send us a Message
-                </h2>
-                <p className="text-lg text-gray-600">
-                  Fill out the form below and we will get back to you within 24 hours with a personalized travel plan.
-                </p>
-              </div>
-
-              <Card className="shadow-2xl border-0">
-                <CardContent className="p-8">
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-3">
-                          Full Name *
-                        </label>
-                        <input
-                          type="text"
-                          name="name"
-                          required
-                          value={formData.name}
-                          onChange={handleInputChange}
-                          className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-lg"
-                          placeholder="Your full name"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-3">
-                          Phone Number *
-                        </label>
-                        <input
-                          type="text"
-                          name="phone"
-                          required
-                          value={formData.phone}
-                          onChange={handleInputChange}
-                          className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-lg"
-                          placeholder="Your phone number"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-3">
-                        Email Address *
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        required
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-lg"
-                        placeholder="your@email.com"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-3">
-                        Subject *
-                      </label>
-                      <input
-                        type="text"
-                        name="subject"
-                        required
-                        value={formData.subject}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-lg"
-                        placeholder="Trip to Goa, Manali, Kashmir..."
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-3">
-                        Tell us about your dream trip *
-                      </label>
-                      <textarea
-                        name="message"
-                        rows={6}
-                        required
-                        value={formData.message}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-lg resize-none"
-                        placeholder="Describe your ideal destination, travel dates, group size, and any special requirements..."
-                      />
-                    </div>
-
-                    <Button
-                      type="submit"
-                      className="w-full h-14 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3"
-                    >
-                      <Send className="h-5 w-5" />
-                      Send Message & Get Free Quote
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
+          {/* Hero text — left aligned exactly as reference */}
+          <div className="absolute inset-0 flex items-center">
+            <div className="max-w-[1320px] mx-auto w-full px-6 lg:px-16">
+              <h1 className="text-[2.2rem] sm:text-[2.6rem] font-extrabold leading-tight drop-shadow-lg">
+                <span className="text-white block">Let&apos;s Plan Your</span>
+                <span
+                  className="block"
+                  style={{
+                    color: "#F59E0B",
+                    fontStyle: "italic",
+                    fontFamily: "Georgia, serif",
+                  }}
+                >
+                  Perfect Getaway
+                </span>
+              </h1>
+              <p className="text-white/85 text-[15px] mt-3 font-medium max-w-[440px] leading-relaxed drop-shadow">
+                Share your travel plans with us and our experts will craft the best experience for you.
+              </p>
             </div>
+          </div>
+        </div>
+      </section>
 
-            {/* Right Side - Map & Quick Contact */}
-            <div className="space-y-8">
+      {/* Breadcrumb */}
+      <div className="max-w-[1320px] mx-auto px-6 lg:px-8 py-3.5 text-[12px] text-[#9CA3AF]">
+        <span className="hover:text-[#2563EB] cursor-pointer transition-colors">Home</span>
+        <span className="mx-2">›</span>
+        <span className="hover:text-[#2563EB] cursor-pointer transition-colors">Packages</span>
+        <span className="mx-2">›</span>
+        <span className="text-[#F59E0B] font-semibold">Submit Inquiry</span>
+      </div>
+
+      {/* Main Content */}
+      <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-7">
+
+          {/* ── Left: Form ── */}
+          <div className="bg-white rounded-[20px] border border-[#E5E7EB] shadow-[0_10px_30px_rgba(0,0,0,0.07)] overflow-hidden">
+            {/* Package banner */}
+            <div className="bg-[#FFF7ED] border-b border-[#FED7AA] p-5 flex items-center gap-4">
+              <div className="w-10 h-10 bg-[#F59E0B] rounded-xl flex items-center justify-center shrink-0 shadow-sm">
+                <span className="text-lg">✈️</span>
+              </div>
               <div>
-                <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                  Find Us
-                </h2>
-                <p className="text-lg text-gray-600 mb-8">
-                  Visit our office or reach out through any of these quick options.
+                <h3 className="font-bold text-[#92400E] text-[15px]">
+                  Submit an Inquiry
+                </h3>
+                <p className="text-[12px] text-[#B45309] mt-0.5">
+                  Fill the form below and unlock exclusive deals up to 20% off
                 </p>
               </div>
+            </div>
 
-              {/* Map Placeholder */}
-              <Card className="shadow-2xl border-0">
-                <CardContent className="p-0">
-                  <div className="h-64 bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg flex items-center justify-center">
-                    <div className="text-center">
-                      <MapPin className="h-16 w-16 text-blue-600 mx-auto mb-4" />
-                      <p className="text-gray-600 text-lg font-medium">
-                        Interactive Map Coming Soon
-                      </p>
-                      <p className="text-gray-500 px-4 text-sm">
-                        Gate Bazar, Old Matigara Rd, Ward 1, Siliguri, Darjeeling, WB 734003
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+            <form onSubmit={handleSubmit} className="p-6 lg:p-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                {/* Full Name */}
+                <div className="space-y-1.5">
+                  <label className="flex items-center gap-1.5 text-[13px] font-semibold text-[#374151]">
+                    <Phone className="h-3.5 w-3.5 text-[#F59E0B]" />
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 border border-[#E5E7EB] rounded-[12px] text-[14px] text-[#111827] placeholder-[#9CA3AF] focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/10 transition-all bg-[#F8FAFC] hover:border-[#D1D5DB]"
+                    placeholder="Enter your full name"
+                  />
+                </div>
 
-              {/* Quick Contact Options */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Button className="h-16 bg-green-600 hover:bg-green-700 text-lg font-semibold rounded-xl shadow-lg flex items-center justify-center gap-3">
-                  <Phone className="h-5 w-5" />
-                  Call Now
-                </Button>
-                <Button className="h-16 bg-blue-600 hover:bg-blue-700 text-lg font-semibold rounded-xl shadow-lg flex items-center justify-center gap-3">
-                  <MessageCircle className="h-5 w-5" />
-                  WhatsApp
-                </Button>
+                {/* Email */}
+                <div className="space-y-1.5">
+                  <label className="flex items-center gap-1.5 text-[13px] font-semibold text-[#374151]">
+                    <Mail className="h-3.5 w-3.5 text-[#F59E0B]" />
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 border border-[#E5E7EB] rounded-[12px] text-[14px] text-[#111827] placeholder-[#9CA3AF] focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/10 transition-all bg-[#F8FAFC] hover:border-[#D1D5DB]"
+                    placeholder="Enter your email"
+                  />
+                </div>
+
+                {/* Phone */}
+                <div className="space-y-1.5">
+                  <label className="flex items-center gap-1.5 text-[13px] font-semibold text-[#374151]">
+                    <Phone className="h-3.5 w-3.5 text-[#F59E0B]" />
+                    Phone Number *
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    required
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 border border-[#E5E7EB] rounded-[12px] text-[14px] text-[#111827] placeholder-[#9CA3AF] focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/10 transition-all bg-[#F8FAFC] hover:border-[#D1D5DB]"
+                    placeholder="Enter your phone number"
+                  />
+                </div>
+
+                {/* Subject */}
+                <div className="space-y-1.5">
+                  <label className="flex items-center gap-1.5 text-[13px] font-semibold text-[#374151]">
+                    <MessageCircle className="h-3.5 w-3.5 text-[#F59E0B]" />
+                    Subject *
+                  </label>
+                  <input
+                    type="text"
+                    name="subject"
+                    required
+                    value={formData.subject}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 border border-[#E5E7EB] rounded-[12px] text-[14px] text-[#111827] placeholder-[#9CA3AF] focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/10 transition-all bg-[#F8FAFC] hover:border-[#D1D5DB]"
+                    placeholder="Trip to Goa, Manali, Kashmir..."
+                  />
+                </div>
               </div>
 
-              {/* Trust Badges */}
-              <Card className="bg-gradient-to-r from-green-50 to-blue-50 border-0">
-                <CardContent className="p-6 text-center">
-                  <div className="flex items-center justify-center gap-2 mb-2">
-                    <div className="flex">
-                      {[...Array(5)].map((_, i) => (
-                        <div
-                          key={i}
-                          className="w-5 h-5 bg-yellow-400 rounded-full"
-                        ></div>
-                      ))}
-                    </div>
-                    <span className="font-bold text-lg">4.9/5</span>
-                  </div>
-                  <p className="text-gray-600 font-medium">
-                    Based on 3,200+ reviews
-                  </p>
-                  <p className="text-sm text-gray-500 mt-1">
-                    🔒 Your information is 100% secure with us
-                  </p>
-                </CardContent>
-              </Card>
+              {/* Message */}
+              <div className="mt-5 space-y-1.5">
+                <label className="flex items-center gap-1.5 text-[13px] font-semibold text-[#374151]">
+                  <MessageCircle className="h-3.5 w-3.5 text-[#F59E0B]" />
+                  Special Requirements
+                </label>
+                <textarea
+                  name="message"
+                  rows={5}
+                  required
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-[#E5E7EB] rounded-[12px] text-[14px] text-[#111827] placeholder-[#9CA3AF] focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/10 transition-all bg-[#F8FAFC] hover:border-[#D1D5DB] resize-none"
+                  placeholder="Tell us about your preferences, special occasions, or any specific requirements..."
+                />
+              </div>
+
+              {/* Actions */}
+              <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-end">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => setFormData({ name: "", phone: "", email: "", subject: "", message: "" })}
+                  className="px-8 py-3 text-[14px] border-[#E5E7EB] text-[#374151] hover:bg-[#F8FAFC] rounded-[12px] font-semibold"
+                >
+                  Cancel
+                </Button>
+                <button
+                  type="submit"
+                  className="flex items-center justify-center gap-2 px-8 py-3 bg-[#F59E0B] hover:bg-[#D97706] text-white font-bold rounded-[12px] text-[14px] shadow-md hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5"
+                >
+                  <Send className="h-4 w-4" />
+                  Submit Inquiry
+                </button>
+              </div>
+
+              {/* Security notice */}
+              <div className="mt-4 flex items-center justify-center gap-2 text-[12px] text-[#9CA3AF]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#22C55E] animate-pulse" />
+                <span>🔒 Your information is secure and protected by industry-standard encryption</span>
+              </div>
+            </form>
+          </div>
+
+          {/* ── Right: Info Cards ── */}
+          <div className="space-y-4">
+            {/* Why Submit */}
+            <div className="bg-white rounded-[20px] border border-[#E5E7EB] shadow-[0_10px_30px_rgba(0,0,0,0.07)] p-5">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-9 h-9 rounded-xl bg-[#FEE2E2] flex items-center justify-center shrink-0">
+                  <span className="text-base">💝</span>
+                </div>
+                <h4 className="font-bold text-[#111827] text-[15px]">Why Submit an Inquiry?</h4>
+              </div>
+              <ul className="space-y-3">
+                {benefits.map(({ icon: Icon, text, color }) => (
+                  <li key={text} className="flex items-start gap-2.5">
+                    <Icon className={`h-4 w-4 ${color} shrink-0 mt-0.5`} />
+                    <span className="text-[13px] text-[#374151]">{text}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Need Help */}
+            <div className="bg-white rounded-[20px] border border-[#E5E7EB] shadow-[0_10px_30px_rgba(0,0,0,0.07)] p-5">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-9 h-9 rounded-xl bg-blue-100 flex items-center justify-center shrink-0">
+                  <Headphones className="h-4 w-4 text-[#2563EB]" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-[#111827] text-[15px]">Need Help?</h4>
+                  <p className="text-[11px] text-[#9CA3AF]">Our travel experts are ready to assist you!</p>
+                </div>
+              </div>
+              <div className="space-y-2.5">
+                <div className="flex items-center gap-2.5 text-[13px] text-[#374151]">
+                  <Phone className="h-3.5 w-3.5 text-[#F59E0B] shrink-0" />
+                  +91 98765 43210
+                </div>
+                <div className="flex items-center gap-2.5 text-[13px] text-[#374151]">
+                  <Mail className="h-3.5 w-3.5 text-[#F59E0B] shrink-0" />
+                  support@naturevacation.in
+                </div>
+                <div className="flex items-center gap-2.5 text-[13px] text-[#374151]">
+                  <Clock className="h-3.5 w-3.5 text-[#F59E0B] shrink-0" />
+                  Mon - Sat: 9:00 AM - 7:00 PM
+                </div>
+              </div>
+            </div>
+
+            {/* Office Location */}
+            <div className="bg-white rounded-[20px] border border-[#E5E7EB] shadow-[0_10px_30px_rgba(0,0,0,0.07)] p-5">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-9 h-9 rounded-xl bg-orange-100 flex items-center justify-center shrink-0">
+                  <MapPin className="h-4 w-4 text-[#F59E0B]" />
+                </div>
+                <h4 className="font-bold text-[#111827] text-[15px]">Our Office</h4>
+              </div>
+              <p className="text-[13px] text-[#374151] leading-relaxed">
+                Gate Bazar, Old Matigara Rd, Ward 1,<br />
+                Siliguri, Darjeeling, WB – 734003
+              </p>
+            </div>
+
+            {/* Privacy */}
+            <div className="bg-[#F0FDF4] rounded-[20px] border border-[#BBF7D0] p-5 flex items-start gap-3">
+              <Shield className="h-5 w-5 text-[#22C55E] shrink-0 mt-0.5" />
+              <p className="text-[12px] text-[#166534] leading-relaxed font-medium">
+                We respect your privacy. Your details will never be shared with third parties.
+              </p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 };

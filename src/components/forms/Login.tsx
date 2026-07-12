@@ -80,8 +80,9 @@ export default function Login({ onClose }: { onClose?: () => void }) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-transparent z-50">
-      <div className="w-full max-w-5xl bg-white rounded-2xl shadow-2xl flex overflow-hidden relative">
+    <div className="w-full max-w-5xl bg-white rounded-2xl shadow-2xl flex overflow-hidden relative max-h-[90vh] overflow-y-auto"
+      onClick={(e) => e.stopPropagation()}
+    >
         {/* Close Button at Top Left */}
         <button
           type="button"
@@ -114,7 +115,7 @@ export default function Login({ onClose }: { onClose?: () => void }) {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
           </div>
           <div className="relative z-10 p-10 flex flex-col h-full justify-end">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 drop-shadow-lg">
@@ -246,7 +247,7 @@ export default function Login({ onClose }: { onClose?: () => void }) {
             </div>
             <Button
               type="submit"
-              className="w-full bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white font-bold py-3 rounded-lg shadow-lg transition-all duration-300"
+            className="w-full bg-linear-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white font-bold py-3 rounded-lg shadow-lg transition-all duration-300"
             >
               {tab === "login" ? "Login" : "Sign Up"}
             </Button>
@@ -311,6 +312,5 @@ export default function Login({ onClose }: { onClose?: () => void }) {
           </div>
         </div>
       </div>
-    </div>
   );
 }

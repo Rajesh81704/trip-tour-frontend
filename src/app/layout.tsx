@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { Navbar } from "@/components/layout/Navbar";
@@ -7,14 +7,10 @@ import { Footer } from "@/components/layout/Footer";
 import { UserWrapper } from "@/components/layout/UserWrapper";
 import { ReduxStoreProvider } from "@/store";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -36,10 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased 
-           [&::-webkit-scrollbar]:w-1
-         [&::-webkit-scrollbar-track]:bg-gray-100
-         [&::-webkit-scrollbar-thumb]:bg-gray-300`}
+        className={`${inter.variable} font-sans antialiased [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300`}
       >
         <ReduxStoreProvider>
           <UserWrapper>

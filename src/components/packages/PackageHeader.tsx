@@ -1,4 +1,3 @@
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Clock, Heart, MapPin, Phone, Share2, Star } from "lucide-react";
 
@@ -22,68 +21,82 @@ export function PackageHeader({
   discount,
 }: PackageHeaderProps) {
   return (
-    <div className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-xl border border-gray-100">
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-4 sm:mb-6">
-        <div className="space-y-3 sm:space-y-4">
-          <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text leading-tight">
+    <div className="bg-white rounded-[20px] p-5 sm:p-7 shadow-[0_10px_30px_rgba(0,0,0,0.08)] border border-[#E5E7EB]">
+      <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-5">
+        <div className="flex-1 min-w-0">
+          {/* Breadcrumb-style location */}
+          <div className="flex items-center gap-1.5 text-[12px] text-[#9CA3AF] mb-3">
+            <MapPin className="h-3.5 w-3.5 text-[#F59E0B] shrink-0" />
+            <span className="font-medium text-[#374151]">{location}</span>
+          </div>
+
+          {/* Title */}
+          <h1 className="text-[22px] sm:text-[28px] lg:text-[32px] font-extrabold text-[#111827] leading-tight mb-4">
             {title}
           </h1>
-          <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-2 sm:gap-3 lg:gap-6 text-gray-600">
-            <div className="flex items-center bg-gray-50 px-2 sm:px-3 py-1.5 rounded-full text-xs sm:text-sm lg:text-base">
-              <MapPin className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-orange-500 flex-shrink-0" />
-              <span className="font-medium truncate">{location}</span>
+
+          {/* Meta chips */}
+          <div className="flex flex-wrap items-center gap-2.5">
+            <div className="flex items-center gap-1.5 bg-[#F8FAFC] border border-[#E5E7EB] px-3 py-1.5 rounded-full text-[13px]">
+              <MapPin className="w-3.5 h-3.5 text-[#F59E0B] shrink-0" />
+              <span className="font-medium text-[#374151] truncate">{location}</span>
             </div>
-            <div className="flex items-center bg-gray-50 px-2 sm:px-3 py-1.5 rounded-full text-xs sm:text-sm lg:text-base">
-              <Clock className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-blue-500 flex-shrink-0" />
-              <span className="font-medium">{duration}</span>
+            <div className="flex items-center gap-1.5 bg-[#F8FAFC] border border-[#E5E7EB] px-3 py-1.5 rounded-full text-[13px]">
+              <Clock className="w-3.5 h-3.5 text-[#2563EB] shrink-0" />
+              <span className="font-medium text-[#374151]">{duration}</span>
             </div>
-            <div className="flex items-center bg-gray-50 px-2 sm:px-3 py-1.5 rounded-full text-xs sm:text-sm lg:text-base">
-              <Star className="w-3 h-3 sm:w-4 sm:h-4 fill-yellow-400 text-yellow-400 mr-1.5 sm:mr-2 flex-shrink-0" />
-              <span className="font-medium">{rating}</span>
-              <span className="text-xs sm:text-sm ml-1">
-                ({reviews} reviews)
-              </span>
-            </div>
+            {rating > 0 && (
+              <div className="flex items-center gap-1.5 bg-[#FFFBEB] border border-[#FDE68A] px-3 py-1.5 rounded-full text-[13px]">
+                <Star className="w-3.5 h-3.5 fill-[#F59E0B] text-[#F59E0B] shrink-0" />
+                <span className="font-bold text-[#92400E]">{rating}</span>
+                <span className="text-[#B45309]">({reviews} reviews)</span>
+              </div>
+            )}
           </div>
         </div>
-        <div className="flex items-center justify-center sm:justify-end space-x-2 sm:space-x-3 mt-4 sm:mt-6 lg:mt-0">
+
+        {/* Actions */}
+        <div className="flex items-center gap-2.5 shrink-0">
           <Button
             variant="outline"
             size="icon"
-            className="w-8 h-8 sm:w-10 sm:h-10 lg:w-11 lg:h-11 hover:bg-red-50 hover:border-red-200 hover:text-red-500 transition-all duration-200"
+            className="w-10 h-10 rounded-full border-[#E5E7EB] hover:bg-red-50 hover:border-red-200 hover:text-red-500 transition-all duration-200"
+            aria-label="Add to wishlist"
           >
-            <Heart className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
+            <Heart className="w-4 h-4" />
           </Button>
           <Button
             variant="outline"
             size="icon"
-            className="w-8 h-8 sm:w-10 sm:h-10 lg:w-11 lg:h-11 hover:bg-blue-50 hover:border-blue-200 hover:text-blue-500 transition-all duration-200"
+            className="w-10 h-10 rounded-full border-[#E5E7EB] hover:bg-blue-50 hover:border-blue-200 hover:text-[#2563EB] transition-all duration-200"
+            aria-label="Share"
           >
-            <Share2 className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
+            <Share2 className="w-4 h-4" />
           </Button>
           <Button
             variant="outline"
             size="icon"
-            className="w-8 h-8 sm:w-10 sm:h-10 lg:w-11 lg:h-11 hover:bg-green-50 hover:border-green-200 hover:text-green-500 transition-all duration-200"
+            className="w-10 h-10 rounded-full border-[#E5E7EB] hover:bg-green-50 hover:border-green-200 hover:text-[#22C55E] transition-all duration-200"
+            aria-label="Call"
           >
-            <Phone className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
+            <Phone className="w-4 h-4" />
           </Button>
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-1.5 sm:gap-2">
+      {/* Feature badges */}
+      <div className="flex flex-wrap gap-2 mt-5 pt-4 border-t border-[#E5E7EB]">
         {features.map((feature, index) => (
-          <Badge
+          <span
             key={index}
-            variant="secondary"
-            className="text-xs sm:text-sm px-2 sm:px-3 py-1 sm:py-1.5"
+            className="text-[12px] font-semibold px-3 py-1.5 bg-blue-50 text-[#2563EB] border border-[#DBEAFE] rounded-full"
           >
             {feature}
-          </Badge>
+          </span>
         ))}
-        <Badge className="bg-orange-500 hover:bg-orange-600 text-xs sm:text-sm px-2 sm:px-3 py-1 sm:py-1.5">
-          {discount}
-        </Badge>
+        <span className="text-[12px] font-bold px-3 py-1.5 bg-[#FEF3C7] text-[#92400E] border border-[#FDE68A] rounded-full">
+          🏷️ {discount}
+        </span>
       </div>
     </div>
   );

@@ -6,80 +6,56 @@ import api from "@/lib/api";
 import { PackageData } from "../packages";
 import Image from "next/image";
 import Link from "next/link";
-import { Star, ArrowRight, ChevronRight } from "lucide-react";
-
-/* eslint-disable */
+import { Star, ArrowRight, ChevronRight, MapPin } from "lucide-react";
 
 const trendingDestinations = [
   {
     name: "Santorini, Greece",
     country: "Greece",
     rating: 4.8,
-    price: 59999,
+    packages: 12,
     image:
-      "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+      "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=500&q=80",
   },
   {
     name: "Bali, Indonesia",
     country: "Indonesia",
     rating: 4.7,
-    price: 34999,
+    packages: 18,
     image:
-      "https://images.unsplash.com/photo-1537996194471-e657df975ab4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+      "https://images.unsplash.com/photo-1537996194471-e657df975ab4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=500&q=80",
   },
   {
     name: "Switzerland",
     country: "Switzerland",
     rating: 4.9,
-    price: 89999,
+    packages: 9,
     image:
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=500&q=80",
   },
   {
     name: "Maldives",
     country: "Maldives",
     rating: 4.8,
-    price: 44999,
+    packages: 15,
     image:
-      "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+      "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=500&q=80",
   },
   {
     name: "Dubai, UAE",
-    country: "United Arab Emirates",
+    country: "UAE",
     rating: 4.6,
-    price: 29999,
+    packages: 21,
     image:
-      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
-  },
-];
-
-const exclusiveDeals = [
-  {
-    name: "Thailand Getaway",
-    duration: "5 Days / 4 Nights",
-    price: 24999,
-    originalPrice: 31999,
-    savePct: 20,
-    image:
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=500&q=80",
   },
   {
-    name: "Himachal Escape",
-    duration: "4 Days / 3 Nights",
-    price: 12999,
-    originalPrice: 15299,
-    savePct: 15,
+    name: "Thailand",
+    country: "Thailand",
+    rating: 4.7,
+    packages: 24,
     image:
-      "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
-  },
-  {
-    name: "Goa Beach Holiday",
-    duration: "3 Days / 2 Nights",
-    price: 8999,
-    originalPrice: 11999,
-    savePct: 25,
-    image:
-      "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+      "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=500&q=80",
   },
 ];
 
@@ -107,56 +83,66 @@ export const FeaturedPackages = () => {
 
   return (
     <>
-      {/* ── Trending Destinations ─────────────────────────────────────── */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-8">
+      {/* ── Popular Destinations ─────────────────────────────────────── */}
+      <section className="py-24 bg-[#F8FAFC]">
+        <div className="max-w-[1320px] mx-auto px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="flex items-end justify-between mb-12">
             <div>
-              <p className="text-xs font-semibold text-blue-600 uppercase tracking-widest mb-1">
-                Popular Destinations
-              </p>
-              <h2 className="text-3xl font-bold text-gray-900">Trending Destinations</h2>
-              <div className="w-12 h-1 bg-orange-500 rounded-full mt-2" />
+              <p className="section-label mb-2">Popular Destinations</p>
+              <h2 className="text-[36px] font-extrabold text-[#111827] leading-tight">
+                Explore Top Destinations
+              </h2>
+              <div className="w-14 h-1 bg-[#F59E0B] rounded-full mt-3" />
             </div>
             <Link
               href="/packages"
-              className="hidden sm:flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:text-blue-700 border border-blue-200 hover:border-blue-400 rounded-lg px-4 py-2 transition-colors"
+              className="hidden sm:flex items-center gap-1.5 text-sm font-semibold text-[#2563EB] hover:text-[#1D4ED8] border border-[#DBEAFE] hover:border-[#2563EB] rounded-full px-5 py-2.5 transition-all duration-200 hover:bg-blue-50"
             >
               View All
               <ChevronRight className="h-4 w-4" />
             </Link>
           </div>
 
-          <div className="flex gap-4 overflow-x-auto pb-3 scrollbar-hide">
+          {/* Destinations Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
             {trendingDestinations.map((dest, i) => (
               <Link
                 key={dest.name}
                 href={`/packages?state=${dest.country.toLowerCase().replace(/\s+/g, "-")}`}
-                className="shrink-0 w-48 group"
+                className="group relative rounded-[18px] overflow-hidden aspect-[3/4] block"
               >
-                <div className="relative h-44 rounded-xl overflow-hidden mb-2">
-                  <Image
-                    src={dest.image}
-                    alt={dest.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    sizes="192px"
-                    priority={i < 3}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  {/* Rating badge */}
-                  <div className="absolute top-2 left-2 flex items-center gap-0.5 bg-white/90 text-gray-800 text-xs font-bold px-2 py-0.5 rounded-full">
-                    <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
-                    {dest.rating}
+                <Image
+                  src={dest.image}
+                  alt={dest.name}
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
+                  priority={i < 3}
+                />
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-linear-to-t from-black/75 via-black/20 to-transparent" />
+
+                {/* Rating badge */}
+                <div className="absolute top-2.5 left-2.5 flex items-center gap-0.5 bg-white/90 backdrop-blur-sm text-[#111827] text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm">
+                  <Star className="h-2.5 w-2.5 fill-[#F59E0B] text-[#F59E0B]" />
+                  {dest.rating}
+                </div>
+
+                {/* Info */}
+                <div className="absolute bottom-0 left-0 right-0 p-3">
+                  <p className="font-bold text-white text-[13px] leading-snug truncate">{dest.name}</p>
+                  <div className="flex items-center gap-1 mt-0.5">
+                    <MapPin className="h-2.5 w-2.5 text-white/70" />
+                    <p className="text-[11px] text-white/75">{dest.packages} packages</p>
                   </div>
                 </div>
-                <div>
-                  <p className="font-semibold text-gray-900 text-sm truncate">{dest.name}</p>
-                  <p className="text-xs text-gray-500 mb-0.5">{dest.country}</p>
-                  <p className="text-sm font-bold text-blue-700">
-                    ₹{dest.price.toLocaleString("en-IN")}
-                    <span className="text-xs text-gray-400 font-normal"> / Per Person</span>
-                  </p>
+
+                {/* Hover CTA */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="bg-white/20 backdrop-blur-sm border border-white/30 text-white text-xs font-semibold px-4 py-2 rounded-full">
+                    Explore →
+                  </span>
                 </div>
               </Link>
             ))}
@@ -164,92 +150,29 @@ export const FeaturedPackages = () => {
         </div>
       </section>
 
-      {/* ── Exclusive Travel Deals ────────────────────────────────────── */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row gap-10">
-            {/* Left text */}
-            <div className="lg:w-64 shrink-0">
-              <p className="text-xs font-semibold text-orange-500 uppercase tracking-widest mb-2">
-                Best Offers
-              </p>
-              <h2 className="text-3xl font-bold text-gray-900 mb-3">
-                Exclusive Travel Deals
-              </h2>
-              <div className="w-10 h-1 bg-orange-500 rounded-full mb-4" />
-              <p className="text-sm text-gray-500 leading-relaxed mb-6">
-                Grab the best offers on top destinations. Book now and travel more for less!
-              </p>
-              <Link
-                href="/packages"
-                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors"
-              >
-                View All Deals
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-
-            {/* Deals cards */}
-            <div className="flex flex-1 gap-4 overflow-x-auto pb-2 scrollbar-hide">
-              {exclusiveDeals.map((deal) => (
-                <Link
-                  key={deal.name}
-                  href="/packages"
-                  className="relative shrink-0 w-64 h-52 rounded-xl overflow-hidden group"
-                >
-                  <Image
-                    src={deal.image}
-                    alt={deal.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="256px"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                  {/* Save badge */}
-                  <div className="absolute top-3 left-3 bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
-                    SAVE {deal.savePct}%
-                  </div>
-                  {/* Info */}
-                  <div className="absolute bottom-3 left-3 right-3 text-white">
-                    <p className="font-bold text-base leading-tight">{deal.name}</p>
-                    <p className="text-xs text-white/80 mb-1">{deal.duration}</p>
-                    <div className="flex items-baseline gap-2">
-                      <span className="font-bold text-orange-400">
-                        ₹{deal.price.toLocaleString("en-IN")}
-                      </span>
-                      <span className="text-xs text-white/60 line-through">
-                        ₹{deal.originalPrice.toLocaleString("en-IN")}
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Trending Tours (API packages) ─────────────────────────────── */}
+      {/* ── Featured Packages (API) ────────────────────────────────────── */}
       {packageData.length > 0 && (
-        <section className="py-16 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between mb-8">
+        <section className="py-24 bg-white">
+          <div className="max-w-[1320px] mx-auto px-6 lg:px-8">
+            {/* Section Header */}
+            <div className="flex items-end justify-between mb-12">
               <div>
-                <p className="text-xs font-semibold text-blue-600 uppercase tracking-widest mb-1">
-                  Our Packages
-                </p>
-                <h2 className="text-3xl font-bold text-gray-900">Trending Tours</h2>
-                <div className="w-12 h-1 bg-orange-500 rounded-full mt-2" />
+                <p className="section-label mb-2">Our Packages</p>
+                <h2 className="text-[36px] font-extrabold text-[#111827] leading-tight">
+                  Featured Travel Packages
+                </h2>
+                <div className="w-14 h-1 bg-[#F59E0B] rounded-full mt-3" />
               </div>
               <Link
                 href="/packages"
-                className="hidden sm:flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:text-blue-700 border border-blue-200 hover:border-blue-400 rounded-lg px-4 py-2 transition-colors"
+                className="hidden sm:flex items-center gap-1.5 text-sm font-semibold text-[#2563EB] hover:text-[#1D4ED8] border border-[#DBEAFE] hover:border-[#2563EB] rounded-full px-5 py-2.5 transition-all duration-200 hover:bg-blue-50"
               >
                 View All
                 <ChevronRight className="h-4 w-4" />
               </Link>
             </div>
 
+            {/* Package Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {packageData.slice(0, 8).map((pkg) => (
                 <PackageCard
@@ -260,10 +183,10 @@ export const FeaturedPackages = () => {
               ))}
             </div>
 
-            <div className="text-center mt-10">
+            <div className="text-center mt-12">
               <Link
                 href="/packages"
-                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-full transition-colors shadow-sm"
+                className="inline-flex items-center gap-2.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold px-10 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-250 hover:-translate-y-0.5 text-[15px]"
               >
                 Explore All Packages
                 <ArrowRight className="h-4 w-4" />
