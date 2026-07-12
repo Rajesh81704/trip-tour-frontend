@@ -252,7 +252,7 @@ export default function Login({ onClose }: { onClose?: () => void }) {
             </Button>
             <Separator className="my-2" />
             <Link
-              href={"https://api.naturevacation.in/auth/google"}
+              href={"https://api.triptootravels.com/auth/google"}
               target="_blank"
             >
               <Button

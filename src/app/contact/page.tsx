@@ -58,7 +58,7 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email Us",
-      details: ["naturevacation@gmail.com", "naturevacationsupport@gmail.com"],
+      details: ["support@triptootravels.com", "info@triptootravels.com"],
       color: "from-purple-500 to-pink-500",
     },
     {

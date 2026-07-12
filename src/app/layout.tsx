@@ -18,13 +18,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nature Vacation - Explore the Beauty of Nature",
+  title: "TripToo Travels - Curated Journeys. Lasting Memories.",
   description:
-    "Discover breathtaking destinations and unforgettable experiences with Nature Vacation. Your adventure starts here!",
+    "Discover breathtaking destinations and unforgettable experiences with TripToo Travels. Curated journeys, lasting memories.",
   icons: {
-    icon: "/logo.png", // Default favicon
-    shortcut: "/logo.png", // Optional
-    apple: "/logo.png", // Optional (for iOS)
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
   },
 };
 

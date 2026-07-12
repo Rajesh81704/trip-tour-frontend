@@ -117,7 +117,7 @@ const About = () => {
             <h1 className="text-6xl md:text-7xl font-bold mb-6 animate-fade-in">
               About{" "}
               <span className="bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent">
-                NatureVacation
+                TripToo Travels
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-200 leading-relaxed animate-fade-in">
@@ -157,7 +157,7 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-bold text-gray-900 mb-6">
-              Why Choose NatureVacation?
+              Why Choose TripToo Travels?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               We don&apos;t just plan trips, we create life-changing experiences
@@ -198,7 +198,7 @@ const About = () => {
               </h2>
               <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
                 <p>
-                  🌟 <strong>Founded in 2008</strong>, NatureVacation began as a
+                  🌟 <strong>Founded in 2008</strong>, TripToo Travels began as a
                   small dream to make extraordinary travel accessible to
                   everyone. What started as a passion project has grown into
                   India&apos;s most trusted travel companion.
