@@ -64,8 +64,6 @@ export const Navbar = () => {
     return "text-[#374151] hover:text-[#2563EB] font-medium";
   };
 
-  const logoInvert = !isScrolled && isHomePage;
-
   return (
     <>
       <nav
@@ -80,7 +78,7 @@ export const Navbar = () => {
                 alt="NatureVacation"
                 width={130}
                 height={44}
-                className={`h-10 w-auto object-contain transition-all duration-300 ${logoInvert ? "brightness-0 invert" : ""}`}
+                className={`h-10 w-auto object-contain transition-all duration-300`}
                 priority
               />
             </Link>
@@ -189,7 +187,7 @@ export const Navbar = () => {
       >
         <div className="flex flex-col h-full">
           <div className="flex items-center justify-between p-5 border-b border-gray-100">
-            <Image src="/logo.png" alt="NatureVacation" width={110} height={36} className="h-9 w-auto" />
+            <Image src="/logo.png" alt="NatureVacation" width={110} height={36} className="h-9 w-auto object-contain" />
             <button
               onClick={handleMenuClose}
               className="p-1.5 rounded-lg text-gray-500 hover:text-gray-700 hover:bg-gray-50 transition-colors"
