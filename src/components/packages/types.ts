@@ -61,6 +61,7 @@ export interface PackageData {
         public_id: string;
     }[];
     features: string[];
+    category?: string;
     discount: number;
     description: string;
     highlights: string[];

@@ -4,9 +4,6 @@ import { Button } from "@/components/ui/button";
 import {
   AlertCircle,
   ChevronDown,
-  MapPin,
-  Calendar,
-  Users,
   SlidersHorizontal,
   Search,
   ChevronLeft,
@@ -36,6 +33,7 @@ const SORT_OPTIONS = [
 const PackagesContent = () => {
   const searchParams = useSearchParams();
   const state = searchParams.get("state");
+  const searchQuery = searchParams.get("search");
   const router = useRouter();
 
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -44,27 +42,30 @@ const PackagesContent = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
+  const [searchInput, setSearchInput] = useState(searchQuery || "");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
         setError(null);
-        if (state) {
-          const stateRes = await api.get<{ success: boolean; packages: PackageData[] }>(
-            `/packages?state=${state}`
-          );
-          if (stateRes.data.success && stateRes.data.packages?.length > 0) {
-            setPackageData(stateRes.data.packages);
-            return;
+        const query = searchQuery || state;
+        if (query) {
+          try {
+            const res = await api.get<{ success: boolean; packages: PackageData[] }>(
+              `/packages?search=${encodeURIComponent(query)}`
+            );
+            setPackageData(res.data.packages || []);
+          } catch {
+            setPackageData([]);
           }
-          const searchRes = await api.get<{ success: boolean; packages: PackageData[] }>(
-            `/packages?search=${state}`
-          );
-          setPackageData(searchRes.data.packages || []);
         } else {
-          const res = await api.get<{ success: boolean; packages: PackageData[] }>("/packages");
-          setPackageData(res.data.packages || []);
+          try {
+            const res = await api.get<{ success: boolean; packages: PackageData[] }>("/packages");
+            setPackageData(res.data.packages || []);
+          } catch {
+            setPackageData([]);
+          }
         }
       } catch {
         setError("Failed to load packages. Please try again.");
@@ -73,7 +74,16 @@ const PackagesContent = () => {
       }
     };
     fetchData();
-  }, [state]);
+  }, [state, searchQuery]);
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchInput.trim()) {
+      router.push(`/packages?search=${encodeURIComponent(searchInput.trim())}`);
+    } else {
+      router.push("/packages");
+    }
+  };
 
   const handlePackageClick = (id: string) => router.push(`/packages/${id}`);
 
@@ -81,6 +91,7 @@ const PackagesContent = () => {
     selectedCategory === "all"
       ? packageData
       : packageData.filter((pkg) =>
+          pkg.category?.toLowerCase().includes(selectedCategory) ||
           pkg.features?.some((f) => f.toLowerCase().includes(selectedCategory))
         )
   )
@@ -161,70 +172,70 @@ const PackagesContent = () => {
 
         {/* ── Floating Search Bar — overlaps hero bottom ── */}
         <div className="max-w-[1100px] mx-auto px-4 sm:px-6 -mt-[26px] relative z-20">
-          <div className="bg-white rounded-[14px] shadow-[0_8px_40px_rgba(0,0,0,0.18)] px-4 sm:px-5 py-4">
+          <form onSubmit={handleSearch} className="bg-white rounded-[14px] shadow-[0_8px_40px_rgba(0,0,0,0.18)] px-4 sm:px-5 py-4">
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-0">
-              {/* Where to */}
-              <div className="flex items-center gap-2.5 flex-1 sm:px-4 py-1 cursor-pointer group">
-                <MapPin className="h-5 w-5 text-[#2563EB] shrink-0" />
-                <div className="min-w-0">
-                  <p className="text-[10px] font-bold text-[#6B7280] uppercase tracking-wider leading-none mb-0.5">
-                    Where to?
-                  </p>
-                  <p className="text-[13px] text-[#9CA3AF] truncate">All Destinations</p>
+              {/* Search input */}
+              <div className="flex items-center gap-2.5 flex-1 sm:px-4 py-1">
+                <Search className="h-5 w-5 text-[#2563EB] shrink-0" />
+                <div className="flex-1 min-w-0">
+                  <p className="text-[10px] font-bold text-[#6B7280] uppercase tracking-wider leading-none mb-0.5">Search</p>
+                  <input
+                    type="text"
+                    value={searchInput}
+                    onChange={(e) => setSearchInput(e.target.value)}
+                    placeholder="Destination, package name..."
+                    className="w-full text-[13px] text-[#374151] font-medium placeholder-[#9CA3AF] outline-none bg-transparent"
+                  />
                 </div>
-                <ChevronDown className="h-3.5 w-3.5 text-[#9CA3AF] ml-auto shrink-0" />
               </div>
 
               <div className="hidden sm:block w-px h-9 bg-[#E5E7EB] shrink-0" />
 
-              {/* Check In */}
-              <div className="flex items-center gap-2.5 flex-1 sm:px-4 py-1 cursor-pointer group">
-                <Calendar className="h-5 w-5 text-[#2563EB] shrink-0" />
-                <div>
-                  <p className="text-[10px] font-bold text-[#6B7280] uppercase tracking-wider leading-none mb-0.5">
-                    Check In
-                  </p>
-                  <p className="text-[13px] text-[#9CA3AF]">Select Date</p>
+              {/* Category quick select */}
+              <div className="flex items-center gap-2.5 flex-1 sm:px-4 py-1">
+                <SlidersHorizontal className="h-5 w-5 text-[#2563EB] shrink-0" />
+                <div className="flex-1">
+                  <p className="text-[10px] font-bold text-[#6B7280] uppercase tracking-wider leading-none mb-0.5">Category</p>
+                  <select
+                    value={selectedCategory}
+                    onChange={(e) => setSelectedCategory(e.target.value)}
+                    className="w-full text-[13px] text-[#374151] font-medium outline-none bg-transparent cursor-pointer"
+                  >
+                    {CATEGORIES.map(({ id, label }) => (
+                      <option key={id} value={id}>{label}</option>
+                    ))}
+                  </select>
                 </div>
-                <ChevronDown className="h-3.5 w-3.5 text-[#9CA3AF] ml-auto shrink-0" />
               </div>
 
               <div className="hidden sm:block w-px h-9 bg-[#E5E7EB] shrink-0" />
 
-              {/* Check Out */}
-              <div className="flex items-center gap-2.5 flex-1 sm:px-4 py-1 cursor-pointer group">
-                <Calendar className="h-5 w-5 text-[#2563EB] shrink-0" />
-                <div>
-                  <p className="text-[10px] font-bold text-[#6B7280] uppercase tracking-wider leading-none mb-0.5">
-                    Check Out
-                  </p>
-                  <p className="text-[13px] text-[#9CA3AF]">Select Date</p>
+              {/* Sort */}
+              <div className="flex items-center gap-2.5 flex-1 sm:px-4 py-1">
+                <ChevronDown className="h-5 w-5 text-[#2563EB] shrink-0" />
+                <div className="flex-1">
+                  <p className="text-[10px] font-bold text-[#6B7280] uppercase tracking-wider leading-none mb-0.5">Sort By</p>
+                  <select
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value)}
+                    className="w-full text-[13px] text-[#374151] font-medium outline-none bg-transparent cursor-pointer"
+                  >
+                    {SORT_OPTIONS.map(({ id, label }) => (
+                      <option key={id} value={id}>{label}</option>
+                    ))}
+                  </select>
                 </div>
-                <ChevronDown className="h-3.5 w-3.5 text-[#9CA3AF] ml-auto shrink-0" />
-              </div>
-
-              <div className="hidden sm:block w-px h-9 bg-[#E5E7EB] shrink-0" />
-
-              {/* Travelers */}
-              <div className="flex items-center gap-2.5 flex-1 sm:px-4 py-1 cursor-pointer group">
-                <Users className="h-5 w-5 text-[#2563EB] shrink-0" />
-                <div>
-                  <p className="text-[10px] font-bold text-[#6B7280] uppercase tracking-wider leading-none mb-0.5">
-                    Travelers
-                  </p>
-                  <p className="text-[13px] text-[#9CA3AF]">2 Adults, 0 Children</p>
-                </div>
-                <ChevronDown className="h-3.5 w-3.5 text-[#9CA3AF] ml-auto shrink-0" />
               </div>
 
               {/* Search Button */}
               <div className="sm:ml-3 shrink-0">
-                <button className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold px-7 py-3 rounded-[10px] text-[14px] shadow-sm hover:shadow-md transition-all duration-200 whitespace-nowrap">
-                  Search Packages
+                <button type="submit" className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold px-7 py-3 rounded-[10px] text-[14px] shadow-sm hover:shadow-md transition-all duration-200 whitespace-nowrap">
+                  <Search className="h-4 w-4" />
+                  Search
                 </button>
               </div>
             </div>
-          </div>
+          </form>
         </div>
       </section>
 
@@ -357,27 +368,15 @@ const PackagesContent = () => {
               <div>
                 <h2 className="text-[24px] font-extrabold text-[#111827]">Travel Packages</h2>
                 <p className="text-[13px] text-[#6B7280] mt-0.5">
-                  Explore our best-selling travel packages across the world.
+                  {filteredPackages.length > 0
+                    ? `Showing ${filteredPackages.length} package${filteredPackages.length !== 1 ? "s" : ""}`
+                    : "No packages found"}
+                  {(searchQuery || state) && (
+                    <span className="ml-1.5 text-[#2563EB] font-semibold">
+                      for &quot;{searchQuery || state}&quot;
+                    </span>
+                  )}
                 </p>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="text-[12px] text-[#9CA3AF] whitespace-nowrap">
-                  Showing 1–{Math.min(filteredPackages.length, 12)} of {filteredPackages.length} packages
-                </span>
-                <div className="relative">
-                  <select
-                    value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value)}
-                    className="text-[13px] border border-[#E5E7EB] rounded-[12px] px-3.5 py-2.5 pr-9 appearance-none bg-white text-[#374151] focus:outline-none focus:border-[#2563EB] transition-colors cursor-pointer shadow-sm"
-                  >
-                    {SORT_OPTIONS.map(({ id, label }) => (
-                      <option key={id} value={id}>
-                        {label}
-                      </option>
-                    ))}
-                  </select>
-                  <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#9CA3AF] pointer-events-none" />
-                </div>
               </div>
             </div>
 

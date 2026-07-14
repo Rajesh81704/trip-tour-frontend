@@ -282,11 +282,11 @@ export const InquiryForm = ({
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-[13px] text-[#374151]">
                     <Phone className="h-3.5 w-3.5 text-[#F59E0B] shrink-0" />
-                    +91 98765 43210
+                    +91 9315666960
                   </div>
                   <div className="flex items-center gap-2 text-[13px] text-[#374151]">
                     <Mail className="h-3.5 w-3.5 text-[#F59E0B] shrink-0" />
-                    support@naturevacation.in
+                    info@bookitinerary.com
                   </div>
                   <div className="flex items-center gap-2 text-[13px] text-[#374151]">
                     <span className="w-3.5 h-3.5 text-[#F59E0B] shrink-0 flex items-center justify-center text-[10px]">🕐</span>

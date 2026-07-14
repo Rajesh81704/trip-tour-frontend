@@ -273,11 +273,11 @@ const Contact = () => {
               <div className="space-y-2.5">
                 <div className="flex items-center gap-2.5 text-[13px] text-[#374151]">
                   <Phone className="h-3.5 w-3.5 text-[#F59E0B] shrink-0" />
-                  +91 98765 43210
+                  +91 9315666960
                 </div>
                 <div className="flex items-center gap-2.5 text-[13px] text-[#374151]">
                   <Mail className="h-3.5 w-3.5 text-[#F59E0B] shrink-0" />
-                  support@naturevacation.in
+                  info@bookitinerary.com
                 </div>
                 <div className="flex items-center gap-2.5 text-[13px] text-[#374151]">
                   <Clock className="h-3.5 w-3.5 text-[#F59E0B] shrink-0" />
@@ -295,8 +295,8 @@ const Contact = () => {
                 <h4 className="font-bold text-[#111827] text-[15px]">Our Office</h4>
               </div>
               <p className="text-[13px] text-[#374151] leading-relaxed">
-                Gate Bazar, Old Matigara Rd, Ward 1,<br />
-                Siliguri, Darjeeling, WB – 734003
+                SCF-37, Sector 11D,<br />
+                Haryana – 121006, India
               </p>
             </div>
 

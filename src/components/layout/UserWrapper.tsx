@@ -19,10 +19,10 @@ export function UserWrapper({ children }: UserWrapperProps) {
   // Show loading state while checking authentication
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50 flex items-center justify-center">
+      <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading...</p>
+          <div className="w-10 h-10 rounded-full border-3 border-[#E5E7EB] border-t-[#F59E0B] animate-spin mx-auto mb-3" />
+          <p className="text-[#9CA3AF] text-sm">Loading...</p>
         </div>
       </div>
     );
