@@ -7,6 +7,8 @@ import {
   MapPin,
   Calendar,
   Shield,
+  Phone,
+  Mail,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -237,6 +239,95 @@ const About = () => {
                   <p className="text-[#2563EB] font-semibold text-[13px] mb-3">{member.role}</p>
                   <p className="text-[13px] text-[#6B7280] leading-relaxed">{member.description}</p>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* Contact & Offices Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-[1320px] mx-auto px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-[11px] font-extrabold text-[#2563EB] uppercase tracking-widest mb-2">Get In Touch</p>
+            <h2 className="text-[36px] font-extrabold text-[#111827] leading-tight">
+              Contact & Our Offices
+            </h2>
+            <div className="w-14 h-1 bg-[#F59E0B] rounded-full mt-3 mx-auto" />
+          </div>
+
+          {/* Contact cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-12 max-w-2xl mx-auto">
+            <a
+              href="tel:+919315666960"
+              className="flex items-center gap-4 bg-[#F8FAFC] border border-[#E5E7EB] rounded-[20px] p-5 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+            >
+              <div className="bg-amber-100 w-12 h-12 rounded-2xl flex items-center justify-center shrink-0">
+                <Phone className="h-5 w-5 text-[#F59E0B]" />
+              </div>
+              <div>
+                <p className="text-[12px] text-[#6B7280] font-medium mb-0.5">Support Number</p>
+                <p className="text-[15px] font-bold text-[#111827]">+91 9315666960</p>
+              </div>
+            </a>
+            <a
+              href="mailto:info@bookitinerary.com"
+              className="flex items-center gap-4 bg-[#F8FAFC] border border-[#E5E7EB] rounded-[20px] p-5 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+            >
+              <div className="bg-blue-100 w-12 h-12 rounded-2xl flex items-center justify-center shrink-0">
+                <Mail className="h-5 w-5 text-[#2563EB]" />
+              </div>
+              <div>
+                <p className="text-[12px] text-[#6B7280] font-medium mb-0.5">Email Us</p>
+                <p className="text-[15px] font-bold text-[#111827]">info@bookitinerary.com</p>
+              </div>
+            </a>
+          </div>
+
+          {/* Offices grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              {
+                flag: "🇮🇳",
+                country: "India (HQ)",
+                name: "Book Itinerary Tours & Travel",
+                address: "SCF-37, Sector 11D, Haryana – 121006",
+                badge: null,
+              },
+              {
+                flag: "🇦🇪",
+                country: "Dubai, UAE",
+                name: "Dubai Office",
+                address: "Shop #03, AL Souq Al Kabeer, Meena Bazar, Burdubai, Dubai, UAE",
+                badge: "PO Box: 87867",
+              },
+              {
+                flag: "🇸🇬",
+                country: "Singapore",
+                name: "Singapore Office",
+                address: "291, Seragoon Road #01-01, Seragoon Building, Singapore 218107",
+                badge: "Near Sitara Restaurant",
+              },
+              {
+                flag: "🇭🇰",
+                country: "Hong Kong",
+                name: "Hong Kong Office",
+                address: "Cheung Lee Commercial Building, 25 Kimberley Road, Tsim Sha Tsui, Kowloon",
+                badge: "Licence No: 350318",
+              },
+            ].map(({ flag, country, name, address, badge }) => (
+              <div
+                key={country}
+                className="bg-[#F8FAFC] border border-[#E5E7EB] rounded-[20px] p-6 hover:shadow-[0_18px_45px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1"
+              >
+                <div className="text-3xl mb-3">{flag}</div>
+                <p className="text-[11px] font-extrabold text-[#2563EB] uppercase tracking-widest mb-1">{country}</p>
+                <p className="text-[15px] font-bold text-[#111827] mb-2">{name}</p>
+                <p className="text-[13px] text-[#6B7280] leading-relaxed mb-3">{address}</p>
+                {badge && (
+                  <span className="inline-block text-[11px] font-semibold bg-amber-100 text-[#D97706] px-2.5 py-1 rounded-full">
+                    {badge}
+                  </span>
+                )}
               </div>
             ))}
           </div>

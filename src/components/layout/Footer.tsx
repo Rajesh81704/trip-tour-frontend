@@ -82,15 +82,15 @@ export const Footer = () => {
             <div className="space-y-2.5">
               <div className="flex items-center gap-2.5 text-[13px] text-gray-400">
                 <Phone className="h-4 w-4 text-[#F59E0B] shrink-0" />
-                <span>+91 98765 43210</span>
+                <span>+91 9315666960</span>
               </div>
               <div className="flex items-center gap-2.5 text-[13px] text-gray-400">
                 <Mail className="h-4 w-4 text-[#F59E0B] shrink-0" />
-                <span>support@naturevacation.in</span>
+                <span>info@bookitinerary.com</span>
               </div>
               <div className="flex items-start gap-2.5 text-[13px] text-gray-400">
                 <MapPin className="h-4 w-4 text-[#F59E0B] shrink-0 mt-0.5" />
-                <span>Mon - Sat: 9:00 AM - 7:00 PM</span>
+                <span>SCF-37, Sector 11D, Haryana – 121006</span>
               </div>
             </div>
 
@@ -169,10 +169,47 @@ export const Footer = () => {
           </div>
         </div>
 
+        {/* Global Offices */}
+        <div className="border-t border-gray-800 pt-10 pb-6 mb-4">
+          <h4 className="text-white font-bold text-[15px] mb-6">Our Global Offices</h4>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              {
+                city: "India (HQ)",
+                address: "SCF-37, Sector 11D, Haryana – 121006",
+                flag: "🇮🇳",
+              },
+              {
+                city: "Dubai, UAE",
+                address: "Shop #03, AL Souq Al Kabeer, Meena Bazar, Burdubai. PO Box: 87867",
+                flag: "🇦🇪",
+              },
+              {
+                city: "Singapore",
+                address: "291, Seragoon Road #01-01, Seragoon Building, 218107",
+                flag: "🇸🇬",
+              },
+              {
+                city: "Hong Kong",
+                address: "Cheung Lee Commercial Building, 25 Kimberley Road, Tsim Sha Tsui, Kowloon. Licence: 350318",
+                flag: "🇭🇰",
+              },
+            ].map(({ city, address, flag }) => (
+              <div key={city} className="flex items-start gap-3">
+                <span className="text-xl mt-0.5">{flag}</span>
+                <div>
+                  <p className="text-white text-[13px] font-semibold mb-0.5">{city}</p>
+                  <p className="text-gray-500 text-[12px] leading-relaxed">{address}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Bottom bar */}
         <div className="border-t border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-[12px] text-gray-500">
-            © 2024 NatureVacation. All rights reserved.
+            © 2024 Book Itinerary Tours & Travel. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <span className="text-[11px] text-gray-600 uppercase tracking-widest">Payment Methods</span>
