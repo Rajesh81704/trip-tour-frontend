@@ -9,8 +9,8 @@ class ApiClient {
 
     private constructor() {
         const url = process.env.NODE_ENV === 'production'
-            ? process.env.NEXT_PUBLIC_PROD_BACKEND_URL
-            : process.env.NEXT_PUBLIC_DEV_BACKEND_URL;
+            ? (process.env.NEXT_PUBLIC_PROD_BACKEND_URL || 'https://trip-tour-06mx.onrender.com')
+            : (process.env.NEXT_PUBLIC_DEV_BACKEND_URL || 'https://trip-tour-06mx.onrender.com');
 
         this.client = axios.create({
             baseURL: url,
