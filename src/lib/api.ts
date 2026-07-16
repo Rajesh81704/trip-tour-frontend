@@ -12,11 +12,11 @@ class ApiClient {
             : process.env.NEXT_PUBLIC_DEV_BACKEND_URL;
 
         if (!url) {
-            console.warn(`[ApiClient] No backend URL found for NODE_ENV="${process.env.NODE_ENV}". Set NEXT_PUBLIC_DEV_BACKEND_URL or NEXT_PUBLIC_PROD_BACKEND_URL.`);
+            console.error(`[ApiClient] No backend URL found for NODE_ENV="${process.env.NODE_ENV}". Ensure NEXT_PUBLIC_DEV_BACKEND_URL or NEXT_PUBLIC_PROD_BACKEND_URL is set.`);
         }
 
         this.client = axios.create({
-            baseURL: url || 'http://localhost:8000',
+            baseURL: url || 'https://trip-tour-06mx.onrender.com',
             withCredentials: true,
             timeout: 10000,
             headers: {
