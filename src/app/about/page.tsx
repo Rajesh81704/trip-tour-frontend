@@ -61,7 +61,7 @@ const About = () => {
                 <span className="text-white">Extraordinary Adventures</span>
               </h1>
               <p className="text-white/85 text-lg max-w-2xl font-normal leading-relaxed">
-                For over 15 years, we've been crafting transformative travel experiences that connect cultures, create memories, and inspire wanderlust in every traveler we meet.
+                For over 15 years, we&apos;ve been crafting transformative travel experiences that connect cultures, create memories, and inspire wanderlust in every traveler we meet.
               </p>
             </div>
           </div>
@@ -172,7 +172,7 @@ const About = () => {
               <span className="text-gradient-premium">Trust Us</span>
             </h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto mt-6">
-              We don't just plan trips, we create life-changing experiences that stay with you forever.
+              We don&apos;t just plan trips, we create life-changing experiences that stay with you forever.
             </p>
           </div>
 
