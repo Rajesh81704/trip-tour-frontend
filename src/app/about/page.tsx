@@ -1,12 +1,6 @@
 import {
   Users,
-  Award,
-  Globe,
-  Heart,
   Star,
-  MapPin,
-  Calendar,
-  Shield,
   Phone,
   Mail,
 } from "lucide-react";
@@ -120,11 +114,11 @@ const About = () => {
               <div className="space-y-6 text-[15px] text-gray-700 leading-relaxed">
                 <p className="flex gap-3">
                   <span className="text-2xl shrink-0">🌟</span>
-                  <span><strong>Founded in 2008</strong>, Book Itinerary began as a small dream to make extraordinary travel accessible to everyone. What started as a passion project has grown into one of India's most trusted travel companions.</span>
+                  <span><strong>Founded in 2008</strong>, Book Itinerary began as a small dream to make extraordinary travel accessible to everyone. What started as a passion project has grown into one of India&apos;s most trusted travel companions.</span>
                 </p>
                 <p className="flex gap-3">
                   <span className="text-2xl shrink-0">🎯</span>
-                  <span>We believe travel is more than visiting places – it's about <strong>connecting with cultures</strong>, creating lasting memories, and discovering perspectives that enrich your life forever.</span>
+                  <span>We believe travel is more than visiting places – it&apos;s about <strong>connecting with cultures</strong>, creating lasting memories, and discovering perspectives that enrich your life forever.</span>
                 </p>
                 <p className="flex gap-3">
                   <span className="text-2xl shrink-0">✨</span>

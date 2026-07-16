@@ -36,7 +36,7 @@ export const FeaturedPackages = () => {
         if (response.data.success && response.data.packages) {
           setPackageData(response.data.packages);
         }
-      } catch (error) {
+      } catch {
         // Silently fail - this is non-critical data
         setPackageData([]);
       }
