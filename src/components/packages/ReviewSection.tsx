@@ -43,7 +43,7 @@ const ReviewSection = ({ packageId }: { packageId: string }) => {
           },
         });
         setReviews(response.data as unknown as Review[]);
-      } catch (error) {
+      } catch {
         // Silently fail - reviews may not exist
         setReviews([]);
       } finally {
@@ -86,8 +86,8 @@ const ReviewSection = ({ packageId }: { packageId: string }) => {
         setShowReviewForm(false);
         setNewReview({ title: "", content: "", rating: 5 });
       }
-    } catch (error) {
-      console.error("Error submitting review:", error);
+    } catch {
+      // Handle error silently
     }
   };
 

@@ -112,9 +112,6 @@ const PackagesContent = () => {
     setSearchInput(""); setPage(1);
   };
 
-  const toggleState = (s: string) =>
-    setSelectedStates((prev) => prev.includes(s) ? prev.filter((x) => x !== s) : [...prev, s]);
-
   const handlePackageClick = (id: string) => router.push(`/packages/${id}`);
 
   const activeFilterCount = [

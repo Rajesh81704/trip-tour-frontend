@@ -23,7 +23,7 @@ export const checkAuthStatus = createAsyncThunk(
         try {
             const response = await api.get('/auth/me');
             return response.data;
-        } catch (error) {
+        } catch {
             // 401 = not logged in, 404 = route not deployed yet — both are "not authenticated", not a crash
             return rejectWithValue('Not authenticated');
         }
@@ -35,9 +35,8 @@ export const logoutThunk = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             await api.post('/auth/logout', {});
-        } catch (error) {
+        } catch {
             // Even if the API call fails, we clear local state
-            console.error('Logout API failed:', error);
             return rejectWithValue('Logout failed');
         }
     }

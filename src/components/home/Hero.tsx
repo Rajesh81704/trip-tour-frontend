@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback } from "react";
 import { ArrowRight, MapPin, Calendar, Users, Search, Star, Shield, Clock } from "lucide-react";
 
 export const Hero = () => {
@@ -22,13 +22,6 @@ export const Hero = () => {
     params.set("children", String(children));
     router.push(`/packages?${params.toString()}`);
   }, [destination, checkIn, checkOut, adults, children, router]);
-
-  const trustStats = useMemo(() => [
-    { value: "500+", label: "Packages" },
-    { value: "50K+", label: "Happy Travelers" },
-    { value: "100+", label: "Destinations" },
-    { value: "15+", label: "Years Experience" },
-  ], []);
 
   return (
     <section className="relative">
