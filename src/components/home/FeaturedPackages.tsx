@@ -219,6 +219,139 @@ export const FeaturedPackages = () => {
       </section>
 
       {/* ══════════════════════════════════════════════════════
+          SECTION 3 — Trending Packages (horizontal scroll)
+      ══════════════════════════════════════════════════════ */}
+      {packageData.length > 0 && (
+        <section className="py-16 bg-white">
+          <div className="max-w-[1320px] mx-auto px-6 lg:px-8">
+
+            {/* Header */}
+            <div className="flex items-end justify-between mb-8">
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <p className="text-[11px] font-extrabold text-[#EF4444] uppercase tracking-widest">
+                    Trending Now
+                  </p>
+                  <span className="flex items-center gap-1 bg-[#FEF2F2] text-[#EF4444] text-[10px] font-bold px-2 py-0.5 rounded-full border border-[#FECACA]">
+                    🔥 Hot
+                  </span>
+                </div>
+                <h2 className="text-[28px] sm:text-[32px] font-extrabold text-[#111827] leading-tight">
+                  Trending Packages
+                </h2>
+                <div className="w-12 h-1 bg-[#EF4444] rounded-full mt-2.5" />
+              </div>
+              <Link
+                href="/packages"
+                className="hidden sm:flex items-center gap-1.5 text-[13px] font-semibold text-[#2563EB] border border-[#DBEAFE] hover:border-[#2563EB] hover:bg-blue-50 rounded-full px-4 py-2 transition-all duration-200"
+              >
+                View All
+                <ChevronRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+
+            {/* Horizontal scroll row */}
+            <div className="flex gap-5 overflow-x-auto pb-4 scrollbar-hide -mx-2 px-2">
+              {packageData.slice(0, 10).map((pkg, i) => {
+                const discountedPrice = pkg.discount
+                  ? Math.round(pkg.price * (1 - pkg.discount / 100))
+                  : pkg.price;
+
+                return (
+                  <div
+                    key={pkg._id}
+                    onClick={() => handlePackageClick(pkg._id)}
+                    className="group shrink-0 w-[260px] bg-white rounded-[18px] overflow-hidden border border-[#E5E7EB] shadow-[0_4px_16px_rgba(0,0,0,0.07)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.13)] transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+                  >
+                    {/* Image */}
+                    <div className="relative h-[160px] overflow-hidden">
+                      <Image
+                        src={pkg.images[0]?.url || "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80"}
+                        alt={pkg.title}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        sizes="260px"
+                        priority={i < 4}
+                      />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />
+
+                      {/* Rank badge */}
+                      <div className="absolute top-2.5 left-2.5 w-7 h-7 bg-[#EF4444] rounded-full flex items-center justify-center shadow-md">
+                        <span className="text-white text-[11px] font-extrabold">#{i + 1}</span>
+                      </div>
+
+                      {/* Discount */}
+                      {pkg.discount > 0 && (
+                        <div className="absolute top-2.5 right-2.5 bg-[#22C55E] text-white text-[10px] font-extrabold px-2 py-0.5 rounded-full shadow-sm">
+                          {pkg.discount}% OFF
+                        </div>
+                      )}
+
+                      {/* Location on image */}
+                      <div className="absolute bottom-2.5 left-2.5 flex items-center gap-1">
+                        <MapPin className="h-3 w-3 text-white/80" />
+                        <span className="text-white text-[11px] font-medium truncate max-w-[180px]">
+                          {pkg.location.destination}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-3.5">
+                      <h3 className="font-bold text-[#111827] text-[13px] leading-snug mb-2 line-clamp-2">
+                        {pkg.title}
+                      </h3>
+
+                      {/* Duration + meals */}
+                      <div className="flex items-center gap-2 text-[11px] text-[#6B7280] mb-3">
+                        <span className="flex items-center gap-1">
+                          <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" />
+                          </svg>
+                          {pkg.duration.day}D / {pkg.duration.night}N
+                        </span>
+                        {pkg.inclusions?.includes("Breakfast") && (
+                          <span className="bg-green-50 text-green-700 text-[10px] font-semibold px-1.5 py-0.5 rounded-full">
+                            Breakfast
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Price row */}
+                      <div className="flex items-center justify-between pt-2.5 border-t border-[#F3F4F6]">
+                        <div>
+                          {pkg.discount > 0 && (
+                            <span className="text-[11px] text-[#9CA3AF] line-through block leading-none mb-0.5">
+                              ₹{pkg.price.toLocaleString("en-IN")}
+                            </span>
+                          )}
+                          <span className="text-[16px] font-extrabold text-[#111827] leading-none">
+                            ₹{discountedPrice.toLocaleString("en-IN")}
+                          </span>
+                          <span className="text-[10px] text-[#9CA3AF] ml-0.5">/person</span>
+                        </div>
+                        <button
+                          onClick={(e) => { e.stopPropagation(); handlePackageClick(pkg._id); }}
+                          className="text-[11px] font-bold text-[#2563EB] hover:text-white hover:bg-[#2563EB] border border-[#DBEAFE] hover:border-[#2563EB] px-3 py-1.5 rounded-full transition-all duration-200"
+                        >
+                          Book →
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Scroll hint on mobile */}
+            <p className="text-center text-[11px] text-[#9CA3AF] mt-3 sm:hidden">
+              ← Scroll to see more →
+            </p>
+          </div>
+        </section>
+      )}
+
+      {/* ══════════════════════════════════════════════════════
           SECTION 3 — Newsletter CTA Banner
       ══════════════════════════════════════════════════════ */}
       <section className="relative py-0 overflow-hidden">

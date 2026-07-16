@@ -26,12 +26,12 @@ export const Hero = () => {
   return (
     <section className="relative">
       {/* ── Full-screen Hero Image ── */}
-      <div className="relative h-[88vh] min-h-[620px] max-h-[860px] overflow-hidden">
+      <div className="relative h-[88vh] min-h-[620px] max-h-[860px] overflow-hidden pt-[68px]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
           alt="Travel destination"
-          className="w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
           style={{ objectPosition: "center 35%" }}
         />
 
@@ -39,7 +39,7 @@ export const Hero = () => {
         <div className="absolute inset-0 bg-linear-to-b from-black/20 via-transparent to-black/50" />
 
         {/* ── Hero Content ── */}
-        <div className="absolute inset-0 flex flex-col justify-center pb-16">
+        <div className="absolute inset-0 flex flex-col justify-center pt-[68px] pb-20">
           <div className="max-w-[1320px] mx-auto w-full px-6 lg:px-16">
             <div className="max-w-[600px]">
               <div className="inline-flex items-center gap-2 bg-white/12 backdrop-blur-md border border-white/20 text-white/90 text-[11px] font-semibold px-4 py-1.5 rounded-full mb-6 tracking-widest uppercase">
@@ -98,7 +98,7 @@ export const Hero = () => {
 
         {/* ── Stats bar ── */}
         <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/75 to-transparent">
-          <div className="max-w-[1320px] mx-auto px-6 lg:px-16 pb-6 pt-8">
+          <div className="max-w-[1320px] mx-auto px-6 lg:px-16 pb-8 pt-10">
             <div className="flex flex-wrap gap-6 sm:gap-10">
               {[
                 { value: "500+", label: "Packages" },
@@ -117,10 +117,10 @@ export const Hero = () => {
       </div>
 
       {/* ── Floating Search Bar ── */}
-      <div className="max-w-[1120px] mx-auto px-4 sm:px-6 mt-[-24px] relative z-20">
+      <div className="max-w-[1120px] mx-auto px-4 sm:px-6 mt-[-28px] relative z-20 pb-10">
         <form
           onSubmit={handleSearch}
-          className="bg-white rounded-[16px] shadow-[0_16px_50px_rgba(0,0,0,0.14)] px-3 sm:px-4 py-3.5 border border-gray-100/80"
+          className="bg-white rounded-[16px] shadow-[0_20px_60px_rgba(0,0,0,0.16)] px-3 sm:px-4 py-4 border border-gray-100"
         >
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-0">
 

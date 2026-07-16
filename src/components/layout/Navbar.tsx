@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, User, LogOut, MapPin } from "lucide-react";
 import Login from "../forms/Login";
-import { useAppSelector, useAppDispatch, logout } from "@/store";
+import { useAppSelector, useAppDispatch, logoutThunk } from "@/store";
 import Image from "next/image";
 
 const NAV_ITEMS = [
@@ -48,7 +48,7 @@ export const Navbar = () => {
   const handleMenuClose = useCallback(() => setIsMenuOpen(false), []);
   const handleLoginOpen = useCallback(() => { setIsLoginOpen(true); handleMenuClose(); }, [handleMenuClose]);
   const handleLoginClose = useCallback(() => setIsLoginOpen(false), []);
-  const handleLogout = useCallback(() => dispatch(logout()), [dispatch]);
+  const handleLogout = useCallback(() => dispatch(logoutThunk()), [dispatch]);
 
   // Navbar background
   const navBg = isScrolled

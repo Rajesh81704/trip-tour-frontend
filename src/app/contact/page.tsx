@@ -37,13 +37,13 @@ const Contact = () => {
     try {
       const response = await api.post("/contacts", formData);
       if (response.status === 201) {
-        toast.success(
-          "Message sent successfully! We will get back to you within 24 hours. 🎉"
-        );
+        toast.success("Message sent successfully! We will get back to you within 24 hours. 🎉");
+        setFormData({ name: "", phone: "", email: "", subject: "", message: "" });
       }
-      setFormData({ name: "", phone: "", email: "", subject: "", message: "" });
-    } catch (error) {
-      toast.error("Failed to send message. Please try again." + error);
+    } catch (error: unknown) {
+      const axiosError = error as { response?: { data?: { message?: string } } };
+      const msg = axiosError?.response?.data?.message || "Failed to send message. Please try again.";
+      toast.error(msg);
     }
   };
 

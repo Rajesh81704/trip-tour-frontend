@@ -24,8 +24,21 @@ export const checkAuthStatus = createAsyncThunk(
             const response = await api.get('/auth/me');
             return response.data;
         } catch (error) {
-            console.error('Auth check failed:', error);
+            // 401 = not logged in, 404 = route not deployed yet — both are "not authenticated", not a crash
             return rejectWithValue('Not authenticated');
+        }
+    }
+);
+
+export const logoutThunk = createAsyncThunk(
+    'auth/logout',
+    async (_, { rejectWithValue }) => {
+        try {
+            await api.post('/auth/logout', {});
+        } catch (error) {
+            // Even if the API call fails, we clear local state
+            console.error('Logout API failed:', error);
+            return rejectWithValue('Logout failed');
         }
     }
 );
@@ -75,6 +88,22 @@ const authSlice = createSlice({
                 state.user = null;
                 state.isLoggedIn = false;
                 state.error = action.payload as string;
+            })
+            // logoutThunk — always clear state regardless of API result
+            .addCase(logoutThunk.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(logoutThunk.fulfilled, (state) => {
+                state.user = null;
+                state.isLoggedIn = false;
+                state.isLoading = false;
+                state.error = null;
+            })
+            .addCase(logoutThunk.rejected, (state) => {
+                // Still clear local state even if API call failed
+                state.user = null;
+                state.isLoggedIn = false;
+                state.isLoading = false;
             });
     },
 });

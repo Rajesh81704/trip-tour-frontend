@@ -43,22 +43,23 @@ export const InquiryForm = ({
         mobileNumber: formData.mobileNumber,
         email: formData.email,
         destination: formData.destination,
-        message: formData.message,
+        message: formData.message || "No special requirements",
         packageId: formData.packageId,
         guests: formData.guests,
       });
       if (response.status === 200 || response.status === 201) {
         toast.success(
-          "🎉 Inquiry submitted successfully! Our travel expert will contact you within 24 hours."
+          "🎉 Inquiry submitted! Our travel expert will contact you within 24 hours."
         );
-      } else {
-        toast.error("Failed to submit inquiry");
+        onClose();
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Error submitting inquiry:", error);
-      toast.error("Failed to submit inquiry");
+      // Show the actual error message from the backend if available
+      const axiosError = error as { response?: { data?: { message?: string } } };
+      const msg = axiosError?.response?.data?.message || "Failed to submit inquiry. Please try again.";
+      toast.error(msg);
     }
-    onClose();
   };
 
   const handleInputChange = (
