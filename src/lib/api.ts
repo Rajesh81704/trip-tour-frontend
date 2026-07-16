@@ -7,12 +7,13 @@ class ApiClient {
     private static instance: ApiClient;
 
     private constructor() {
-        const url = process.env.NODE_ENV === 'production'
-            ? process.env.NEXT_PUBLIC_PROD_BACKEND_URL
-            : process.env.NEXT_PUBLIC_DEV_BACKEND_URL;
+        // Try to read backend URL from env variables
+        const url = process.env.NEXT_PUBLIC_BACKEND_URL 
+            || process.env.NEXT_PUBLIC_PROD_BACKEND_URL
+            || process.env.NEXT_PUBLIC_DEV_BACKEND_URL;
 
         if (!url) {
-            console.error(`[ApiClient] No backend URL found for NODE_ENV="${process.env.NODE_ENV}". Ensure NEXT_PUBLIC_DEV_BACKEND_URL or NEXT_PUBLIC_PROD_BACKEND_URL is set.`);
+            console.error(`[ApiClient] No backend URL found. Ensure NEXT_PUBLIC_BACKEND_URL is set in your environment.`);
         }
 
         this.client = axios.create({
