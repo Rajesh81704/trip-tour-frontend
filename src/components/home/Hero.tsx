@@ -52,7 +52,7 @@ export const Hero = () => {
                 style={{ fontSize: "clamp(2.0rem, 4.5vw, 3.2rem)" }}
               >
                 Explore The World<br />
-                <span className="text-gradient-premium italic">
+                <span className="text-gradient-premium italic" style={{ fontSize: "clamp(1.4rem, 3.2vw, 2.2rem)" }}>
                   With Unforgettable Journeys
                 </span>
               </h1>
