@@ -44,7 +44,8 @@ const ReviewSection = ({ packageId }: { packageId: string }) => {
         });
         setReviews(response.data as unknown as Review[]);
       } catch (error) {
-        console.error("Error fetching reviews:", error);
+        // Silently fail - reviews may not exist
+        setReviews([]);
       } finally {
         setLoading(false);
       }
@@ -75,8 +76,9 @@ const ReviewSection = ({ packageId }: { packageId: string }) => {
 
     try {
       const response = await api.post("/reviews", {
-        packageId,
-        ...newReview,
+        package: packageId,
+        rating: newReview.rating,
+        comment: newReview.content,
       });
 
       if (response.data) {

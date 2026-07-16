@@ -179,6 +179,17 @@
         box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
     }
 
+    /* Premium box shadows */
+    .shadow-premium {
+        box-shadow: 0 20px 60px rgba(37, 99, 235, 0.15), 0 0 1px rgba(0, 0, 0, 0.1);
+    }
+    .shadow-premium-hover {
+        box-shadow: 0 30px 80px rgba(37, 99, 235, 0.2), 0 0 2px rgba(0, 0, 0, 0.15);
+    }
+    .shadow-premium-gold {
+        box-shadow: 0 20px 60px rgba(245, 158, 11, 0.15), 0 0 1px rgba(0, 0, 0, 0.1);
+    }
+
     /* Glassmorphism */
     .glass {
         background: rgba(255, 255, 255, 0.85);
@@ -189,6 +200,12 @@
         background: rgba(15, 23, 42, 0.75);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
+    }
+    .glass-premium {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.25);
     }
 
     /* Hide scrollbar but keep scrollable */
@@ -219,14 +236,27 @@
         -webkit-text-fill-color: transparent;
         background-clip: text;
     }
+    .text-gradient-premium {
+        background: linear-gradient(135deg, #1E3A8A, #F59E0B, #7C3AED);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
 
-    /* Hover lift */
+    /* Hover lift - OPTIMIZED */
     .hover-lift {
-        transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
+        transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
     }
     .hover-lift:hover {
         transform: translateY(-4px);
         box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
+    }
+    .hover-lift-premium {
+        transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease-out;
+    }
+    .hover-lift-premium:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 30px 80px rgba(37, 99, 235, 0.2);
     }
 
     /* Badge styles */
@@ -242,6 +272,14 @@
         background: linear-gradient(135deg, #EF4444, #DC2626);
         color: white;
     }
+    .badge-premium {
+        background: linear-gradient(135deg, #7C3AED, #2563EB);
+        color: white;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+    }
 
     /* Section label */
     .section-label {
@@ -251,10 +289,25 @@
         text-transform: uppercase;
         color: #2563EB;
     }
+    .section-label-premium {
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        background: linear-gradient(135deg, #2563EB, #F59E0B);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
 
     /* Input focus glow */
     .input-glow:focus {
         box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        border-color: #2563EB;
+        outline: none;
+    }
+    .input-glow-premium:focus {
+        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.25), inset 0 0 0 1px rgba(37, 99, 235, 0.1);
         border-color: #2563EB;
         outline: none;
     }
@@ -288,4 +341,130 @@
     .animate-scale-in {
         animation: scaleIn 0.3s ease-out forwards;
     }
+
+    /* Premium floating animation - OPTIMIZED */
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0px) translateX(0px);
+        }
+        25% {
+            transform: translateY(-20px) translateX(5px);
+        }
+        50% {
+            transform: translateY(-10px) translateX(-5px);
+        }
+        75% {
+            transform: translateY(-25px) translateX(3px);
+        }
+    }
+
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+        will-change: transform;
+    }
+
+    /* Shimmer effect for premium elements - OPTIMIZED */
+    @keyframes shimmer {
+        0% {
+            background-position: -1000px 0;
+        }
+        100% {
+            background-position: 1000px 0;
+        }
+    }
+
+    .animate-shimmer {
+        background-size: 200% 100%;
+        animation: shimmer 2s infinite;
+        will-change: background-position;
+    }
+
+    /* Glow effect - OPTIMIZED */
+    @keyframes glow {
+        0%, 100% {
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.3), 0 0 40px rgba(245, 158, 11, 0.1);
+        }
+        50% {
+            box-shadow: 0 0 30px rgba(37, 99, 235, 0.5), 0 0 60px rgba(245, 158, 11, 0.2);
+        }
+    }
+
+    .animate-glow {
+        animation: glow 3s ease-in-out infinite;
+        will-change: box-shadow;
+    }
+
+    /* Border gradients */
+    .border-gradient {
+        background: linear-gradient(white, white) padding-box, linear-gradient(135deg, #2563EB, #F59E0B) border-box;
+        border: 2px solid transparent;
+    }
+
+    /* Premium button styles */
+    .btn-premium {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, #2563EB, #1D4ED8);
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .btn-premium:hover {
+        background: linear-gradient(135deg, #1D4ED8, #1E40AF);
+        box-shadow: 0 20px 50px rgba(37, 99, 235, 0.4);
+        transform: translateY(-2px);
+    }
+
+    /* Premium heading */
+    .heading-premium {
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+    }
+}
+
+
+/* Background image utility */
+.bg-hero-image {
+  background-image: url('/bg-image/image.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* optional for parallax effect */
+}
+
+/* For a specific page background */
+.page-bg {
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), 
+                    url('/bg-image/image.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+/* More background image variations */
+.bg-hero-overlay {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)),
+                    url('/bg-image/image.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bg-hero-blur {
+  background-image: url('/bg-image/image.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(8px);
+}
+
+.bg-hero-gradient {
+  background-image: linear-gradient(135deg, rgba(37, 99, 235, 0.85), rgba(245, 158, 11, 0.85)),
+                    url('/bg-image/image.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
 }

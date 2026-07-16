@@ -17,7 +17,11 @@ class ApiClient {
 
         this.client = axios.create({
             baseURL: url || 'http://localhost:8000',
-            withCredentials: true
+            withCredentials: true,
+            timeout: 10000,
+            headers: {
+                'Accept-Encoding': 'gzip, deflate, br',
+            },
         });
     }
 
@@ -86,7 +90,10 @@ class ApiClient {
 
     private handleError(error: unknown): void {
         if (error instanceof AxiosError) {
-            console.error(`Request failed with status: ${error.response?.status}`);
+            // Only log non-404 errors
+            if (error.response?.status !== 404) {
+                console.error(`Request failed with status: ${error.response?.status}`);
+            }
         } else if (error instanceof Error) {
             console.error('Error:', error.message);
         } else {

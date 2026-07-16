@@ -10,46 +10,18 @@ import { Star, ArrowRight, ChevronRight, MapPin, Send } from "lucide-react";
 
 const trendingDestinations = [
   {
-    name: "Bali",
-    country: "Indonesia",
-    rating: 4.7,
-    packages: 18,
-    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
-  },
-  {
-    name: "Maldives",
-    country: "Maldives",
+    name: "Meghalaya",
+    country: "Meghalaya",
     rating: 4.8,
-    packages: 15,
-    image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
-  },
-  {
-    name: "Switzerland",
-    country: "Switzerland",
-    rating: 4.9,
-    packages: 9,
+    packages: 12,
     image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
   },
   {
-    name: "Thailand",
-    country: "Thailand",
+    name: "West Bengal",
+    country: "West Bengal",
     rating: 4.7,
-    packages: 24,
-    image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
-  },
-  {
-    name: "Dubai",
-    country: "UAE",
-    rating: 4.6,
-    packages: 21,
-    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
-  },
-  {
-    name: "Santorini",
-    country: "Greece",
-    rating: 4.8,
-    packages: 12,
-    image: "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+    packages: 8,
+    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
   },
 ];
 
@@ -65,7 +37,8 @@ export const FeaturedPackages = () => {
           setPackageData(response.data.packages);
         }
       } catch (error) {
-        console.error("Error fetching packages:", error);
+        // Silently fail - this is non-critical data
+        setPackageData([]);
       }
     };
     fetchData();
@@ -78,25 +51,27 @@ export const FeaturedPackages = () => {
       {/* ══════════════════════════════════════════════════════
           SECTION 1 — Popular Destinations
       ══════════════════════════════════════════════════════ */}
-      <section className="pt-20 pb-16 bg-white">
+      <section className="pt-24 pb-16 bg-gradient-to-br from-white via-gray-50 to-white">
         <div className="max-w-[1320px] mx-auto px-6 lg:px-8">
 
           {/* Header */}
-          <div className="flex items-end justify-between mb-8">
+          <div className="flex items-end justify-between mb-10">
             <div>
-              <p className="text-[11px] font-extrabold text-[#2563EB] uppercase tracking-widest mb-2">
-                Popular Destinations
-              </p>
-              <h2 className="text-[28px] sm:text-[32px] font-extrabold text-[#111827] leading-tight">
+              <p className="section-label-premium mb-3">🌍 Popular Destinations</p>
+              <h2 className="heading-premium text-[32px] sm:text-[40px] text-gradient-premium mb-3">
                 Where Do You Want to Go?
               </h2>
-              <div className="w-12 h-1 bg-[#F59E0B] rounded-full mt-2.5" />
+              <p className="text-gray-600 text-base mb-4">Discover our most sought-after destinations around the world</p>
+              <div className="flex gap-2">
+                <div className="w-12 h-1 bg-gradient-to-r from-[#2563EB] to-[#F59E0B] rounded-full" />
+                <div className="w-8 h-1 bg-gradient-to-r from-[#F59E0B] to-[#7C3AED] rounded-full" />
+              </div>
             </div>
             <Link
               href="/packages"
-              className="hidden sm:flex items-center gap-1 text-[13px] font-semibold text-[#2563EB] hover:text-[#1D4ED8] transition-colors"
+              className="hidden sm:flex items-center gap-2 text-[14px] font-semibold bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] text-white px-5 py-2.5 rounded-full hover:shadow-premium-hover transition-all hover-lift-premium"
             >
-              View all destinations
+              View all
               <ChevronRight className="h-4 w-4" />
             </Link>
           </div>
@@ -106,7 +81,7 @@ export const FeaturedPackages = () => {
             {trendingDestinations.map((dest, i) => (
               <Link
                 key={dest.name}
-                href={`/packages?state=${dest.country.toLowerCase().replace(/\s+/g, "-")}`}
+                href={`/packages?state=${encodeURIComponent(dest.country)}`}
                 className="group relative rounded-[16px] overflow-hidden block"
                 style={{ aspectRatio: "4/5" }}
               >

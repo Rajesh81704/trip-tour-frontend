@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { ArrowRight, MapPin, Calendar, Users, Search, Star, Shield, Clock } from "lucide-react";
 
 export const Hero = () => {
@@ -12,7 +12,7 @@ export const Hero = () => {
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
 
-  const handleSearch = (e: React.FormEvent) => {
+  const handleSearch = useCallback((e: React.FormEvent) => {
     e.preventDefault();
     const params = new URLSearchParams();
     if (destination.trim()) params.set("search", destination.trim());
@@ -21,7 +21,14 @@ export const Hero = () => {
     params.set("adults", String(adults));
     params.set("children", String(children));
     router.push(`/packages?${params.toString()}`);
-  };
+  }, [destination, checkIn, checkOut, adults, children, router]);
+
+  const trustStats = useMemo(() => [
+    { value: "500+", label: "Packages" },
+    { value: "50K+", label: "Happy Travelers" },
+    { value: "100+", label: "Destinations" },
+    { value: "15+", label: "Years Experience" },
+  ], []);
 
   return (
     <section className="relative">
@@ -29,7 +36,7 @@ export const Hero = () => {
       <div className="relative h-[88vh] min-h-[620px] max-h-[860px] overflow-hidden pt-[68px]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+          src="/bg-image/image.png"
           alt="Travel destination"
           className="absolute inset-0 w-full h-full object-cover"
           style={{ objectPosition: "center 35%" }}
@@ -42,17 +49,17 @@ export const Hero = () => {
         <div className="absolute inset-0 flex flex-col justify-center pt-[68px] pb-20">
           <div className="max-w-[1320px] mx-auto w-full px-6 lg:px-16">
             <div className="max-w-[600px]">
-              <div className="inline-flex items-center gap-2 bg-white/12 backdrop-blur-md border border-white/20 text-white/90 text-[11px] font-semibold px-4 py-1.5 rounded-full mb-6 tracking-widest uppercase">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B] animate-pulse shrink-0" />
-                Trusted by 50,000+ Happy Travelers
+              <div className="inline-flex items-center gap-2 bg-white/12 backdrop-blur-md border border-white/20 text-white/90 text-[11px] font-semibold px-4 py-1.5 rounded-full mb-6 tracking-widest uppercase hover-lift-premium cursor-pointer">
+                <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#F59E0B] to-[#EF4444] animate-pulse shrink-0" />
+                ✨ Trusted by 50,000+ Happy Travelers
               </div>
 
               <h1
-                className="font-extrabold text-white leading-[1.1] tracking-tight drop-shadow-2xl mb-4"
-                style={{ fontSize: "clamp(2.4rem, 5vw, 3.6rem)" }}
+                className="font-extrabold text-white leading-[1.1] tracking-tight drop-shadow-2xl mb-4 heading-premium"
+                style={{ fontSize: "clamp(2.0rem, 4.5vw, 3.2rem)" }}
               >
                 Explore The World<br />
-                <span style={{ color: "#F59E0B", fontStyle: "italic", fontFamily: "Georgia, 'Times New Roman', serif" }}>
+                <span className="text-gradient-premium italic">
                   With Unforgettable Journeys
                 </span>
               </h1>

@@ -14,238 +14,196 @@ import Image from "next/image";
 
 const About = () => {
   const stats = [
-    { icon: Users, label: "Happy Travelers", value: "50,000+", bg: "bg-blue-100", color: "text-[#2563EB]" },
-    { icon: Globe, label: "Destinations", value: "100+", bg: "bg-green-100", color: "text-[#22C55E]" },
-    { icon: Award, label: "Awards Won", value: "25+", bg: "bg-purple-100", color: "text-purple-600" },
-    { icon: Heart, label: "Years Experience", value: "15+", bg: "bg-orange-100", color: "text-[#F59E0B]" },
+    { icon: "🌍", label: "Happy Travelers", value: "50,000+", description: "Trusted worldwide" },
+    { icon: "🏆", label: "Destinations", value: "100+", description: "Across the globe" },
+    { icon: "⭐", label: "Awards Won", value: "25+", description: "Industry recognized" },
+    { icon: "📅", label: "Years Experience", value: "15+", description: "Industry leading" },
   ];
 
   const features = [
     {
-      icon: Shield,
+      icon: "🛡️",
       title: "100% Safe & Secure",
       description: "Your safety is our priority with verified accommodations and 24/7 support",
-      bg: "bg-blue-100",
-      color: "text-[#2563EB]",
+      gradient: "from-blue-50 to-blue-100/50",
     },
     {
-      icon: Star,
+      icon: "✨",
       title: "Expert Guidance",
       description: "Our travel experts craft personalized itineraries for unforgettable experiences",
-      bg: "bg-amber-100",
-      color: "text-[#F59E0B]",
+      gradient: "from-amber-50 to-amber-100/50",
     },
     {
-      icon: MapPin,
+      icon: "🗺️",
       title: "Local Insights",
       description: "Discover hidden gems and authentic experiences with our local knowledge",
-      bg: "bg-rose-100",
-      color: "text-rose-500",
+      gradient: "from-rose-50 to-rose-100/50",
     },
     {
-      icon: Calendar,
+      icon: "📅",
       title: "Flexible Booking",
       description: "Easy booking with flexible cancellation and customizable travel dates",
-      bg: "bg-green-100",
-      color: "text-[#22C55E]",
-    },
-  ];
-
-  const team = [
-    {
-      name: "Sarah Johnson",
-      role: "Founder & CEO",
-      image: "https://plus.unsplash.com/premium_photo-1671656349218-5218444643d8",
-      description: "Passionate traveler with 20+ years in the industry, visited 80+ countries",
-    },
-    {
-      name: "Michael Chen",
-      role: "Head of Operations",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
-      description: "Expert in logistics and customer experience, ensuring seamless journeys",
-    },
-    {
-      name: "Emily Rodriguez",
-      role: "Travel Designer",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      description: "Specialist in crafting unique travel experiences and cultural immersion",
+      gradient: "from-green-50 to-green-100/50",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC]">
-      {/* Hero Banner */}
-      <section className="relative h-[280px] overflow-hidden pt-[68px]">
-        <div className="absolute inset-0">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-full object-cover"
-          >
-            <source
-              src="https://videos.pexels.com/video-files/3571264/3571264-uhd_2560_1440_30fps.mp4"
-              type="video/mp4"
-            />
-          </video>
-          <div className="absolute inset-0 bg-linear-to-b from-black/55 via-black/40 to-black/65" />
+    <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white">
+      {/* Hero Banner - Premium Redesign */}
+      <section className="relative min-h-[450px] overflow-hidden pt-[100px] pb-[80px] bg-gradient-to-br from-blue-900 via-purple-900 to-blue-800">
+        <div className="absolute inset-0 opacity-25">
+          <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float"></div>
+          <div className="absolute -bottom-10 -left-20 w-[500px] h-[500px] bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float"></div>
         </div>
-        <div className="relative z-10 h-full flex flex-col justify-center">
+        <div className="relative z-10">
           <div className="max-w-[1320px] mx-auto w-full px-6 lg:px-8">
-            <p className="text-[11px] font-bold text-[#F59E0B] uppercase tracking-widest mb-2">Our Story</p>
-            <h1 className="text-[clamp(2rem,4vw,3rem)] font-extrabold text-white leading-tight mb-3 drop-shadow-lg">
-              About{" "}
-              <span className="text-[#F59E0B] italic">TripToo Travels</span>
-            </h1>
-            <p className="text-white/80 text-[15px] max-w-lg font-medium">
-              Turning your travel dreams into extraordinary adventures since 2008.
-            </p>
+            <div className="max-w-3xl">
+              <div className="inline-flex items-center gap-2 bg-white/12 backdrop-blur-md border border-white/20 text-white/90 text-[11px] font-semibold px-4 py-1.5 rounded-full mb-8 tracking-widest uppercase hover-lift-premium cursor-pointer">
+                <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#F59E0B] to-[#EF4444] animate-pulse shrink-0" />
+                ✨ Our Story & Mission
+              </div>
+              <h1 className="heading-premium text-[clamp(2.4rem,6vw,4rem)] text-white leading-tight mb-6 drop-shadow-2xl font-black">
+                Turning Dreams Into<br/>
+                <span className="text-white">Extraordinary Adventures</span>
+              </h1>
+              <p className="text-white/85 text-lg max-w-2xl font-normal leading-relaxed">
+                For over 15 years, we've been crafting transformative travel experiences that connect cultures, create memories, and inspire wanderlust in every traveler we meet.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-white">
+      {/* Stats Section - Enhanced */}
+      <section className="py-20 bg-white">
         <div className="max-w-[1320px] mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((stat, index) => (
               <div
                 key={index}
-                className="bg-[#F8FAFC] rounded-[20px] border border-[#E5E7EB] p-6 flex flex-col items-center text-center hover:shadow-[0_18px_45px_rgba(0,0,0,0.10)] transition-all duration-300 hover:-translate-y-1"
+                className="relative group bg-gradient-to-br from-gray-50 to-gray-100/50 rounded-[24px] border-2 border-gray-100 p-8 flex flex-col items-center text-center hover:shadow-premium-hover hover-lift-premium transition-all duration-300 overflow-hidden"
               >
-                <div className={`${stat.bg} w-14 h-14 rounded-2xl flex items-center justify-center mb-4`}>
-                  <stat.icon className={`h-6 w-6 ${stat.color}`} />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent rounded-[24px]" />
                 </div>
-                <div className="text-[28px] font-extrabold text-[#111827] leading-none mb-1">
-                  {stat.value}
+                <div className="relative z-10">
+                  <div className="text-5xl mb-4 group-hover:animate-bounce transition-all duration-300">{stat.icon}</div>
+                  <div className="text-[36px] font-black text-transparent bg-clip-text bg-gradient-to-r from-[#2563EB] to-[#7C3AED] leading-none mb-2">
+                    {stat.value}
+                  </div>
+                  <p className="text-[14px] font-bold text-gray-700 mb-1">{stat.label}</p>
+                  <p className="text-[12px] text-gray-500 font-medium">{stat.description}</p>
                 </div>
-                <div className="text-[13px] text-[#6B7280] font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Our Story Section */}
-      <section className="py-20 bg-[#F8FAFC]">
+      {/* Our Story Section - Premium Layout */}
+      <section className="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-50">
         <div className="max-w-[1320px] mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <p className="section-label mb-2">Who We Are</p>
-              <h2 className="text-[36px] font-extrabold text-[#111827] leading-tight mb-4">
-                Our Journey
+              <div className="inline-flex items-center gap-2 mb-4">
+                <div className="w-3 h-3 rounded-full bg-gradient-to-r from-[#2563EB] to-[#F59E0B]"></div>
+                <p className="section-label-premium">Who We Are</p>
+              </div>
+              <h2 className="heading-premium text-[40px] text-gray-900 leading-tight mb-6">
+                Redefining Travel<br/>
+                <span className="text-gradient-premium">One Journey at a Time</span>
               </h2>
-              <div className="w-14 h-1 bg-[#F59E0B] rounded-full mb-7" />
-              <div className="space-y-5 text-[15px] text-[#374151] leading-relaxed">
-                <p>
-                  🌟 <strong>Founded in 2008</strong>, TripToo Travels began as a small dream to make extraordinary travel accessible to everyone. What started as a passion project has grown into India&apos;s most trusted travel companion.
+              <div className="flex gap-2 mb-8">
+                <div className="w-12 h-1 bg-gradient-to-r from-[#2563EB] to-[#F59E0B] rounded-full" />
+                <div className="w-8 h-1 bg-gradient-to-r from-[#F59E0B] to-[#7C3AED] rounded-full" />
+              </div>
+              <div className="space-y-6 text-[15px] text-gray-700 leading-relaxed">
+                <p className="flex gap-3">
+                  <span className="text-2xl shrink-0">🌟</span>
+                  <span><strong>Founded in 2008</strong>, Book Itinerary began as a small dream to make extraordinary travel accessible to everyone. What started as a passion project has grown into one of India's most trusted travel companions.</span>
                 </p>
-                <p>
-                  🎯 We believe that travel is more than just visiting places – it&apos;s about <strong>connecting with cultures</strong>, creating lasting memories, and discovering new perspectives that enrich your life forever.
+                <p className="flex gap-3">
+                  <span className="text-2xl shrink-0">🎯</span>
+                  <span>We believe travel is more than visiting places – it's about <strong>connecting with cultures</strong>, creating lasting memories, and discovering perspectives that enrich your life forever.</span>
                 </p>
-                <p>
-                  ✨ Today, we continue to craft <strong>personalized journeys</strong> that go beyond the ordinary, ensuring every trip is as unique as the travelers who take them.
+                <p className="flex gap-3">
+                  <span className="text-2xl shrink-0">✨</span>
+                  <span>Today, we craft <strong>personalized journeys</strong> that transcend the ordinary, ensuring every trip is as unique as the travelers who embark on them.</span>
                 </p>
               </div>
-            </div>
-            <div className="relative">
-              <Image
-                width={800}
-                height={600}
-                src="https://images.unsplash.com/photo-1488646953014-85cb44e25828"
-                alt="Our Story"
-                className="rounded-[20px] shadow-[0_20px_60px_rgba(0,0,0,0.15)] w-full object-cover"
-              />
-              <div className="absolute -bottom-4 -left-4 bg-white rounded-[16px] shadow-[0_10px_30px_rgba(0,0,0,0.12)] p-4 border border-[#E5E7EB]">
-                <div className="flex items-center gap-2">
-                  <div className="flex">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-[#F59E0B] text-[#F59E0B]" />
-                    ))}
-                  </div>
-                  <span className="font-bold text-[#111827] text-[14px]">4.9/5</span>
+              <div className="mt-8 flex gap-4">
+                <div className="flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-4 py-2">
+                  <Star className="h-4 w-4 fill-[#F59E0B] text-[#F59E0B]" />
+                  <span className="text-sm font-semibold text-blue-900">4.9/5 Rated</span>
                 </div>
-                <p className="text-[12px] text-[#6B7280] mt-0.5">Based on 3,200+ reviews</p>
+                <div className="flex items-center gap-2 bg-green-50 border border-green-100 rounded-full px-4 py-2">
+                  <Users className="h-4 w-4 text-green-600" />
+                  <span className="text-sm font-semibold text-green-900">50K+ Travelers</span>
+                </div>
+              </div>
+            </div>
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#2563EB] to-[#F59E0B] rounded-[24px] opacity-0 group-hover:opacity-100 blur transition-opacity duration-300"></div>
+              <Image
+                width={500}
+                height={600}
+                src="/bg-image/image.png"
+                alt="Our Story"
+                className="relative rounded-[24px] shadow-2xl w-full object-cover h-[500px]"
+              />
+              <div className="absolute -bottom-6 -right-6 bg-white rounded-[20px] shadow-2xl border border-gray-100 p-6 max-w-xs backdrop-blur-sm">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="text-4xl">🏆</div>
+                  <div>
+                    <p className="font-bold text-gray-900">Industry Leader</p>
+                    <p className="text-sm text-gray-600">25+ Awards & Recognition</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 bg-white">
+      {/* Features Section - Premium Cards */}
+      <section className="py-24 bg-white">
         <div className="max-w-[1320px] mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="section-label mb-2">Why Choose Us</p>
-            <h2 className="text-[36px] font-extrabold text-[#111827] leading-tight">
-              Why Choose TripToo Travels?
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 mb-4">
+              <div className="w-3 h-3 rounded-full bg-gradient-to-r from-[#2563EB] to-[#F59E0B]"></div>
+              <p className="section-label-premium">Why Choose Us</p>
+            </div>
+            <h2 className="heading-premium text-[40px] text-gray-900 leading-tight mb-3">
+              Why Travelers<br/>
+              <span className="text-gradient-premium">Trust Us</span>
             </h2>
-            <div className="w-14 h-1 bg-[#F59E0B] rounded-full mt-3 mx-auto" />
-            <p className="text-[#6B7280] text-[16px] mt-5 max-w-xl mx-auto leading-relaxed">
-              We don&apos;t just plan trips, we create life-changing experiences that stay with you forever.
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto mt-6">
+              We don't just plan trips, we create life-changing experiences that stay with you forever.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="bg-[#F8FAFC] rounded-[20px] border border-[#E5E7EB] p-6 flex flex-col items-center text-center hover:shadow-[0_18px_45px_rgba(0,0,0,0.10)] transition-all duration-300 hover:-translate-y-1 group"
+                className={`relative group bg-gradient-to-br ${feature.gradient} rounded-[24px] border-2 border-gray-100 p-8 flex flex-col items-center text-center hover:shadow-premium-hover hover-lift-premium transition-all duration-300 overflow-hidden`}
               >
-                <div className={`${feature.bg} w-14 h-14 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                  <feature.icon className={`h-6 w-6 ${feature.color}`} />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-transparent rounded-[24px]" />
                 </div>
-                <h3 className="font-bold text-[#111827] text-[15px] mb-2">{feature.title}</h3>
-                <p className="text-[13px] text-[#6B7280] leading-relaxed">{feature.description}</p>
+                <div className="relative z-10">
+                  <div className="text-5xl mb-4 group-hover:animate-bounce transition-all duration-300">{feature.icon}</div>
+                  <h3 className="font-bold text-gray-900 text-[16px] mb-3 heading-premium">{feature.title}</h3>
+                  <p className="text-[14px] text-gray-700 leading-relaxed">{feature.description}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-20 bg-[#F8FAFC]">
-        <div className="max-w-[1320px] mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="section-label mb-2">The People Behind</p>
-            <h2 className="text-[36px] font-extrabold text-[#111827] leading-tight">
-              Meet Our Dream Team
-            </h2>
-            <div className="w-14 h-1 bg-[#F59E0B] rounded-full mt-3 mx-auto" />
-            <p className="text-[#6B7280] text-[16px] mt-5 max-w-xl mx-auto leading-relaxed">
-              The passionate people behind your perfect journey.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {team.map((member, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-[20px] border border-[#E5E7EB] overflow-hidden hover:shadow-[0_18px_45px_rgba(0,0,0,0.10)] transition-all duration-300 hover:-translate-y-1 group"
-              >
-                <div className="relative overflow-hidden h-64">
-                  <Image
-                    width={400}
-                    height={256}
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-[18px] font-extrabold text-[#111827] mb-1">{member.name}</h3>
-                  <p className="text-[#2563EB] font-semibold text-[13px] mb-3">{member.role}</p>
-                  <p className="text-[13px] text-[#6B7280] leading-relaxed">{member.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      {/* Contact & Offices Section */}
-      <section className="py-20 bg-white">
+      {/* Contact Section */}
+      <section className="py-24 bg-white">
         <div className="max-w-[1320px] mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="text-[11px] font-extrabold text-[#2563EB] uppercase tracking-widest mb-2">Get In Touch</p>

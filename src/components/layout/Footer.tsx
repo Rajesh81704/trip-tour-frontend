@@ -12,11 +12,8 @@ const quickLinks = [
 ];
 
 const topDestinations = [
-  { name: "Bali", href: "/packages?state=bali" },
-  { name: "Maldives", href: "/packages?state=maldives" },
-  { name: "Switzerland", href: "/packages?state=switzerland" },
-  { name: "Thailand", href: "/packages?state=thailand" },
-  { name: "Dubai", href: "/packages?state=dubai" },
+  { name: "Meghalaya", href: "/packages?state=Meghalaya" },
+  { name: "West Bengal", href: "/packages?state=West%20Bengal" },
 ];
 
 const supportLinks = [
@@ -97,15 +94,17 @@ export const Footer = () => {
             {/* Socials */}
             <div className="flex gap-2.5">
               {[
-                { Icon: Facebook, label: "Facebook", hover: "hover:bg-[#1877F2]", href: "#" },
+                { Icon: Facebook, label: "Facebook", hover: "hover:bg-[#1877F2]", href: "https://www.facebook.com/bookitinerarytour/" },
                 { Icon: Instagram, label: "Instagram", hover: "hover:bg-[#E1306C]", href: "#" },
-                { Icon: Twitter, label: "Twitter", hover: "hover:bg-[#1DA1F2]", href: "#" },
+                { Icon: Twitter, label: "Twitter", hover: "hover:bg-[#1DA1F2]", href: "https://x.com/bookitinerary" },
                 { Icon: Youtube, label: "YouTube", hover: "hover:bg-[#FF0000]", href: "#" },
               ].map(({ Icon, label, hover, href }) => (
                 <a
                   key={label}
                   href={href}
                   aria-label={label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`w-9 h-9 rounded-full bg-gray-800 ${hover} flex items-center justify-center transition-all duration-200 hover:scale-110`}
                 >
                   <Icon className="h-4 w-4 text-gray-300" />
@@ -166,6 +165,23 @@ export const Footer = () => {
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+
+        {/* Google Map */}
+        <div className="border-t border-gray-800 pt-10 pb-6 mb-4">
+          <h4 className="text-white font-bold text-[15px] mb-4">Find Us</h4>
+          <div className="rounded-[16px] overflow-hidden border border-gray-700 w-full h-[280px]">
+            <iframe
+              src="https://maps.google.com/maps?q=Bookitinerary+Tours+and+Travel+Company,+SCF-37+2nd+Floor,+near+Pumping+Iron+Gym+%26+Fitness,+Pocket+D,+Sector+11,+Faridabad,+Haryana+121006&output=embed&z=16"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Bookitinerary Tours and Travel Company Location"
+            />
           </div>
         </div>
 

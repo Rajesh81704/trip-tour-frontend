@@ -43,21 +43,12 @@ import {
   ChevronUp,
 } from "lucide-react";
 import api from "@/lib/api";
-
-enum InquiryType {
-  CorporatePackages = "Corporate Packages",
-  GroupTours = "Group Tours",
-  MICE = "MICE (Meetings, Incentives, Conferences, Events)",
-  CustomItineraries = "Custom Itineraries",
-  PartnershipOpportunities = "Partnership Opportunities",
-  Other = "Other",
-}
+import { B2BInquiryType, B2BRequestForm } from "@/types/b2b";
 
 const B2B = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<B2BRequestForm>({
     companyName: "",
     contactName: "",
-
     email: "",
     phone: "",
     website: "",
@@ -70,10 +61,20 @@ const B2B = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const resposnse = await api.post("/b2b-requests", formData);
-      if (resposnse.status === 201) {
+      const response = await api.post("/b2b-requests", formData);
+      if (response.status === 201) {
         toast.success("Inquiry Submitted Successfully!", {
           description: "Our B2B team will contact you within 24 hours.",
+        });
+        // Reset form
+        setFormData({
+          companyName: "",
+          contactName: "",
+          email: "",
+          phone: "",
+          website: "",
+          inquiryType: "",
+          message: "",
         });
       }
     } catch (error) {
@@ -81,20 +82,6 @@ const B2B = () => {
       toast.error("Failed to submit inquiry. Please try again later.");
       return;
     }
-
-    toast.success("Inquiry Submitted Successfully!", {
-      description: "Our B2B team will contact you within 24 hours.",
-    });
-    // Reset form
-    setFormData({
-      companyName: "",
-      contactName: "",
-      email: "",
-      phone: "",
-      website: "",
-      inquiryType: "",
-      message: "",
-    });
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -251,25 +238,25 @@ const B2B = () => {
                           <SelectValue placeholder="Select inquiry type" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value={InquiryType.CorporatePackages}>
-                            {InquiryType.CorporatePackages}
+                          <SelectItem value={B2BInquiryType.CorporatePackages}>
+                            {B2BInquiryType.CorporatePackages}
                           </SelectItem>
-                          <SelectItem value={InquiryType.GroupTours}>
-                            {InquiryType.GroupTours}
+                          <SelectItem value={B2BInquiryType.GroupTours}>
+                            {B2BInquiryType.GroupTours}
                           </SelectItem>
-                          <SelectItem value={InquiryType.MICE}>
-                            {InquiryType.MICE}
+                          <SelectItem value={B2BInquiryType.MICE}>
+                            {B2BInquiryType.MICE}
                           </SelectItem>
-                          <SelectItem value={InquiryType.CustomItineraries}>
-                            {InquiryType.CustomItineraries}
+                          <SelectItem value={B2BInquiryType.CustomItineraries}>
+                            {B2BInquiryType.CustomItineraries}
                           </SelectItem>
                           <SelectItem
-                            value={InquiryType.PartnershipOpportunities}
+                            value={B2BInquiryType.PartnershipOpportunities}
                           >
-                            {InquiryType.PartnershipOpportunities}
+                            {B2BInquiryType.PartnershipOpportunities}
                           </SelectItem>
-                          <SelectItem value={InquiryType.Other}>
-                            {InquiryType.Other}
+                          <SelectItem value={B2BInquiryType.Other}>
+                            {B2BInquiryType.Other}
                           </SelectItem>
                         </SelectContent>
                       </Select>

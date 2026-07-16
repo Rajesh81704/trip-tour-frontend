@@ -44,7 +44,7 @@ const PackagesContent = () => {
   const [searchInput, setSearchInput]         = useState(searchParams.get("search") || "");
   const [category, setCategory]               = useState(searchParams.get("category") || "");
   const [sortBy, setSortBy]                   = useState(searchParams.get("sort") || "newest");
-  const [selectedStates, setSelectedStates]   = useState<string[]>([]);
+  const [selectedStates, setSelectedStates]   = useState<string[]>(searchParams.get("state") ? [searchParams.get("state")!] : []);
   const [durationFilter, setDurationFilter]   = useState<{ minDays?: number; maxDays?: number }>({});
   const [onSale, setOnSale]                   = useState(false);
   const [minPrice, setMinPrice]               = useState<string>("");
@@ -250,25 +250,6 @@ const PackagesContent = () => {
 
               <div className="h-px bg-[#E5E7EB]" />
 
-              {/* State / Destination */}
-              {filterMeta?.states && filterMeta.states.length > 0 && (
-                <>
-                  <div>
-                    <p className="text-[11px] font-extrabold text-[#374151] uppercase tracking-widest mb-2.5">Destination</p>
-                    <div className="space-y-1.5 max-h-40 overflow-y-auto scrollbar-hide">
-                      {filterMeta.states.map((s) => (
-                        <label key={s} className="flex items-center gap-2.5 cursor-pointer group">
-                          <input type="checkbox" checked={selectedStates.includes(s)}
-                            onChange={() => toggleState(s)} className="accent-[#2563EB] w-3.5 h-3.5 rounded" />
-                          <span className={`text-[13px] ${selectedStates.includes(s) ? "text-[#2563EB] font-semibold" : "text-[#374151] group-hover:text-[#111827]"}`}>{s}</span>
-                        </label>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="h-px bg-[#E5E7EB]" />
-                </>
-              )}
-
               {/* Duration */}
               <div>
                 <p className="text-[11px] font-extrabold text-[#374151] uppercase tracking-widest mb-2.5">Trip Duration</p>
@@ -396,24 +377,6 @@ const PackagesContent = () => {
               </div>
             )}
           </div>
-        </div>
-
-        {/* Trust bar */}
-        <div className="mt-16 bg-white rounded-[20px] border border-[#E5E7EB] shadow-sm p-8 grid grid-cols-2 sm:grid-cols-4 gap-7">
-          {[
-            { icon: "🛡️", title: "Best Price Guarantee", desc: "No hidden fees on all packages." },
-            { icon: "🎧", title: "24/7 Support",          desc: "Our experts are always available." },
-            { icon: "🔒", title: "Secure Booking",        desc: "Industry-standard encryption." },
-            { icon: "📋", title: "Flexible Packages",     desc: "Customize as per your needs." },
-          ].map(({ icon, title, desc }) => (
-            <div key={title} className="flex items-start gap-3.5">
-              <span className="text-[26px] shrink-0">{icon}</span>
-              <div>
-                <p className="text-[13px] font-bold text-[#111827]">{title}</p>
-                <p className="text-[12px] text-[#9CA3AF] mt-0.5 leading-relaxed">{desc}</p>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </div>

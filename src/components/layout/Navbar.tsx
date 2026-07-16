@@ -11,6 +11,7 @@ const NAV_ITEMS = [
   { name: "Home", path: "/" },
   { name: "Packages", path: "/packages" },
   { name: "About Us", path: "/about" },
+  { name: "B2B Partnership", path: "/b2b" },
   { name: "Contact Us", path: "/contact" },
 ];
 
