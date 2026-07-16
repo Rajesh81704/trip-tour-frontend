@@ -8,25 +8,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { Star, ArrowRight, ChevronRight, MapPin, Send } from "lucide-react";
 
-const trendingDestinations = [
-  {
-    name: "Meghalaya",
-    country: "Meghalaya",
-    rating: 4.8,
-    packages: 12,
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
-  },
-  {
-    name: "West Bengal",
-    country: "West Bengal",
-    rating: 4.7,
-    packages: 8,
-    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
-  },
-];
+interface FeaturedDestination {
+  name: string;
+  destination: string;
+  rating: number;
+  packages: number;
+  image: string;
+}
 
 export const FeaturedPackages = () => {
   const [packageData, setPackageData] = useState<PackageData[]>([]);
+  const [featuredDestinations, setFeaturedDestinations] = useState<FeaturedDestination[]>([]);
   const router = useRouter();
 
   useEffect(() => {
@@ -35,10 +27,44 @@ export const FeaturedPackages = () => {
         const response = await api.get<{ success: boolean; packages: PackageData[] }>("/packages");
         if (response.data.success && response.data.packages) {
           setPackageData(response.data.packages);
+          
+          // Generate featured destinations from packages
+          const destinationMap = new Map<string, { count: number; image: string; rating: number }>();
+          
+          response.data.packages.forEach((pkg) => {
+            const dest = pkg.location.destination;
+            if (!destinationMap.has(dest)) {
+              destinationMap.set(dest, {
+                count: 0,
+                image: pkg.images[0]?.url || "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+                rating: pkg.rating || 4.5,
+              });
+            }
+            const destData = destinationMap.get(dest)!;
+            destData.count += 1;
+            if (pkg.rating) {
+              destData.rating = (destData.rating + pkg.rating) / 2; // Average rating
+            }
+          });
+          
+          // Convert to featured destinations array
+          const featured: FeaturedDestination[] = Array.from(destinationMap.entries())
+            .map(([destination, data]) => ({
+              name: destination,
+              destination: destination,
+              rating: parseFloat(data.rating.toFixed(1)),
+              packages: data.count,
+              image: data.image,
+            }))
+            .sort((a, b) => b.packages - a.packages)
+            .slice(0, 6); // Show top 6 destinations
+          
+          setFeaturedDestinations(featured);
         }
       } catch {
         // Silently fail - this is non-critical data
         setPackageData([]);
+        setFeaturedDestinations([]);
       }
     };
     fetchData();
@@ -78,10 +104,10 @@ export const FeaturedPackages = () => {
 
           {/* Destination Cards — horizontal landscape grid */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-            {trendingDestinations.map((dest, i) => (
+            {featuredDestinations.map((dest, i) => (
               <Link
                 key={dest.name}
-                href={`/packages?state=${encodeURIComponent(dest.country)}`}
+                href={`/packages?state=${encodeURIComponent(dest.destination)}`}
                 className="group relative rounded-[16px] overflow-hidden block"
                 style={{ aspectRatio: "4/5" }}
               >
