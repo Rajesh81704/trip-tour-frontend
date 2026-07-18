@@ -379,7 +379,7 @@ export default function Login({ onClose }: { onClose?: () => void }) {
           href={
             process.env.NODE_ENV === "production"
               ? "https://api.triptootravels.com/auth/google"
-              : "http://localhost:8000/auth/google"
+              : `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/google`
           }
         >
           <button

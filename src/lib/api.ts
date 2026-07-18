@@ -7,17 +7,19 @@ class ApiClient {
     private static instance: ApiClient;
 
     private constructor() {
-        // Try to read backend URL from env variables
-        const url = process.env.NEXT_PUBLIC_BACKEND_URL 
-            || process.env.NEXT_PUBLIC_PROD_BACKEND_URL
-            || process.env.NEXT_PUBLIC_DEV_BACKEND_URL;
+        // Read backend URL from env variables
+        const url = process.env.NEXT_PUBLIC_BACKEND_URL;
 
         if (!url) {
-            console.error(`[ApiClient] No backend URL found. Ensure NEXT_PUBLIC_BACKEND_URL is set in your environment.`);
+            throw new Error(
+                `[ApiClient] Backend URL is required. Ensure NEXT_PUBLIC_BACKEND_URL is set in your .env file.`
+            );
         }
 
+        console.log(`[ApiClient] Initializing with backend URL: ${url}`);
+
         this.client = axios.create({
-            baseURL: url || '103.138.96.92:8000',
+            baseURL: url,
             withCredentials: true,
             timeout: 10000,
             headers: {
@@ -89,16 +91,30 @@ class ApiClient {
         }
     }
 
+    async checkHealth(): Promise<boolean> {
+        try {
+            const response = await this.client.get('/health');
+            console.log('[ApiClient] Health check passed:', response.data);
+            return response.status === 200;
+        } catch (error) {
+            console.error('[ApiClient] Health check failed - Backend may not be running');
+            return false;
+        }
+    }
+
     private handleError(error: unknown): void {
         if (error instanceof AxiosError) {
-            // Only log non-404 errors
-            if (error.response?.status !== 404) {
-                console.error(`Request failed with status: ${error.response?.status}`);
-            }
+            console.error(`[ApiClient] Request failed:`, {
+                status: error.response?.status,
+                statusText: error.response?.statusText,
+                url: error.config?.url,
+                data: error.response?.data,
+                message: error.message,
+            });
         } else if (error instanceof Error) {
-            console.error('Error:', error.message);
+            console.error('[ApiClient] Error:', error.message);
         } else {
-            console.error('Unknown error:', error);
+            console.error('[ApiClient] Unknown error:', error);
         }
     }
 }
