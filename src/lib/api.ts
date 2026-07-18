@@ -17,7 +17,7 @@ class ApiClient {
         }
 
         this.client = axios.create({
-            baseURL: url || 'https://trip-tour-06mx.onrender.com',
+            baseURL: url || '103.138.96.92:8000',
             withCredentials: true,
             timeout: 10000,
             headers: {
