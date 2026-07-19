@@ -82,7 +82,7 @@ export const IndianCities = () => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4 sm:mb-6">
             Popular Cities
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed px-4">
+          <p className="text-base sm:text-lg md:text-xl text-slate-200 max-w-3xl mx-auto leading-relaxed px-4">
             Discover India&apos;s vibrant cities with rich heritage and modern
             attractions that will leave you spellbound
           </p>
@@ -92,7 +92,7 @@ export const IndianCities = () => {
           {cities.map((city, index) => (
             <Card
               key={index}
-              className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer border-0 bg-white/80 backdrop-blur-sm relative p-0"
+              className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer border-0 bg-slate-700/80 backdrop-blur-sm relative p-0"
             >
               <div className="relative h-48 sm:h-56 md:h-48 lg:h-52 overflow-hidden">
                 <Image
@@ -124,7 +124,7 @@ export const IndianCities = () => {
                     {city.attractions.slice(0, 2).map((attraction, idx) => (
                       <span
                         key={idx}
-                        className="text-xs bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full border border-white/30 hover:bg-white/30 hover:border-white/50 transition-all duration-300"
+                        className="text-xs bg-slate-700/20 backdrop-blur-sm px-2 py-1 rounded-full border border-white/30 hover:bg-slate-700/30 hover:border-white/50 transition-all duration-300"
                       >
                         {attraction}
                       </span>

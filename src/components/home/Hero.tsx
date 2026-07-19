@@ -42,7 +42,7 @@ export const Hero = () => {
         <div className="absolute inset-0 flex flex-col justify-center pt-[68px] pb-20">
           <div className="max-w-[1320px] mx-auto w-full px-6 lg:px-16">
             <div className="max-w-[600px]">
-              <div className="inline-flex items-center gap-2 bg-white/12 backdrop-blur-md border border-white/20 text-white/90 text-[11px] font-semibold px-4 py-1.5 rounded-full mb-6 tracking-widest uppercase hover-lift-premium cursor-pointer">
+              <div className="inline-flex items-center gap-2 bg-slate-700/12 backdrop-blur-md border border-white/20 text-white/90 text-[11px] font-semibold px-4 py-1.5 rounded-full mb-6 tracking-widest uppercase hover-lift-premium cursor-pointer">
                 <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#F59E0B] to-[#EF4444] animate-pulse shrink-0" />
                 ✨ Trusted by 50,000+ Happy Travelers
               </div>
@@ -71,7 +71,7 @@ export const Hero = () => {
                 </Link>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 bg-white/12 hover:bg-white/20 text-white font-semibold px-6 py-3 rounded-full border border-white/30 backdrop-blur-sm transition-all duration-300 text-[14px]"
+                  className="inline-flex items-center gap-2 bg-slate-700/12 hover:bg-slate-700/20 text-white font-semibold px-6 py-3 rounded-full border border-white/30 backdrop-blur-sm transition-all duration-300 text-[14px]"
                 >
                   Talk to Expert
                 </Link>
@@ -85,7 +85,7 @@ export const Hero = () => {
                 ].map(({ icon: Icon, text }) => (
                   <div
                     key={text}
-                    className="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm border border-white/15 text-white/80 text-[11px] font-medium px-3 py-1.5 rounded-full"
+                    className="flex items-center gap-1.5 bg-slate-700/10 backdrop-blur-sm border border-white/15 text-white/80 text-[11px] font-medium px-3 py-1.5 rounded-full"
                   >
                     <Icon className="h-3 w-3 text-[#F59E0B]" />
                     {text}
@@ -120,7 +120,7 @@ export const Hero = () => {
       <div className="max-w-[1120px] mx-auto px-4 sm:px-6 mt-[-28px] relative z-20 pb-10">
         <form
           onSubmit={handleSearch}
-          className="bg-white rounded-[16px] shadow-[0_20px_60px_rgba(0,0,0,0.16)] px-3 sm:px-4 py-4 border border-gray-100"
+          className="bg-slate-700 rounded-[16px] shadow-[0_20px_60px_rgba(0,0,0,0.16)] px-3 sm:px-4 py-4 border border-slate-600"
         >
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-0">
 
@@ -193,13 +193,13 @@ export const Hero = () => {
                     <button
                       type="button"
                       onClick={() => setAdults((a) => Math.max(1, a - 1))}
-                      className="w-5 h-5 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 text-[12px] font-bold flex items-center justify-center transition-colors"
+                      className="w-5 h-5 rounded-full bg-slate-600 hover:bg-slate-500 text-slate-300 text-[12px] font-bold flex items-center justify-center transition-colors"
                     >−</button>
                     <span className="text-[13px] text-[#374151] font-medium w-4 text-center">{adults}</span>
                     <button
                       type="button"
                       onClick={() => setAdults((a) => a + 1)}
-                      className="w-5 h-5 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 text-[12px] font-bold flex items-center justify-center transition-colors"
+                      className="w-5 h-5 rounded-full bg-slate-600 hover:bg-slate-500 text-slate-300 text-[12px] font-bold flex items-center justify-center transition-colors"
                     >+</button>
                     <span className="text-[11px] text-[#9CA3AF]">Adults</span>
                   </div>
@@ -209,13 +209,13 @@ export const Hero = () => {
                     <button
                       type="button"
                       onClick={() => setChildren((c) => Math.max(0, c - 1))}
-                      className="w-5 h-5 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 text-[12px] font-bold flex items-center justify-center transition-colors"
+                      className="w-5 h-5 rounded-full bg-slate-600 hover:bg-slate-500 text-slate-300 text-[12px] font-bold flex items-center justify-center transition-colors"
                     >−</button>
                     <span className="text-[13px] text-[#374151] font-medium w-4 text-center">{children}</span>
                     <button
                       type="button"
                       onClick={() => setChildren((c) => c + 1)}
-                      className="w-5 h-5 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 text-[12px] font-bold flex items-center justify-center transition-colors"
+                      className="w-5 h-5 rounded-full bg-slate-600 hover:bg-slate-500 text-slate-300 text-[12px] font-bold flex items-center justify-center transition-colors"
                     >+</button>
                     <span className="text-[11px] text-[#9CA3AF]">Kids</span>
                   </div>

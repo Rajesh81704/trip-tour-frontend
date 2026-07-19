@@ -87,7 +87,7 @@ export const FeaturedPackages = () => {
               <h2 className="heading-premium text-[32px] sm:text-[40px] text-gradient-premium mb-3">
                 Where Do You Want to Go?
               </h2>
-              <p className="text-gray-600 text-base mb-4">Discover our most sought-after destinations around the world</p>
+              <p className="text-slate-300 text-base mb-4">Discover our most sought-after destinations around the world</p>
               <div className="flex gap-2">
                 <div className="w-12 h-1 bg-gradient-to-r from-[#2563EB] to-[#F59E0B] rounded-full" />
                 <div className="w-8 h-1 bg-gradient-to-r from-[#F59E0B] to-[#7C3AED] rounded-full" />
@@ -122,7 +122,7 @@ export const FeaturedPackages = () => {
                 <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent" />
 
                 {/* Rating */}
-                <div className="absolute top-2.5 left-2.5 flex items-center gap-1 bg-white/90 backdrop-blur-sm text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm text-[#111827]">
+                <div className="absolute top-2.5 left-2.5 flex items-center gap-1 bg-slate-700/90 backdrop-blur-sm text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm text-[#111827]">
                   <Star className="h-2.5 w-2.5 fill-[#F59E0B] text-[#F59E0B]" />
                   {dest.rating}
                 </div>
@@ -138,7 +138,7 @@ export const FeaturedPackages = () => {
 
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-[#2563EB]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <span className="bg-white text-[#2563EB] text-[11px] font-bold px-3 py-1.5 rounded-full shadow-md">
+                  <span className="bg-slate-700 text-[#2563EB] text-[11px] font-bold px-3 py-1.5 rounded-full shadow-md">
                     Explore →
                   </span>
                 </div>
@@ -189,8 +189,8 @@ export const FeaturedPackages = () => {
             /* Skeleton placeholders while API loads */
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
               {Array.from({ length: 8 }).map((_, i) => (
-                <div key={i} className="bg-white rounded-[20px] overflow-hidden border border-[#E5E7EB] animate-pulse">
-                  <div className="h-52 bg-[#F3F4F6]" />
+                <div key={i} className="bg-slate-700 rounded-[20px] overflow-hidden border border-slate-600 animate-pulse">
+                  <div className="h-52 bg-slate-600" />
                   <div className="p-4 space-y-3">
                     <div className="h-3 bg-[#F3F4F6] rounded w-2/3" />
                     <div className="h-4 bg-[#F3F4F6] rounded w-full" />
@@ -223,7 +223,7 @@ export const FeaturedPackages = () => {
           SECTION 3 — Trending Packages (horizontal scroll)
       ══════════════════════════════════════════════════════ */}
       {packageData.length > 0 && (
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-slate-800">
           <div className="max-w-[1320px] mx-auto px-6 lg:px-8">
 
             {/* Header */}
@@ -233,18 +233,18 @@ export const FeaturedPackages = () => {
                   <p className="text-[11px] font-extrabold text-[#EF4444] uppercase tracking-widest">
                     Trending Now
                   </p>
-                  <span className="flex items-center gap-1 bg-[#FEF2F2] text-[#EF4444] text-[10px] font-bold px-2 py-0.5 rounded-full border border-[#FECACA]">
+                  <span className="flex items-center gap-1 bg-[#7F1D1D] text-[#FCA5A5] text-[10px] font-bold px-2 py-0.5 rounded-full border border-[#DC2626]">
                     🔥 Hot
                   </span>
                 </div>
-                <h2 className="text-[28px] sm:text-[32px] font-extrabold text-[#111827] leading-tight">
+                <h2 className="text-[28px] sm:text-[32px] font-extrabold text-slate-100 leading-tight">
                   Trending Packages
                 </h2>
                 <div className="w-12 h-1 bg-[#EF4444] rounded-full mt-2.5" />
               </div>
               <Link
                 href="/packages"
-                className="hidden sm:flex items-center gap-1.5 text-[13px] font-semibold text-[#2563EB] border border-[#DBEAFE] hover:border-[#2563EB] hover:bg-blue-50 rounded-full px-4 py-2 transition-all duration-200"
+                className="hidden sm:flex items-center gap-1.5 text-[13px] font-semibold text-[#2563EB] border border-blue-900/50 hover:border-[#2563EB] hover:bg-blue-900/20 rounded-full px-4 py-2 transition-all duration-200"
               >
                 View All
                 <ChevronRight className="h-3.5 w-3.5" />
@@ -262,7 +262,7 @@ export const FeaturedPackages = () => {
                   <div
                     key={pkg._id}
                     onClick={() => handlePackageClick(pkg._id)}
-                    className="group shrink-0 w-[260px] bg-white rounded-[18px] overflow-hidden border border-[#E5E7EB] shadow-[0_4px_16px_rgba(0,0,0,0.07)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.13)] transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+                    className="group shrink-0 w-[260px] bg-slate-700 rounded-[18px] overflow-hidden border border-slate-600 shadow-[0_4px_16px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.5)] transition-all duration-300 hover:-translate-y-1 cursor-pointer"
                   >
                     {/* Image */}
                     <div className="relative h-[160px] overflow-hidden">
@@ -381,7 +381,7 @@ export const FeaturedPackages = () => {
                   <input
                     type="email"
                     placeholder="Enter your email address"
-                    className="flex-1 min-w-0 px-4 py-3 rounded-[12px] bg-white/15 border border-white/25 text-white placeholder-blue-200/70 text-[14px] focus:outline-none focus:border-white/60 focus:bg-white/20 transition-all"
+                    className="flex-1 min-w-0 px-4 py-3 rounded-[12px] bg-slate-700/15 border border-white/25 text-white placeholder-blue-200/70 text-[14px] focus:outline-none focus:border-white/60 focus:bg-slate-700/20 transition-all"
                   />
                   <button
                     type="submit"

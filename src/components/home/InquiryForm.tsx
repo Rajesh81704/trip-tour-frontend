@@ -73,7 +73,7 @@ export const InquiryForm = ({
 
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div className="w-full max-w-[900px] bg-white rounded-[20px] shadow-[0_30px_80px_rgba(0,0,0,0.25)] overflow-hidden max-h-[95vh] overflow-y-auto">
+      <div className="w-full max-w-[900px] bg-slate-700 rounded-[20px] shadow-[0_30px_80px_rgba(0,0,0,0.25)] overflow-hidden max-h-[95vh] overflow-y-auto">
         {/* Hero Banner */}
         <div className="relative h-[140px] overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -94,7 +94,7 @@ export const InquiryForm = ({
           </div>
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 w-8 h-8 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all duration-200"
+            className="absolute top-4 right-4 w-8 h-8 bg-slate-700/20 hover:bg-slate-700/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all duration-200"
             aria-label="Close"
           >
             <X className="h-4 w-4" />

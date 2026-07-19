@@ -55,7 +55,7 @@ export const FloatingInquiryForm = () => {
   };
 
   return (
-    <Card className="w-full max-w-sm bg-white/95 backdrop-blur-lg shadow-2xl border-0 rounded-3xl py-0">
+    <Card className="w-full max-w-sm bg-slate-700/95 backdrop-blur-lg shadow-2xl border-0 rounded-3xl py-0">
       <CardHeader className="bg-gradient-to-r from-orange-500/90 to-red-500/90 text-white rounded-t-3xl pb-3 pt-3">
         <CardTitle className="text-center text-2xl font-extrabold tracking-tight drop-shadow-lg">
           ✈️ Plan Your Dream Trip
@@ -75,7 +75,7 @@ export const FloatingInquiryForm = () => {
               required
               value={formData.name}
               onChange={(e) => handleInputChange("name", e.target.value)}
-              className="w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-white/80 placeholder-gray-400 text-base transition"
+              className="w-full pl-10 pr-3 py-3 border border-slate-600 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-slate-700/80 placeholder-slate-400 text-base transition"
               placeholder="Your Name"
               autoComplete="name"
             />
@@ -91,7 +91,7 @@ export const FloatingInquiryForm = () => {
               onChange={(e) =>
                 handleInputChange("mobileNumber", e.target.value)
               }
-              className="w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-white/80 placeholder-gray-400 text-base transition"
+              className="w-full pl-10 pr-3 py-3 border border-slate-600 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-slate-700/80 placeholder-slate-400 text-base transition"
               placeholder="Mobile Number"
               autoComplete="tel"
               pattern="[0-9]{10,}"
@@ -107,7 +107,7 @@ export const FloatingInquiryForm = () => {
               required
               value={formData.email}
               onChange={(e) => handleInputChange("email", e.target.value)}
-              className="w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-white/80 placeholder-gray-400 text-base transition"
+              className="w-full pl-10 pr-3 py-3 border border-slate-600 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-slate-700/80 placeholder-slate-400 text-base transition"
               placeholder="Email Address"
               autoComplete="email"
             />
@@ -119,7 +119,7 @@ export const FloatingInquiryForm = () => {
             <select
               value={formData.destination}
               onChange={(e) => handleInputChange("destination", e.target.value)}
-              className="w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 bg-white/80 text-base text-gray-700 transition"
+              className="w-full pl-10 pr-3 py-3 border border-slate-600 rounded-xl focus:ring-2 focus:ring-orange-500 bg-slate-700/80 text-base text-slate-200 transition"
               required
             >
               <option value="" disabled>
@@ -140,7 +140,7 @@ export const FloatingInquiryForm = () => {
               rows={3}
               value={formData.message}
               onChange={(e) => handleInputChange("message", e.target.value)}
-              className="w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 bg-white/80 placeholder-gray-400 text-base transition resize-none"
+              className="w-full pl-10 pr-3 py-3 border border-slate-600 rounded-xl focus:ring-2 focus:ring-orange-500 bg-slate-700/80 placeholder-slate-400 text-base transition resize-none"
               placeholder="Your travel plans or requirements..."
             />
           </div>

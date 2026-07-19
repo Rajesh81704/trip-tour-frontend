@@ -53,12 +53,12 @@ export const Navbar = () => {
 
   // Navbar background
   const navBg = isScrolled
-    ? "bg-white/95 backdrop-blur-md shadow-[0_2px_20px_rgba(0,0,0,0.08)]"
+    ? "bg-slate-800/95 backdrop-blur-md shadow-[0_2px_20px_rgba(0,0,0,0.3)]"
     : isHomePage
     ? "bg-transparent"
-    : "bg-white shadow-[0_2px_12px_rgba(0,0,0,0.06)]";
+    : "bg-slate-800 shadow-[0_2px_12px_rgba(0,0,0,0.3)]";
 
-  const isLight = isScrolled || !isHomePage;
+  const isLight = false; // Always dark mode now
 
   return (
     <>
@@ -88,10 +88,10 @@ export const Navbar = () => {
                     relative px-4 py-2 rounded-full text-[14.5px] font-medium transition-all duration-200
                     ${isActive(path)
                       ? isLight
-                        ? "text-[#2563EB] bg-blue-50"
+                        ? "text-[#2563EB] bg-blue-900/20"
                         : "text-white bg-white/15"
                       : isLight
-                        ? "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                        ? "text-white hover:text-white hover:bg-slate-700"
                         : "text-white/85 hover:text-white hover:bg-white/10"
                     }
                   `}
@@ -110,7 +110,7 @@ export const Navbar = () => {
                 className={`
                   flex items-center gap-1.5 text-[13.5px] font-medium px-3.5 py-2 rounded-full transition-all duration-200
                   ${isLight
-                    ? "text-gray-500 hover:text-[#2563EB] hover:bg-blue-50"
+                    ? "text-white hover:text-[#2563EB] hover:bg-blue-900/20"
                     : "text-white/75 hover:text-white hover:bg-white/10"
                   }
                 `}
@@ -120,7 +120,7 @@ export const Navbar = () => {
               </Link>
 
               {/* Divider */}
-              <span className={`w-px h-5 ${isLight ? "bg-gray-200" : "bg-white/20"}`} />
+              <span className={`w-px h-5 ${isLight ? "bg-slate-600" : "bg-white/20"}`} />
 
               {/* Sign In / Logout */}
               {isLoggedIn ? (
@@ -130,7 +130,7 @@ export const Navbar = () => {
                   className={`
                     flex items-center gap-1.5 text-[13.5px] font-medium px-4 py-2 rounded-full border transition-all duration-200
                     ${isLight
-                      ? "border-gray-200 text-gray-600 hover:border-red-200 hover:text-red-600 hover:bg-red-50"
+                      ? "border-slate-600 text-white hover:border-red-500/50 hover:text-red-400 hover:bg-red-500/10"
                       : "border-white/30 text-white/90 hover:bg-white/10 hover:text-white"
                     }
                   `}
@@ -145,7 +145,7 @@ export const Navbar = () => {
                   className={`
                     flex items-center gap-1.5 text-[13.5px] font-medium px-4 py-2 rounded-full border transition-all duration-200
                     ${isLight
-                      ? "border-gray-200 text-gray-600 hover:border-[#2563EB] hover:text-[#2563EB] hover:bg-blue-50"
+                      ? "border-slate-600 text-white hover:border-[#2563EB] hover:text-[#2563EB] hover:bg-blue-900/20"
                       : "border-white/30 text-white/90 hover:bg-white/10 hover:text-white"
                     }
                   `}
@@ -173,7 +173,7 @@ export const Navbar = () => {
               className={`
                 lg:hidden p-2 rounded-xl transition-colors
                 ${isLight
-                  ? "text-gray-700 hover:bg-gray-100"
+                  ? "text-white hover:bg-slate-700"
                   : "text-white hover:bg-white/10"
                 }
               `}
@@ -196,17 +196,17 @@ export const Navbar = () => {
       {/* Mobile Drawer */}
       <div
         className={`
-          fixed top-0 right-0 w-[280px] h-full z-50 bg-white flex flex-col
+          fixed top-0 right-0 w-[280px] h-full z-50 bg-slate-800 flex flex-col
           shadow-2xl transform transition-transform duration-300 ease-out lg:hidden
           ${isMenuOpen ? "translate-x-0" : "translate-x-full"}
         `}
       >
         {/* Drawer Header */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-slate-700">
           <Image src="/logo.png" alt="TripToo Travels" width={110} height={36} className="h-8 w-auto object-contain" />
           <button
             onClick={handleMenuClose}
-            className="p-1.5 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-50 transition-colors"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-700 transition-colors"
           >
             <X className="h-5 w-5" />
           </button>
@@ -222,8 +222,8 @@ export const Navbar = () => {
               className={`
                 flex items-center px-4 py-3 rounded-xl text-[15px] font-medium transition-all duration-200
                 ${isActive(path)
-                  ? "bg-blue-50 text-[#2563EB]"
-                  : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                  ? "bg-blue-900/30 text-[#2563EB]"
+                  : "text-slate-300 hover:bg-slate-700 hover:text-slate-100"
                 }
               `}
             >
@@ -233,11 +233,11 @@ export const Navbar = () => {
         </nav>
 
         {/* Drawer Footer */}
-        <div className="px-4 py-5 border-t border-gray-100 space-y-2.5">
+        <div className="px-4 py-5 border-t border-slate-700 space-y-2.5">
           {isLoggedIn ? (
             <button
               onClick={handleLogout}
-              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-gray-200 text-gray-600 text-sm font-medium hover:border-red-200 hover:text-red-600 hover:bg-red-50 transition-colors"
+              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-slate-600 text-slate-300 text-sm font-medium hover:border-red-500/50 hover:text-red-400 hover:bg-red-500/10 transition-colors"
             >
               <LogOut className="h-4 w-4" />
               Logout
@@ -245,7 +245,7 @@ export const Navbar = () => {
           ) : (
             <button
               onClick={handleLoginOpen}
-              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-gray-200 text-gray-600 text-sm font-medium hover:border-[#2563EB] hover:text-[#2563EB] hover:bg-blue-50 transition-colors"
+              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-slate-600 text-slate-300 text-sm font-medium hover:border-[#2563EB] hover:text-[#2563EB] hover:bg-blue-900/20 transition-colors"
             >
               <User className="h-4 w-4" />
               Sign In

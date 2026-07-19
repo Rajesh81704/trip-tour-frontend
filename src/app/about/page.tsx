@@ -42,7 +42,7 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
       {/* Hero Banner - Premium Redesign */}
       <section className="relative min-h-[450px] overflow-hidden pt-[100px] pb-[80px] bg-gradient-to-br from-blue-900 via-purple-900 to-blue-800">
         <div className="absolute inset-0 opacity-25">
@@ -69,24 +69,24 @@ const About = () => {
       </section>
 
       {/* Stats Section - Enhanced */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-slate-800">
         <div className="max-w-[1320px] mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((stat, index) => (
               <div
                 key={index}
-                className="relative group bg-gradient-to-br from-gray-50 to-gray-100/50 rounded-[24px] border-2 border-gray-100 p-8 flex flex-col items-center text-center hover:shadow-premium-hover hover-lift-premium transition-all duration-300 overflow-hidden"
+                className="relative group bg-gradient-to-br from-slate-700 to-slate-600 rounded-[24px] border-2 border-slate-600 p-8 flex flex-col items-center text-center hover:shadow-premium-hover hover-lift-premium transition-all duration-300 overflow-hidden"
               >
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent rounded-[24px]" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-[24px]" />
                 </div>
                 <div className="relative z-10">
                   <div className="text-5xl mb-4 group-hover:animate-bounce transition-all duration-300">{stat.icon}</div>
                   <div className="text-[36px] font-black text-transparent bg-clip-text bg-gradient-to-r from-[#2563EB] to-[#7C3AED] leading-none mb-2">
                     {stat.value}
                   </div>
-                  <p className="text-[14px] font-bold text-gray-700 mb-1">{stat.label}</p>
-                  <p className="text-[12px] text-gray-500 font-medium">{stat.description}</p>
+                  <p className="text-[14px] font-bold text-slate-100 mb-1">{stat.label}</p>
+                  <p className="text-[12px] text-slate-400 font-medium">{stat.description}</p>
                 </div>
               </div>
             ))}
@@ -95,7 +95,7 @@ const About = () => {
       </section>
 
       {/* Our Story Section - Premium Layout */}
-      <section className="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-50">
+      <section className="py-24 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-800">
         <div className="max-w-[1320px] mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -103,7 +103,7 @@ const About = () => {
                 <div className="w-3 h-3 rounded-full bg-gradient-to-r from-[#2563EB] to-[#F59E0B]"></div>
                 <p className="section-label-premium">Who We Are</p>
               </div>
-              <h2 className="heading-premium text-[40px] text-gray-900 leading-tight mb-6">
+              <h2 className="heading-premium text-[40px] text-slate-100 leading-tight mb-6">
                 Redefining Travel<br/>
                 <span className="text-gradient-premium">One Journey at a Time</span>
               </h2>
@@ -111,7 +111,7 @@ const About = () => {
                 <div className="w-12 h-1 bg-gradient-to-r from-[#2563EB] to-[#F59E0B] rounded-full" />
                 <div className="w-8 h-1 bg-gradient-to-r from-[#F59E0B] to-[#7C3AED] rounded-full" />
               </div>
-              <div className="space-y-6 text-[15px] text-gray-700 leading-relaxed">
+              <div className="space-y-6 text-[15px] text-slate-300 leading-relaxed">
                 <p className="flex gap-3">
                   <span className="text-2xl shrink-0">🌟</span>
                   <span><strong>Founded in 2008</strong>, Book Itinerary began as a small dream to make extraordinary travel accessible to everyone. What started as a passion project has grown into one of India&apos;s most trusted travel companions.</span>
@@ -126,13 +126,13 @@ const About = () => {
                 </p>
               </div>
               <div className="mt-8 flex gap-4">
-                <div className="flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-4 py-2">
+                <div className="flex items-center gap-2 bg-blue-500/20 border border-blue-500/40 rounded-full px-4 py-2">
                   <Star className="h-4 w-4 fill-[#F59E0B] text-[#F59E0B]" />
-                  <span className="text-sm font-semibold text-blue-900">4.9/5 Rated</span>
+                  <span className="text-sm font-semibold text-blue-300">4.9/5 Rated</span>
                 </div>
-                <div className="flex items-center gap-2 bg-green-50 border border-green-100 rounded-full px-4 py-2">
-                  <Users className="h-4 w-4 text-green-600" />
-                  <span className="text-sm font-semibold text-green-900">50K+ Travelers</span>
+                <div className="flex items-center gap-2 bg-green-500/20 border border-green-500/40 rounded-full px-4 py-2">
+                  <Users className="h-4 w-4 text-green-400" />
+                  <span className="text-sm font-semibold text-green-300">50K+ Travelers</span>
                 </div>
               </div>
             </div>
@@ -160,18 +160,18 @@ const About = () => {
       </section>
 
       {/* Features Section - Premium Cards */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-slate-800">
         <div className="max-w-[1320px] mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 mb-4">
               <div className="w-3 h-3 rounded-full bg-gradient-to-r from-[#2563EB] to-[#F59E0B]"></div>
               <p className="section-label-premium">Why Choose Us</p>
             </div>
-            <h2 className="heading-premium text-[40px] text-gray-900 leading-tight mb-3">
+            <h2 className="heading-premium text-[40px] text-slate-100 leading-tight mb-3">
               Why Travelers<br/>
               <span className="text-gradient-premium">Trust Us</span>
             </h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto mt-6">
+            <p className="text-slate-400 text-lg max-w-2xl mx-auto mt-6">
               We don&apos;t just plan trips, we create life-changing experiences that stay with you forever.
             </p>
           </div>
@@ -180,15 +180,15 @@ const About = () => {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className={`relative group bg-gradient-to-br ${feature.gradient} rounded-[24px] border-2 border-gray-100 p-8 flex flex-col items-center text-center hover:shadow-premium-hover hover-lift-premium transition-all duration-300 overflow-hidden`}
+                className={`relative group bg-slate-700 rounded-[24px] border-2 border-slate-600 p-8 flex flex-col items-center text-center hover:shadow-premium-hover hover-lift-premium transition-all duration-300 overflow-hidden`}
               >
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-transparent rounded-[24px]" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-[24px]" />
                 </div>
                 <div className="relative z-10">
                   <div className="text-5xl mb-4 group-hover:animate-bounce transition-all duration-300">{feature.icon}</div>
-                  <h3 className="font-bold text-gray-900 text-[16px] mb-3 heading-premium">{feature.title}</h3>
-                  <p className="text-[14px] text-gray-700 leading-relaxed">{feature.description}</p>
+                  <h3 className="font-bold text-slate-100 text-[16px] mb-3 heading-premium">{feature.title}</h3>
+                  <p className="text-[14px] text-slate-300 leading-relaxed">{feature.description}</p>
                 </div>
               </div>
             ))}
@@ -197,11 +197,11 @@ const About = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-slate-800">
         <div className="max-w-[1320px] mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="text-[11px] font-extrabold text-[#2563EB] uppercase tracking-widest mb-2">Get In Touch</p>
-            <h2 className="text-[36px] font-extrabold text-[#111827] leading-tight">
+            <h2 className="text-[36px] font-extrabold text-slate-100 leading-tight">
               Contact & Our Offices
             </h2>
             <div className="w-14 h-1 bg-[#F59E0B] rounded-full mt-3 mx-auto" />
@@ -211,26 +211,26 @@ const About = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-12 max-w-2xl mx-auto">
             <a
               href="tel:+919315666960"
-              className="flex items-center gap-4 bg-[#F8FAFC] border border-[#E5E7EB] rounded-[20px] p-5 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+              className="flex items-center gap-4 bg-slate-700 border border-slate-600 rounded-[20px] p-5 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
             >
-              <div className="bg-amber-100 w-12 h-12 rounded-2xl flex items-center justify-center shrink-0">
+              <div className="bg-amber-500/20 w-12 h-12 rounded-2xl flex items-center justify-center shrink-0">
                 <Phone className="h-5 w-5 text-[#F59E0B]" />
               </div>
               <div>
-                <p className="text-[12px] text-[#6B7280] font-medium mb-0.5">Support Number</p>
-                <p className="text-[15px] font-bold text-[#111827]">+91 9315666960</p>
+                <p className="text-[12px] text-slate-400 font-medium mb-0.5">Support Number</p>
+                <p className="text-[15px] font-bold text-slate-100">+91 9315666960</p>
               </div>
             </a>
             <a
               href="mailto:info@bookitinerary.com"
-              className="flex items-center gap-4 bg-[#F8FAFC] border border-[#E5E7EB] rounded-[20px] p-5 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+              className="flex items-center gap-4 bg-slate-700 border border-slate-600 rounded-[20px] p-5 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
             >
-              <div className="bg-blue-100 w-12 h-12 rounded-2xl flex items-center justify-center shrink-0">
+              <div className="bg-blue-500/20 w-12 h-12 rounded-2xl flex items-center justify-center shrink-0">
                 <Mail className="h-5 w-5 text-[#2563EB]" />
               </div>
               <div>
-                <p className="text-[12px] text-[#6B7280] font-medium mb-0.5">Email Us</p>
-                <p className="text-[15px] font-bold text-[#111827]">info@bookitinerary.com</p>
+                <p className="text-[12px] text-slate-400 font-medium mb-0.5">Email Us</p>
+                <p className="text-[15px] font-bold text-slate-100">info@bookitinerary.com</p>
               </div>
             </a>
           </div>
@@ -269,14 +269,14 @@ const About = () => {
             ].map(({ flag, country, name, address, badge }) => (
               <div
                 key={country}
-                className="bg-[#F8FAFC] border border-[#E5E7EB] rounded-[20px] p-6 hover:shadow-[0_18px_45px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1"
+                className="bg-slate-700 border border-slate-600 rounded-[20px] p-6 hover:shadow-[0_18px_45px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="text-3xl mb-3">{flag}</div>
                 <p className="text-[11px] font-extrabold text-[#2563EB] uppercase tracking-widest mb-1">{country}</p>
-                <p className="text-[15px] font-bold text-[#111827] mb-2">{name}</p>
-                <p className="text-[13px] text-[#6B7280] leading-relaxed mb-3">{address}</p>
+                <p className="text-[15px] font-bold text-slate-100 mb-2">{name}</p>
+                <p className="text-[13px] text-slate-400 leading-relaxed mb-3">{address}</p>
                 {badge && (
-                  <span className="inline-block text-[11px] font-semibold bg-amber-100 text-[#D97706] px-2.5 py-1 rounded-full">
+                  <span className="inline-block text-[11px] font-semibold bg-amber-500/20 text-[#F59E0B] px-2.5 py-1 rounded-full">
                     {badge}
                   </span>
                 )}

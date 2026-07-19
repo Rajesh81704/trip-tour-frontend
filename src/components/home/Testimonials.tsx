@@ -49,7 +49,7 @@ const testimonials = [
 
 export default memo(function Testimonials() {
   return (
-    <section className="py-24 bg-gradient-to-br from-gray-50 via-white to-blue-50">
+    <section className="py-24 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-800">
       <div className="max-w-[1320px] mx-auto px-6 lg:px-8">
 
         {/* Header */}
@@ -58,7 +58,7 @@ export default memo(function Testimonials() {
           <h2 className="heading-premium text-[32px] sm:text-[40px] text-gradient-premium mb-3">
             Stories from Our Happy Travelers
           </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-4">
+          <p className="text-slate-300 text-lg max-w-2xl mx-auto mb-4">
             Discover why thousands of travelers choose us for their dream vacations
           </p>
           <div className="flex gap-2 justify-center">
@@ -71,43 +71,43 @@ export default memo(function Testimonials() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">{testimonials.map((t, i) => (
             <div
               key={i}
-              className="relative group bg-white rounded-[24px] p-7 flex flex-col hover:shadow-premium-hover border-2 border-gray-100 transition-all duration-300 hover-lift-premium overflow-hidden"
+              className="relative group bg-gradient-to-br from-amber-400 via-amber-300 to-orange-300 rounded-[24px] p-7 flex flex-col hover:shadow-premium-hover border-2 border-amber-200 transition-all duration-300 hover-lift-premium overflow-hidden"
             >
               {/* Gradient top border */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#2563EB] via-[#F59E0B] to-[#7C3AED] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-600 via-orange-500 to-amber-600 opacity-50 group-hover:opacity-100 transition-opacity duration-300" />
 
               {/* Watermark quote */}
-              <div className="absolute top-4 right-4 opacity-[0.08]">
-                <Quote className="h-16 w-16 text-[#2563EB]" />
+              <div className="absolute top-4 right-4 opacity-[0.1]">
+                <Quote className="h-16 w-16 text-amber-800" />
               </div>
 
               {/* Stars */}
               <div className="flex items-center gap-1 mb-4 relative z-10">
                 {Array.from({ length: t.rating }).map((_, idx) => (
-                  <Star key={idx} className="h-4 w-4 fill-[#F59E0B] text-[#F59E0B]" />
+                  <Star key={idx} className="h-4 w-4 fill-amber-700 text-amber-700" />
                 ))}
               </div>
 
               {/* Trip badge */}
-              <span className="text-[11px] font-bold text-white uppercase tracking-widest mb-4 bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] self-start px-3 py-1.5 rounded-full relative z-10">
+              <span className="text-[11px] font-bold text-white uppercase tracking-widest mb-4 bg-gradient-to-r from-amber-700 to-orange-700 self-start px-3 py-1.5 rounded-full relative z-10">
                 ✈️ {t.trip}
               </span>
 
               {/* Review */}
-              <p className="text-[#374151] text-[14px] leading-relaxed flex-1 mb-6 relative z-10">
+              <p className="text-amber-900 text-[14px] leading-relaxed flex-1 mb-6 relative z-10">
                 &ldquo;{t.text}&rdquo;
               </p>
 
               {/* Author */}
-              <div className="flex items-center gap-3 pt-4 border-t border-gray-100 relative z-10">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#2563EB] to-[#7C3AED] flex items-center justify-center text-white font-bold text-sm shrink-0">
+              <div className="flex items-center gap-3 pt-4 border-t border-amber-200 relative z-10">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-700 to-orange-700 flex items-center justify-center text-white font-bold text-sm shrink-0">
                   {t.name.charAt(0)}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-bold text-[#111827] text-[13px] leading-none">{t.name}</p>
-                  <p className="text-[11px] text-[#9CA3AF] mt-0.5">{t.location}</p>
+                  <p className="font-bold text-amber-900 text-[13px] leading-none">{t.name}</p>
+                  <p className="text-[11px] text-amber-800 mt-0.5">{t.location}</p>
                 </div>
-                <span className="text-[10px] font-bold text-[#16A34A] bg-green-50 px-2 py-0.5 rounded-full border border-green-100 shrink-0">
+                <span className="text-[10px] font-bold text-white bg-green-600 px-2 py-0.5 rounded-full border border-green-700 shrink-0">
                   Verified
                 </span>
               </div>
@@ -116,20 +116,20 @@ export default memo(function Testimonials() {
         </div>
 
         {/* Compact rating summary */}
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 bg-white rounded-[18px] border border-[#E5E7EB] px-8 py-6">
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 bg-gradient-to-r from-amber-500 via-orange-400 to-amber-500 rounded-[18px] border border-amber-300 px-8 py-6">
           <div className="flex items-center gap-3">
-            <div className="text-[42px] font-extrabold text-[#111827] leading-none">4.8</div>
+            <div className="text-[42px] font-extrabold text-amber-900 leading-none">4.8</div>
             <div>
               <div className="flex gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="h-4 w-4 fill-[#F59E0B] text-[#F59E0B]" />
                 ))}
               </div>
-              <div className="text-[12px] text-[#9CA3AF] mt-0.5">Based on 5,000+ reviews</div>
+              <div className="text-[12px] text-amber-800 mt-0.5">Based on 5,000+ reviews</div>
             </div>
           </div>
 
-          <div className="hidden sm:block w-px h-12 bg-[#E5E7EB]" />
+          <div className="hidden sm:block w-px h-12 bg-amber-300" />
 
           <div className="flex items-center gap-8">
             {[
@@ -139,7 +139,7 @@ export default memo(function Testimonials() {
             ].map((r) => (
               <div key={r.platform} className="text-center">
                 <div className={`text-[18px] font-extrabold ${r.color} leading-none`}>{r.score}/5</div>
-                <div className="text-[11px] text-[#9CA3AF] mt-0.5">{r.platform}</div>
+                <div className="text-[11px] text-amber-800 mt-0.5">{r.platform}</div>
               </div>
             ))}
           </div>

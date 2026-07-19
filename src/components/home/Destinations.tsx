@@ -41,7 +41,7 @@ export const Destinations = () => {
           <h2 className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-blue-600 drop-shadow-lg mb-4">
             Popular Destinations
           </h2>
-          <p className="text-xl md:text-2xl text-gray-700 max-w-2xl mx-auto font-medium">
+          <p className="text-xl md:text-2xl text-slate-200 max-w-2xl mx-auto font-medium">
             Explore the world&apos;s most breathtaking locations with our expert
             guides
           </p>
@@ -51,7 +51,7 @@ export const Destinations = () => {
           {destinations.map((destination, index) => (
             <Card
               key={index}
-              className="group relative overflow-hidden rounded-3xl shadow-lg border-0 bg-white/90 hover:scale-105 hover:shadow-2xl transition-all duration-300 py-0"
+              className="group relative overflow-hidden rounded-3xl shadow-lg border-0 bg-slate-700/90 hover:scale-105 hover:shadow-2xl transition-all duration-300 py-0"
             >
               <div className="relative h-72">
                 <Image
@@ -67,7 +67,7 @@ export const Destinations = () => {
                 />
                 <div className="absolute inset-0 bg-black/20 rounded-3xl" />
                 <div className="absolute top-4 right-4">
-                  <span className="inline-block bg-white/80 text-orange-600 font-semibold px-4 py-1 rounded-full text-xs shadow-md backdrop-blur-md">
+                  <span className="inline-block bg-slate-700/80 text-orange-600 font-semibold px-4 py-1 rounded-full text-xs shadow-md backdrop-blur-md">
                     {destination.count}
                   </span>
                 </div>

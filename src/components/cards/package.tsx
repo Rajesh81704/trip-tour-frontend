@@ -17,7 +17,7 @@ export const PackageCard = ({ pkg, handlePackageClick }: PackageCardProps) => {
 
   return (
     <div
-      className="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col"
+      className="group bg-slate-700 rounded-2xl overflow-hidden border border-slate-600 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col"
       onClick={handlePackageClick}
     >
       {/* Image */}
@@ -48,7 +48,7 @@ export const PackageCard = ({ pkg, handlePackageClick }: PackageCardProps) => {
         {/* Discount badge */}
         {pkg.discount > 0 && (
           <div className="absolute top-3 right-10">
-            <span className="bg-[#EF4444] text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wide shadow-sm">
+            <span className="bg-gradient-to-r from-amber-400 to-orange-400 text-amber-900 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wide shadow-md">
               {pkg.discount}% OFF
             </span>
           </div>
@@ -56,11 +56,11 @@ export const PackageCard = ({ pkg, handlePackageClick }: PackageCardProps) => {
 
         {/* Wishlist */}
         <button
-          className="absolute top-3 right-3 w-8 h-8 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-md transition-all duration-200 hover:scale-110"
+          className="absolute top-3 right-3 w-8 h-8 bg-slate-600/90 hover:bg-slate-500 rounded-full flex items-center justify-center shadow-md transition-all duration-200 hover:scale-110"
           onClick={(e) => e.stopPropagation()}
           aria-label="Save to wishlist"
         >
-          <Heart className="h-3.5 w-3.5 text-gray-400 hover:text-red-500 transition-colors" />
+          <Heart className="h-3.5 w-3.5 text-slate-300 hover:text-red-400 transition-colors" />
         </button>
 
         {/* Duration pill — bottom left */}
@@ -87,29 +87,29 @@ export const PackageCard = ({ pkg, handlePackageClick }: PackageCardProps) => {
         </div>
 
         {/* Title */}
-        <h3 className="font-bold text-[#111827] text-[14.5px] leading-snug line-clamp-2 mb-2 flex-1">
+        <h3 className="font-bold text-slate-100 text-[14.5px] leading-snug line-clamp-2 mb-2 flex-1">
           {pkg.title}
         </h3>
 
         {/* Description */}
-        <p className="text-[12px] text-[#9CA3AF] line-clamp-2 leading-relaxed mb-4">
+        <p className="text-[12px] text-slate-400 line-clamp-2 leading-relaxed mb-4">
           {pkg.description}
         </p>
 
         {/* Price + CTA */}
-        <div className="flex items-center justify-between pt-3 border-t border-gray-100 mt-auto">
+        <div className="flex items-center justify-between pt-3 border-t border-slate-600 mt-auto">
           <div>
             {pkg.discount > 0 && pkg.price > 0 && (
-              <p className="text-[11px] text-[#9CA3AF] line-through leading-none mb-0.5">
+              <p className="text-[11px] text-slate-500 line-through leading-none mb-0.5">
                 ₹{pkg.price.toLocaleString("en-IN")}
               </p>
             )}
             <div className="flex items-baseline gap-1">
-              <span className="text-[17px] font-extrabold text-[#111827]">
+              <span className="text-[17px] font-extrabold text-slate-100">
                 {discountedPrice > 0 ? `₹${discountedPrice.toLocaleString("en-IN")}` : "Contact Us"}
               </span>
               {discountedPrice > 0 && (
-                <span className="text-[11px] text-[#9CA3AF] font-normal">/ person</span>
+                <span className="text-[11px] text-slate-400 font-normal">/ person</span>
               )}
             </div>
           </div>

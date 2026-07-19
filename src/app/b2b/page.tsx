@@ -111,7 +111,7 @@ const B2B = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-slate-800">
       {/* Hero Section with Snow Background */}
       <section className="pt-20 pb-16 relative overflow-hidden">
         {/* Snow Background */}
@@ -122,16 +122,16 @@ const B2B = () => {
               "url('https://images.unsplash.com/photo-1551582045-6ec9c11d8697?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')",
           }}
         >
-          <div className="absolute inset-0 bg-white/30"></div>
+          <div className="absolute inset-0 bg-slate-800/30"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <h1 className="text-4xl md:text-5xl font-bold text-slate-100 mb-6">
                 Partner with Us for Exclusive Travel Packages
               </h1>
-              <p className="text-xl text-gray-600 mb-8">
+              <p className="text-xl text-slate-400 mb-8">
                 Grow Your Business through Our B2B Travel Solutions. Join 200+
                 trusted travel agents and corporate partners.
               </p>
@@ -156,7 +156,7 @@ const B2B = () => {
             </div>
 
             {/* Inquiry Form */}
-            <Card className="shadow-2xl bg-white/95 backdrop-blur-sm">
+            <Card className="shadow-2xl bg-slate-800/95 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-2xl text-center">
                   Request Partnership
@@ -290,9 +290,9 @@ const B2B = () => {
       </section>
 
       {/* How It Works */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+          <h2 className="text-3xl font-bold text-center text-slate-100 mb-12">
             How It Works
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -301,7 +301,7 @@ const B2B = () => {
                 <Building className="h-8 w-8 text-orange-600" />
               </div>
               <h3 className="text-xl font-semibold mb-2">1. Submit Inquiry</h3>
-              <p className="text-gray-600">
+              <p className="text-slate-400">
                 Fill out our simple B2B form with your requirements
               </p>
             </div>
@@ -312,7 +312,7 @@ const B2B = () => {
               <h3 className="text-xl font-semibold mb-2">
                 2. We Review & Plan
               </h3>
-              <p className="text-gray-600">
+              <p className="text-slate-400">
                 Our B2B team analyzes your needs and creates custom solutions
               </p>
             </div>
@@ -321,7 +321,7 @@ const B2B = () => {
                 <CheckCircle className="h-8 w-8 text-green-600" />
               </div>
               <h3 className="text-xl font-semibold mb-2">3. Get Your Offer</h3>
-              <p className="text-gray-600">
+              <p className="text-slate-400">
                 Receive competitive pricing and partnership terms within 24
                 hours
               </p>
@@ -331,23 +331,23 @@ const B2B = () => {
       </section>
 
       {/* Value Propositions */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-slate-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+          <h2 className="text-3xl font-bold text-center text-slate-100 mb-12">
             Why Choose Our B2B Solutions
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
               <Shield className="h-12 w-12 text-orange-500 mx-auto mb-4" />
               <h3 className="font-semibold mb-2">Dedicated B2B Pricing</h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-slate-400 text-sm">
                 Exclusive volume discounts and competitive rates for partners
               </p>
             </div>
             <div className="text-center">
               <Globe className="h-12 w-12 text-blue-500 mx-auto mb-4" />
               <h3 className="font-semibold mb-2">Customizable Itineraries</h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-slate-400 text-sm">
                 Tailored group packages to meet your clients&apos; specific
                 needs
               </p>
@@ -355,14 +355,14 @@ const B2B = () => {
             <div className="text-center">
               <Clock className="h-12 w-12 text-green-500 mx-auto mb-4" />
               <h3 className="font-semibold mb-2">Fast Response SLA</h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-slate-400 text-sm">
                 24-hour response time with dedicated account managers
               </p>
             </div>
             <div className="text-center">
               <Star className="h-12 w-12 text-purple-500 mx-auto mb-4" />
               <h3 className="font-semibold mb-2">Reliable Support</h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-slate-400 text-sm">
                 End-to-end support from booking to trip completion
               </p>
             </div>
@@ -371,9 +371,9 @@ const B2B = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+          <h2 className="text-3xl font-bold text-center text-slate-100 mb-12">
             What Our Partners Say
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -387,7 +387,7 @@ const B2B = () => {
                     />
                   ))}
                 </div>
-                <p className="text-gray-600 mb-4">
+                <p className="text-slate-400 mb-4">
                   &ldquo;Excellent B2B support and competitive pricing. Our
                   clients love the customized packages.&ldquo;
                 </p>
@@ -407,7 +407,7 @@ const B2B = () => {
                     />
                   ))}
                 </div>
-                <p className="text-gray-600 mb-4">
+                <p className="text-slate-400 mb-4">
                   &ldquo;TripToo Travels has been our reliable partner for
                   corporate travel. Highly recommended!&rdquo;
                 </p>
@@ -427,7 +427,7 @@ const B2B = () => {
                     />
                   ))}
                 </div>
-                <p className="text-gray-600 mb-4">
+                <p className="text-slate-400 mb-4">
                   &ldquo;Fast response times and professional service. They
                   understand our business needs perfectly.&ldquo;
                 </p>
@@ -442,9 +442,9 @@ const B2B = () => {
       </section>
 
       {/* Interactive FAQ Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-slate-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+          <h2 className="text-3xl font-bold text-center text-slate-100 mb-12">
             Frequently Asked Questions
           </h2>
           <div className="space-y-4">
@@ -455,7 +455,7 @@ const B2B = () => {
                 onOpenChange={() => toggleFAQ(index)}
               >
                 <Card className="overflow-hidden">
-                  <CollapsibleTrigger className="w-full p-6 text-left hover:bg-gray-50 transition-colors">
+                  <CollapsibleTrigger className="w-full p-6 text-left hover:bg-slate-700 transition-colors">
                     <div className="flex justify-between items-center">
                       <h3 className="font-semibold text-lg">{faq.question}</h3>
                       {openFAQ === index ? (
@@ -467,7 +467,7 @@ const B2B = () => {
                   </CollapsibleTrigger>
                   <CollapsibleContent>
                     <div className="px-6 pb-6">
-                      <p className="text-gray-600">{faq.answer}</p>
+                      <p className="text-slate-400">{faq.answer}</p>
                     </div>
                   </CollapsibleContent>
                 </Card>

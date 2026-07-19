@@ -121,7 +121,7 @@ const PackagesContent = () => {
 
   if (error) return (
     <div className="min-h-screen flex items-center justify-center pt-[68px] bg-[#F8FAFC]">
-      <div className="text-center max-w-sm mx-auto p-10 bg-white rounded-[20px] shadow-sm border border-[#E5E7EB]">
+      <div className="text-center max-w-sm mx-auto p-10 bg-slate-800 rounded-[20px] shadow-sm border border-[#E5E7EB]">
         <AlertCircle className="h-14 w-14 text-[#EF4444] mx-auto mb-4" />
         <h2 className="text-[20px] font-extrabold text-[#111827] mb-2">Something went wrong</h2>
         <p className="text-[#6B7280] text-sm mb-7">{error}</p>
@@ -155,7 +155,7 @@ const PackagesContent = () => {
 
         {/* Search bar */}
         <div className="max-w-[1100px] mx-auto px-4 sm:px-6 -mt-[26px] relative z-20">
-          <form onSubmit={handleSearch} className="bg-white rounded-[14px] shadow-[0_8px_40px_rgba(0,0,0,0.18)] px-4 sm:px-5 py-3.5">
+          <form onSubmit={handleSearch} className="bg-slate-800 rounded-[14px] shadow-[0_8px_40px_rgba(0,0,0,0.18)] px-4 sm:px-5 py-3.5">
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-0">
               <div className="flex items-center gap-2.5 flex-1 sm:px-4 py-1">
                 <Search className="h-4 w-4 text-[#2563EB] shrink-0" />
@@ -199,7 +199,7 @@ const PackagesContent = () => {
 
           {/* ── Sidebar ─────────────────────────────────────────────────── */}
           <aside className="lg:w-[240px] shrink-0">
-            <button className="lg:hidden w-full flex items-center justify-between bg-white rounded-[14px] border border-[#E5E7EB] px-4 py-3 mb-3 shadow-sm"
+            <button className="lg:hidden w-full flex items-center justify-between bg-slate-800 rounded-[14px] border border-[#E5E7EB] px-4 py-3 mb-3 shadow-sm"
               onClick={() => setMobileFilterOpen(!mobileFilterOpen)}>
               <div className="flex items-center gap-2">
                 <SlidersHorizontal className="h-4 w-4 text-[#2563EB]" />
@@ -211,7 +211,7 @@ const PackagesContent = () => {
               <ChevronDown className={`h-4 w-4 text-[#9CA3AF] transition-transform ${mobileFilterOpen ? "rotate-180" : ""}`} />
             </button>
 
-            <div className={`bg-white rounded-[20px] border border-[#E5E7EB] p-5 lg:sticky lg:top-[140px] shadow-sm space-y-5 ${mobileFilterOpen ? "block" : "hidden lg:block"}`}>
+            <div className={`bg-slate-800 rounded-[20px] border border-[#E5E7EB] p-5 lg:sticky lg:top-[140px] shadow-sm space-y-5 ${mobileFilterOpen ? "block" : "hidden lg:block"}`}>
               {/* Header */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -283,11 +283,11 @@ const PackagesContent = () => {
               </div>
 
               {/* On Sale */}
-              <label className="flex items-center gap-2.5 cursor-pointer">
-                <input type="checkbox" checked={onSale} onChange={(e) => setOnSale(e.target.checked)} className="accent-[#2563EB] w-4 h-4 rounded" />
+              <label className="flex items-center gap-2.5 cursor-pointer bg-gradient-to-r from-amber-500/10 to-orange-500/10 p-3 rounded-lg border border-amber-300/30">
+                <input type="checkbox" checked={onSale} onChange={(e) => setOnSale(e.target.checked)} className="accent-[#F59E0B] w-4 h-4 rounded" />
                 <div>
-                  <span className="text-[13px] text-[#374151] font-medium">On Sale Only</span>
-                  <p className="text-[11px] text-[#9CA3AF]">Packages with active discounts</p>
+                  <span className="text-[13px] text-amber-900 font-medium">On Sale Only</span>
+                  <p className="text-[11px] text-amber-800">Packages with active discounts</p>
                 </div>
               </label>
 
@@ -318,7 +318,7 @@ const PackagesContent = () => {
             {loading ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
                 {Array.from({ length: 6 }).map((_, i) => (
-                  <div key={i} className="bg-white rounded-2xl overflow-hidden border border-[#E5E7EB] animate-pulse">
+                  <div key={i} className="bg-slate-800 rounded-2xl overflow-hidden border border-[#E5E7EB] animate-pulse">
                     <div className="h-52 bg-[#F3F4F6]" />
                     <div className="p-4 space-y-3">
                       <div className="h-3 bg-[#F3F4F6] rounded w-2/3" />
@@ -333,7 +333,7 @@ const PackagesContent = () => {
                 ))}
               </div>
             ) : packageData.length === 0 ? (
-              <div className="text-center py-20 bg-white rounded-[20px] border border-[#E5E7EB]">
+              <div className="text-center py-20 bg-slate-800 rounded-[20px] border border-[#E5E7EB]">
                 <div className="text-5xl mb-4">🗺️</div>
                 <h3 className="text-[18px] font-bold text-[#111827] mb-2">No packages found</h3>
                 <p className="text-[#6B7280] text-sm mb-6">Try adjusting your filters or search terms.</p>
@@ -353,7 +353,7 @@ const PackagesContent = () => {
             {pagination && pagination.pages > 1 && (
               <div className="flex items-center justify-center gap-2 mt-12">
                 <button disabled={!pagination.hasPrev} onClick={() => setPage((p) => p - 1)}
-                  className="w-9 h-9 rounded-full flex items-center justify-center text-[#6B7280] border border-[#E5E7EB] bg-white hover:border-[#2563EB] hover:text-[#2563EB] transition-all disabled:opacity-40 disabled:cursor-not-allowed">
+                  className="w-9 h-9 rounded-full flex items-center justify-center text-[#6B7280] border border-[#E5E7EB] bg-slate-800 hover:border-[#2563EB] hover:text-[#2563EB] transition-all disabled:opacity-40 disabled:cursor-not-allowed">
                   <ChevronLeft className="h-4 w-4" />
                 </button>
                 {Array.from({ length: pagination.pages }, (_, i) => i + 1)
@@ -363,12 +363,12 @@ const PackagesContent = () => {
                       {idx > 0 && arr[idx - 1] !== p - 1 && <span key={`ellipsis-${p}`} className="text-[#9CA3AF] px-1">…</span>}
                       <button key={p} onClick={() => setPage(p)}
                         className={`w-9 h-9 rounded-full flex items-center justify-center text-[13px] font-semibold transition-all ${
-                          p === page ? "bg-[#2563EB] text-white shadow-sm" : "text-[#6B7280] border border-[#E5E7EB] bg-white hover:border-[#2563EB] hover:text-[#2563EB]"
+                          p === page ? "bg-[#2563EB] text-white shadow-sm" : "text-[#6B7280] border border-[#E5E7EB] bg-slate-800 hover:border-[#2563EB] hover:text-[#2563EB]"
                         }`}>{p}</button>
                     </>
                   ))}
                 <button disabled={!pagination.hasNext} onClick={() => setPage((p) => p + 1)}
-                  className="w-9 h-9 rounded-full flex items-center justify-center text-[#6B7280] border border-[#E5E7EB] bg-white hover:border-[#2563EB] hover:text-[#2563EB] transition-all disabled:opacity-40 disabled:cursor-not-allowed">
+                  className="w-9 h-9 rounded-full flex items-center justify-center text-[#6B7280] border border-[#E5E7EB] bg-slate-800 hover:border-[#2563EB] hover:text-[#2563EB] transition-all disabled:opacity-40 disabled:cursor-not-allowed">
                   <ChevronRight className="h-4 w-4" />
                 </button>
               </div>

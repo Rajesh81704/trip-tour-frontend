@@ -108,7 +108,7 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-7">
 
           {/* ── Left: Form ── */}
-          <div className="bg-white rounded-[20px] border border-[#E5E7EB] shadow-[0_10px_30px_rgba(0,0,0,0.07)] overflow-hidden">
+          <div className="bg-slate-800 rounded-[20px] border border-[#E5E7EB] shadow-[0_10px_30px_rgba(0,0,0,0.07)] overflow-hidden">
             {/* Package banner */}
             <div className="bg-[#FFF7ED] border-b border-[#FED7AA] p-5 flex items-center gap-4">
               <div className="w-10 h-10 bg-[#F59E0B] rounded-xl flex items-center justify-center shrink-0 shadow-sm">
@@ -242,7 +242,7 @@ const Contact = () => {
           {/* ── Right: Info Cards ── */}
           <div className="space-y-4">
             {/* Why Submit */}
-            <div className="bg-white rounded-[20px] border border-[#E5E7EB] shadow-[0_10px_30px_rgba(0,0,0,0.07)] p-5">
+            <div className="bg-slate-800 rounded-[20px] border border-[#E5E7EB] shadow-[0_10px_30px_rgba(0,0,0,0.07)] p-5">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-9 h-9 rounded-xl bg-[#FEE2E2] flex items-center justify-center shrink-0">
                   <span className="text-base">💝</span>
@@ -260,7 +260,7 @@ const Contact = () => {
             </div>
 
             {/* Need Help */}
-            <div className="bg-white rounded-[20px] border border-[#E5E7EB] shadow-[0_10px_30px_rgba(0,0,0,0.07)] p-5">
+            <div className="bg-slate-800 rounded-[20px] border border-[#E5E7EB] shadow-[0_10px_30px_rgba(0,0,0,0.07)] p-5">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-9 h-9 rounded-xl bg-blue-100 flex items-center justify-center shrink-0">
                   <Headphones className="h-4 w-4 text-[#2563EB]" />
@@ -287,7 +287,7 @@ const Contact = () => {
             </div>
 
             {/* Office Location */}
-            <div className="bg-white rounded-[20px] border border-[#E5E7EB] shadow-[0_10px_30px_rgba(0,0,0,0.07)] p-5">
+            <div className="bg-slate-800 rounded-[20px] border border-[#E5E7EB] shadow-[0_10px_30px_rgba(0,0,0,0.07)] p-5">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-9 h-9 rounded-xl bg-orange-100 flex items-center justify-center shrink-0">
                   <MapPin className="h-4 w-4 text-[#F59E0B]" />

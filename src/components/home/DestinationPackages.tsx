@@ -86,7 +86,7 @@ const destinationPackages = [
 const DestinationPackages = () => {
   const router = useRouter();
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-slate-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {destinationPackages.map((destination) => (
           <div
@@ -123,7 +123,7 @@ const DestinationPackages = () => {
                       </h3>
                       <Badge
                         variant="secondary"
-                        className="bg-white/20 backdrop-blur-sm text-white border-white/30"
+                        className="bg-slate-700/20 backdrop-blur-sm text-white border-white/30"
                       >
                         {pkg.subtitle}
                       </Badge>

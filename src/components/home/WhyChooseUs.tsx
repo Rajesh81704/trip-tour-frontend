@@ -60,7 +60,7 @@ const FeatureCard = memo(({ icon, title, description, bgGradient, accent, textAc
         {icon}
       </div>
       <h3 className={`font-bold ${textAccent} text-[14px] mb-2.5 leading-snug heading-premium`}>{title}</h3>
-      <p className="text-[13px] text-gray-600 leading-relaxed">{description}</p>
+      <p className="text-[13px] text-slate-300 leading-relaxed">{description}</p>
     </div>
 
     {/* Bottom accent bar */}
@@ -81,7 +81,7 @@ export const WhyChooseUs = memo(() => {
           <h2 className="heading-premium text-[32px] sm:text-[40px] text-gradient-premium mb-2">
             Travel With Confidence & Luxury
           </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-300 text-lg max-w-2xl mx-auto">
             Experience travel planning reimagined. Premium service. Exceptional value.
           </p>
           <div className="flex gap-2 justify-center mt-4">
