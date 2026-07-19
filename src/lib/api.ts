@@ -7,16 +7,12 @@ class ApiClient {
     private static instance: ApiClient;
 
     private constructor() {
-        // Read backend URL from env variables
-        const url = process.env.NEXT_PUBLIC_BACKEND_URL;
+        // Use Next.js API routes as proxy (points to local server)
+        const url = '/api';
 
-        if (!url) {
-            throw new Error(
-                `[ApiClient] Backend URL is required. Ensure NEXT_PUBLIC_BACKEND_URL is set in your .env file.`
-            );
+        if (process.env.NODE_ENV === 'development') {
+            console.log(`[ApiClient] Initializing with proxy API URL: ${url}`);
         }
-
-        console.log(`[ApiClient] Initializing with backend URL: ${url}`);
 
         this.client = axios.create({
             baseURL: url,
@@ -37,7 +33,14 @@ class ApiClient {
 
     async get<T>(url: string, params?: Record<string, any>): Promise<{ data: T; status: number }> {
         try {
-            const response: AxiosResponse<T> = await this.client.get(url, { params });
+            const proxyUrl = url.startsWith('/proxy/') ? url : `/proxy${url}`;
+            if (process.env.NODE_ENV === 'development') {
+                console.log('[ApiClient] GET request to:', proxyUrl, 'with params:', params);
+            }
+            const response: AxiosResponse<T> = await this.client.get(proxyUrl, { params });
+            if (process.env.NODE_ENV === 'development') {
+                console.log('[ApiClient] GET response:', response.status, response.data);
+            }
             return { data: response.data, status: response.status };
         } catch (error) {
             this.handleError(error);
@@ -47,9 +50,16 @@ class ApiClient {
 
     async post<T>(url: string, data: Record<string, any>, isFormData: boolean = false): Promise<{ data: T; status: number }> {
         try {
-            const response: AxiosResponse<T> = await this.client.post(url, data, {
+            const proxyUrl = url.startsWith('/proxy/') || url.startsWith('/auth/') ? url : `/proxy${url}`;
+            if (process.env.NODE_ENV === 'development') {
+                console.log('[ApiClient] POST request to:', proxyUrl, 'with data:', data);
+            }
+            const response: AxiosResponse<T> = await this.client.post(proxyUrl, data, {
                 headers: isFormData ? { 'Content-Type': 'multipart/form-data' } : { 'Content-Type': 'application/json' }
             });
+            if (process.env.NODE_ENV === 'development') {
+                console.log('[ApiClient] POST response:', response.status, response.data);
+            }
             return { data: response.data, status: response.status };
         } catch (error) {
             this.handleError(error);
@@ -59,7 +69,8 @@ class ApiClient {
 
     async put<T>(url: string, data: Record<string, any>, isFormData: boolean = false): Promise<{ data: T; status: number }> {
         try {
-            const response: AxiosResponse<T> = await this.client.put(url, data, {
+            const proxyUrl = url.startsWith('/proxy/') ? url : `/proxy${url}`;
+            const response: AxiosResponse<T> = await this.client.put(proxyUrl, data, {
                 headers: isFormData ? { 'Content-Type': 'multipart/form-data' } : { 'Content-Type': 'application/json' }
             });
             return { data: response.data, status: response.status };
@@ -71,7 +82,8 @@ class ApiClient {
 
     async delete<T>(url: string): Promise<{ data: T; status: number }> {
         try {
-            const response: AxiosResponse<T> = await this.client.delete(url);
+            const proxyUrl = url.startsWith('/proxy/') ? url : `/proxy${url}`;
+            const response: AxiosResponse<T> = await this.client.delete(proxyUrl);
             return { data: response.data, status: response.status };
         } catch (error) {
             this.handleError(error);
@@ -81,7 +93,8 @@ class ApiClient {
 
     async patch<T>(url: string, data: Record<string, any>, isFormData: boolean = false): Promise<{ data: T; status: number }> {
         try {
-            const response: AxiosResponse<T> = await this.client.patch(url, data, {
+            const proxyUrl = url.startsWith('/proxy/') ? url : `/proxy${url}`;
+            const response: AxiosResponse<T> = await this.client.patch(proxyUrl, data, {
                 headers: isFormData ? { 'Content-Type': 'multipart/form-data' } : { 'Content-Type': 'application/json' }
             });
             return { data: response.data, status: response.status };

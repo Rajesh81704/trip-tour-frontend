@@ -376,11 +376,7 @@ export default function Login({ onClose }: { onClose?: () => void }) {
 
         {/* Google OAuth */}
         <Link
-          href={
-            process.env.NODE_ENV === "production"
-              ? "https://api.triptootravels.com/auth/google"
-              : `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/google`
-          }
+          href="/api/auth/google"
         >
           <button
             type="button"
