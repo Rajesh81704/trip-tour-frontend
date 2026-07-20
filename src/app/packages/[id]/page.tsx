@@ -115,6 +115,8 @@ export default function PackageDetailPage({ params }: PackageDetailPageProps) {
                   : packageData.reviews || 0
               }
               packageId={packageData._id}
+              flights={packageData.flights}
+              hotels={packageData.hotels}
             />
           </div>
 

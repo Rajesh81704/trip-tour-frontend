@@ -4,6 +4,47 @@ export interface LocationData {
     destination: string;
 }
 
+export interface FlightOption {
+    _id?: string;
+    type: "main" | "internal";
+    airline: string;
+    flightNumber: string;
+    departureCity: string;
+    departureAirport: string;
+    departureTime: string;
+    departureDate: string;
+    arrivalCity: string;
+    arrivalAirport: string;
+    arrivalTime: string;
+    arrivalDate: string;
+    duration: string;
+    class: "economy" | "business" | "first";
+    price: number;
+    description?: string;
+    image?: {
+        url: string;
+        public_id: string;
+    };
+}
+
+export interface HotelOption {
+    _id?: string;
+    location: string;
+    hotelName: string;
+    nights: number;
+    roomType: string;
+    amenities?: string[];
+    price: number;
+    starRating?: number;
+    checkInDate?: string;
+    checkOutDate?: string;
+    description?: string;
+    image?: {
+        url: string;
+        public_id: string;
+    };
+}
+
 // export interface IReview {
 
 //     rating: number;
@@ -68,6 +109,8 @@ export interface PackageData {
     itinerary: ItineraryDay[];
     inclusions: string[];
     exclusions: string[];
+    flights?: FlightOption[];
+    hotels?: HotelOption[];
     createdAt?: string;
     updatedAt?: string;
     __v?: number;
