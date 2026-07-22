@@ -83,7 +83,11 @@ export const Footer = () => {
               </div>
               <div className="flex items-center gap-2.5 text-[13px] text-gray-400">
                 <Mail className="h-4 w-4 text-[#F59E0B] shrink-0" />
-                <span>info@bookitinerary.com</span>
+                <span>info@triptootravels.com</span>
+              </div>
+              <div className="flex items-center gap-2.5 text-[13px] text-gray-400">
+                <Mail className="h-4 w-4 text-[#F59E0B] shrink-0" />
+                <span>support@triptootravels.com</span>
               </div>
               <div className="flex items-start gap-2.5 text-[13px] text-gray-400">
                 <MapPin className="h-4 w-4 text-[#F59E0B] shrink-0 mt-0.5" />
@@ -225,7 +229,7 @@ export const Footer = () => {
         {/* Bottom bar */}
         <div className="border-t border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-[12px] text-gray-500">
-            © 2024 Book Itinerary Tours & Travel. All rights reserved.
+            © 2024 TripToo Travels. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <span className="text-[11px] text-gray-600 uppercase tracking-widest">Payment Methods</span>

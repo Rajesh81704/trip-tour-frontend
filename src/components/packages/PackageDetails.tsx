@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Check, X, MapPin, Plane, Building2, Star } from "lucide-react";
-import type { FlightOption, HotelOption, ItineraryDay } from "./types";
+import { Check, X, MapPin, Plane, Building2, Star, Camera } from "lucide-react";
+import type { FlightOption, HotelOption, ItineraryDay, SightseeingOption } from "./types";
 import ReviewSection from "./ReviewSection";
 
 interface PackageDetailsProps {
@@ -17,6 +17,7 @@ interface PackageDetailsProps {
   packageId: string;
   flights?: FlightOption[];
   hotels?: HotelOption[];
+  sightseeings?: SightseeingOption[];
 }
 
 /* ─── Star Rating ────────────────────────────────────────────── */
@@ -90,22 +91,45 @@ function HotelsSection({ hotels }: { hotels: HotelOption[] }) {
 
 function HotelCard({ hotel }: { hotel: HotelOption }) {
   const [expanded, setExpanded] = useState(false);
+  const [imageIndex, setImageIndex] = useState(0);
+
+  // Support both single image and multiple images
+  const images = hotel.images && hotel.images.length > 0 
+    ? hotel.images 
+    : hotel.image ? [hotel.image] : [];
+
+  const currentImage = images[imageIndex];
 
   return (
     <div className="bg-white border border-[#E5E7EB] rounded-[14px] overflow-hidden shadow-sm hover:shadow-md transition-shadow">
       <div className="flex gap-0">
-        {/* Left: image */}
-        <div className="w-[160px] sm:w-[200px] shrink-0">
-          {hotel.image?.url ? (
+        {/* Left: image carousel */}
+        <div className="w-[160px] sm:w-[200px] shrink-0 relative">
+          {currentImage?.url ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
-              src={hotel.image.url}
+              src={currentImage.url}
               alt={hotel.hotelName}
               className="w-full h-full object-cover min-h-[130px]"
             />
           ) : (
             <div className="w-full h-full min-h-[130px] bg-[#F3F4F6] flex items-center justify-center">
               <Building2 className="w-10 h-10 text-[#D1D5DB]" />
+            </div>
+          )}
+          
+          {/* Image carousel dots */}
+          {images.length > 1 && (
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+              {images.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setImageIndex(i)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    i === imageIndex ? "bg-white w-3" : "bg-white/60"
+                  }`}
+                />
+              ))}
             </div>
           )}
         </div>
@@ -138,6 +162,11 @@ function HotelCard({ hotel }: { hotel: HotelOption }) {
               <span className="text-[11px] font-medium text-[#374151] bg-[#F8FAFC] border border-[#E5E7EB] rounded-full px-2.5 py-1">
                 {hotel.roomType}
               </span>
+              {images.length > 1 && (
+                <span className="text-[11px] font-medium text-[#374151] bg-[#F8FAFC] border border-[#E5E7EB] rounded-full px-2.5 py-1">
+                  {images.length} photos
+                </span>
+              )}
             </div>
           </div>
 
@@ -153,6 +182,33 @@ function HotelCard({ hotel }: { hotel: HotelOption }) {
       {/* Expanded details */}
       {expanded && (
         <div className="border-t border-[#E5E7EB] px-5 py-4 bg-[#FAFAFA] space-y-3">
+          {/* Image gallery for all images */}
+          {images.length > 1 && (
+            <div>
+              <p className="text-[11px] font-semibold text-[#6B7280] uppercase tracking-wide mb-2">
+                Hotel Photos ({imageIndex + 1} of {images.length})
+              </p>
+              <div className="grid grid-cols-3 gap-2">
+                {images.map((img, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setImageIndex(i)}
+                    className={`relative overflow-hidden rounded-lg border-2 transition-all ${
+                      i === imageIndex ? "border-[#B91C1C]" : "border-[#E5E7EB] hover:border-[#B91C1C]"
+                    }`}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={img.url}
+                      alt=""
+                      className="w-full h-20 object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
           {hotel.description && (
             <p className="text-[13px] text-[#374151] leading-relaxed">{hotel.description}</p>
           )}
@@ -278,6 +334,123 @@ function FlightList({ flights }: { flights: FlightOption[] }) {
   );
 }
 
+/* ─── Sightseeings Section ──────────────────────────────────── */
+function SightseeingsSection({ sightseeings }: { sightseeings: SightseeingOption[] }) {
+  return (
+    <div>
+      {/* Section header */}
+      <div className="flex items-center gap-3 mb-5">
+        <div className="w-9 h-9 rounded-full bg-[#FEF3C7] flex items-center justify-center shrink-0">
+          <Camera className="w-4.5 h-4.5 text-[#F59E0B]" />
+        </div>
+        <h3 className="text-[18px] font-bold text-[#111827]">Sightseeings</h3>
+      </div>
+
+      {/* Sightseeing cards grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {sightseeings.map((sight, i) => (
+          <SightseeingCard key={sight._id ?? i} sightseeing={sight} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function SightseeingCard({ sightseeing }: { sightseeing: SightseeingOption }) {
+  const [imageIndex, setImageIndex] = useState(0);
+  const images = sightseeing.images ?? [];
+  const currentImage = images[imageIndex];
+
+  return (
+    <div className="bg-white border border-[#E5E7EB] rounded-[14px] overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+      {/* Image section */}
+      {images.length > 0 ? (
+        <div className="relative w-full h-48 bg-[#F3F4F6]">
+          {currentImage?.url && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={currentImage.url}
+              alt={sightseeing.name}
+              className="w-full h-full object-cover"
+            />
+          )}
+
+          {/* Image carousel dots */}
+          {images.length > 1 && (
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1 z-10">
+              {images.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setImageIndex(i)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    i === imageIndex ? "bg-white w-3" : "bg-white/60"
+                  }`}
+                  title={`Image ${i + 1}`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      ) : (
+        <div className="w-full h-48 bg-[#F3F4F6] flex items-center justify-center">
+          <Camera className="w-12 h-12 text-[#D1D5DB]" />
+        </div>
+      )}
+
+      {/* Content section */}
+      <div className="p-4">
+        <h4 className="text-[15px] font-bold text-[#111827] mb-1.5">{sightseeing.name}</h4>
+
+        {sightseeing.location && (
+          <div className="flex items-center gap-1.5 mb-2">
+            <MapPin className="w-3.5 h-3.5 text-[#9CA3AF] shrink-0" />
+            <span className="text-[12px] text-[#6B7280]">{sightseeing.location}</span>
+          </div>
+        )}
+
+        {sightseeing.description && (
+          <p className="text-[13px] text-[#6B7280] leading-relaxed mb-3 line-clamp-2">
+            {sightseeing.description}
+          </p>
+        )}
+
+        {sightseeing.duration && (
+          <div className="inline-block text-[11px] font-medium text-[#374151] bg-[#F8FAFC] border border-[#E5E7EB] rounded-full px-3 py-1">
+            ⏱️ {sightseeing.duration}
+          </div>
+        )}
+
+        {images.length > 1 && (
+          <div className="mt-3 pt-3 border-t border-[#E5E7EB]">
+            <p className="text-[11px] text-[#9CA3AF] font-medium mb-2">
+              {imageIndex + 1} of {images.length} photos
+            </p>
+            <div className="grid grid-cols-4 gap-1">
+              {images.map((img, i) => (
+                <button
+                  key={i}
+                  onClick={() => setImageIndex(i)}
+                  className={`relative overflow-hidden rounded border-2 transition-all ${
+                    i === imageIndex ? "border-[#F59E0B]" : "border-[#E5E7EB] hover:border-[#F59E0B]"
+                  }`}
+                  title={`Image ${i + 1}`}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={img.url}
+                    alt=""
+                    className="w-full h-12 object-cover"
+                  />
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function FlightCard({ flight }: { flight: FlightOption }) {
   const classLabel: Record<string, string> = {
     economy: "Economy",
@@ -393,9 +566,11 @@ export function PackageDetails({
   packageId,
   flights = [],
   hotels = [],
+  sightseeings = [],
 }: PackageDetailsProps) {
   const hasFlights = flights.length > 0;
   const hasHotels = hotels.length > 0;
+  const hasSightseeings = sightseeings.length > 0;
 
   const tabs = [
     { value: "overview", label: "Overview" },
@@ -403,6 +578,7 @@ export function PackageDetails({
     { value: "inclusions", label: "Inclusions" },
     ...(hasFlights ? [{ value: "flights", label: "Flights" }] : []),
     ...(hasHotels ? [{ value: "hotels", label: "Hotels" }] : []),
+    ...(hasSightseeings ? [{ value: "sightseeings", label: "Sightseeings" }] : []),
     { value: "reviews", label: "Reviews" },
   ];
 
@@ -524,6 +700,13 @@ export function PackageDetails({
         {hasHotels && (
           <TabsContent value="hotels" className="p-6">
             <HotelsSection hotels={hotels} />
+          </TabsContent>
+        )}
+
+        {/* ── Sightseeings ── */}
+        {hasSightseeings && (
+          <TabsContent value="sightseeings" className="p-6">
+            <SightseeingsSection sightseeings={sightseeings} />
           </TabsContent>
         )}
 

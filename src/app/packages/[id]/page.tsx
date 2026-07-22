@@ -117,6 +117,7 @@ export default function PackageDetailPage({ params }: PackageDetailPageProps) {
               packageId={packageData._id}
               flights={packageData.flights}
               hotels={packageData.hotels}
+              sightseeings={packageData.sightseeings}
             />
           </div>
 

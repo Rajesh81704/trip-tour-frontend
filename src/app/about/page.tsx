@@ -1,5 +1,13 @@
 import { Users, Star, Phone, Mail, MapPin, Award, Heart, Globe } from "lucide-react";
 import Image from "next/image";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About TripToo Travels - Your Trusted Travel Partner",
+  description:
+    "Learn about TripToo Travels - 15+ years of trusted travel experiences for 50,000+ happy travelers across 100+ destinations worldwide.",
+  keywords: ["about us", "travel company", "travel experts", "travel experience"],
+};
 
 const stats = [
   { value: "50,000+", label: "Happy Travelers" },

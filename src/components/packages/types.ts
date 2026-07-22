@@ -39,6 +39,10 @@ export interface HotelOption {
     checkInDate?: string;
     checkOutDate?: string;
     description?: string;
+    images?: Array<{
+        url: string;
+        public_id: string;
+    }>;
     image?: {
         url: string;
         public_id: string;
@@ -81,6 +85,18 @@ export interface DurationData {
     night: number;
 }
 
+export interface SightseeingOption {
+    _id?: string;
+    name: string;
+    description?: string;
+    location?: string;
+    duration?: string;
+    images?: Array<{
+        url: string;
+        public_id: string;
+    }>;
+}
+
 export interface ItineraryDay {
     day: number;
     title: string;
@@ -111,6 +127,7 @@ export interface PackageData {
     exclusions: string[];
     flights?: FlightOption[];
     hotels?: HotelOption[];
+    sightseeings?: SightseeingOption[];
     createdAt?: string;
     updatedAt?: string;
     __v?: number;

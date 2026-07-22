@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import {
   MapPin,
@@ -22,6 +23,15 @@ const benefits = [
   { icon: CheckCircle2, text: "Customized itineraries", color: "text-[#2563EB]" },
   { icon: CheckCircle2, text: "Expert travel support", color: "text-purple-500" },
 ];
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "Contact TripToo Travels - Submit Your Inquiry",
+    description:
+      "Get in touch with TripToo Travels. Submit your travel inquiries and get personalized recommendations from our expert travel advisors.",
+    keywords: ["contact", "inquiry", "support", "travel advisor"],
+  };
+}
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -277,7 +287,7 @@ const Contact = () => {
                 </div>
                 <div className="flex items-center gap-2.5 text-[13px] text-[#374151]">
                   <Mail className="h-3.5 w-3.5 text-[#F59E0B] shrink-0" />
-                  info@bookitinerary.com
+                  info@triptootravels.com
                 </div>
                 <div className="flex items-center gap-2.5 text-[13px] text-[#374151]">
                   <Clock className="h-3.5 w-3.5 text-[#F59E0B] shrink-0" />
