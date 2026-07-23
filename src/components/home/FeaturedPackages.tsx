@@ -6,7 +6,7 @@ import api from "@/lib/api";
 import { PackageData } from "../packages";
 import Image from "next/image";
 import Link from "next/link";
-import { Star, ArrowRight, ChevronRight, MapPin, Send } from "lucide-react";
+import { Star, ArrowRight, ChevronRight, MapPin, Send, Clock } from "lucide-react";
 
 interface FeaturedDestination {
   name: string;
@@ -299,37 +299,35 @@ export const FeaturedPackages = () => {
 
                     {/* Content */}
                     <div className="p-3.5">
-                      <h3 className="font-bold text-[#111827] text-[13px] leading-snug mb-2 line-clamp-2">
+                      <h3 className="font-bold text-slate-100 text-[13px] leading-snug mb-2 line-clamp-2">
                         {pkg.title}
                       </h3>
 
                       {/* Duration + meals */}
-                      <div className="flex items-center gap-2 text-[11px] text-[#6B7280] mb-3">
-                        <span className="flex items-center gap-1">
-                          <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                            <circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" />
-                          </svg>
+                      <div className="flex items-center gap-2 text-[11px] text-slate-300 mb-3">
+                        <span className="flex items-center gap-1 text-slate-300">
+                          <Clock className="h-3 w-3 text-amber-400" />
                           {pkg.duration.day}D / {pkg.duration.night}N
                         </span>
                         {pkg.inclusions?.includes("Breakfast") && (
-                          <span className="bg-green-50 text-green-700 text-[10px] font-semibold px-1.5 py-0.5 rounded-full">
+                          <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-semibold px-1.5 py-0.5 rounded-full">
                             Breakfast
                           </span>
                         )}
                       </div>
 
                       {/* Price row */}
-                      <div className="flex items-center justify-between pt-2.5 border-t border-[#F3F4F6]">
+                      <div className="flex items-center justify-between pt-2.5 border-t border-slate-600">
                         <div>
                           {pkg.discount > 0 && (
-                            <span className="text-[11px] text-[#9CA3AF] line-through block leading-none mb-0.5">
+                            <span className="text-[11px] text-slate-400 line-through block leading-none mb-0.5">
                               ₹{pkg.price.toLocaleString("en-IN")}
                             </span>
                           )}
-                          <span className="text-[16px] font-extrabold text-[#111827] leading-none">
+                          <span className="text-[16px] font-extrabold text-white leading-none">
                             ₹{discountedPrice.toLocaleString("en-IN")}
                           </span>
-                          <span className="text-[10px] text-[#9CA3AF] ml-0.5">/person</span>
+                          <span className="text-[10px] text-slate-400 ml-0.5">/person</span>
                         </div>
                         <button
                           onClick={(e) => { e.stopPropagation(); handlePackageClick(pkg._id); }}

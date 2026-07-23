@@ -1,4 +1,4 @@
-import { Clock, Heart, MapPin, Star } from "lucide-react";
+import { Clock, Heart, MapPin, Star, Building2, Plane, UtensilsCrossed, Camera, Car, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { PackageData } from "@/components/packages/types";
@@ -17,11 +17,11 @@ export const PackageCard = ({ pkg, handlePackageClick }: PackageCardProps) => {
 
   return (
     <div
-      className="group bg-slate-700 rounded-2xl overflow-hidden border border-slate-600 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col"
+      className="group bg-slate-800/90 rounded-2xl overflow-hidden border border-slate-700/80 shadow-lg hover:shadow-2xl hover:border-amber-500/40 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer flex flex-col"
       onClick={handlePackageClick}
     >
-      {/* Image */}
-      <div className="relative h-52 overflow-hidden shrink-0">
+      {/* Cover Image */}
+      <div className="relative h-56 overflow-hidden shrink-0">
         <Image
           fill
           src={
@@ -29,17 +29,17 @@ export const PackageCard = ({ pkg, handlePackageClick }: PackageCardProps) => {
             "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80"
           }
           alt={pkg.title}
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          className="object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
 
-        {/* Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+        {/* Gradient vignette */}
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/20" />
 
         {/* Category badge */}
         {category && (
           <div className="absolute top-3 left-3">
-            <span className="bg-[#2563EB] text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wide shadow-sm">
+            <span className="bg-slate-900/80 backdrop-blur-md text-amber-400 border border-amber-500/30 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
               {category}
             </span>
           </div>
@@ -47,31 +47,31 @@ export const PackageCard = ({ pkg, handlePackageClick }: PackageCardProps) => {
 
         {/* Discount badge */}
         {pkg.discount > 0 && (
-          <div className="absolute top-3 right-10">
-            <span className="bg-gradient-to-r from-amber-400 to-orange-400 text-amber-900 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wide shadow-md">
+          <div className="absolute top-3 right-12">
+            <span className="bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-md">
               {pkg.discount}% OFF
             </span>
           </div>
         )}
 
-        {/* Wishlist */}
+        {/* Wishlist Button */}
         <button
-          className="absolute top-3 right-3 w-8 h-8 bg-slate-600/90 hover:bg-slate-500 rounded-full flex items-center justify-center shadow-md transition-all duration-200 hover:scale-110"
+          className="absolute top-3 right-3 w-8 h-8 bg-slate-900/70 hover:bg-slate-800 backdrop-blur-md text-slate-300 hover:text-rose-400 rounded-full flex items-center justify-center border border-white/10 transition-all duration-200 hover:scale-110"
           onClick={(e) => e.stopPropagation()}
           aria-label="Save to wishlist"
         >
-          <Heart className="h-3.5 w-3.5 text-slate-300 hover:text-red-400 transition-colors" />
+          <Heart className="h-3.5 w-3.5 text-slate-300 hover:text-rose-400 transition-colors" />
         </button>
 
-        {/* Duration pill — bottom left */}
-        <div className="absolute bottom-3 left-3 flex items-center gap-1 bg-black/50 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-full">
-          <Clock className="h-3 w-3" />
+        {/* Duration badge — bottom left */}
+        <div className="absolute bottom-3 left-3 flex items-center gap-1.5 bg-slate-900/80 backdrop-blur-md text-white text-[11px] font-medium px-3 py-1 rounded-full border border-white/10 shadow-sm">
+          <Clock className="h-3.5 w-3.5 text-amber-400" />
           {pkg.duration.day}D / {pkg.duration.night}N
         </div>
 
         {/* Rating — bottom right */}
         {pkg.reviews && pkg.reviews.length > 0 && (
-          <div className="absolute bottom-3 right-3 flex items-center gap-1 bg-black/50 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-full">
+          <div className="absolute bottom-3 right-3 flex items-center gap-1 bg-slate-900/80 backdrop-blur-md text-white text-[11px] font-semibold px-2.5 py-1 rounded-full border border-white/10">
             <Star className="h-3 w-3 fill-[#F59E0B] text-[#F59E0B]" />
             {pkg.reviews.length}
           </div>
@@ -81,42 +81,51 @@ export const PackageCard = ({ pkg, handlePackageClick }: PackageCardProps) => {
       {/* Content */}
       <div className="p-4 flex flex-col flex-1">
         {/* Location */}
-        <div className="flex items-center gap-1 text-[#F59E0B] text-[11px] font-semibold mb-1.5">
-          <MapPin className="h-3 w-3 shrink-0" />
+        <div className="flex items-center gap-1.5 text-amber-400 text-[11.5px] font-semibold mb-1.5">
+          <MapPin className="h-3.5 w-3.5 shrink-0 text-amber-400" />
           <span className="truncate">{pkg.location.destination}, {pkg.location.state}</span>
         </div>
 
         {/* Title */}
-        <h3 className="font-bold text-slate-100 text-[14.5px] leading-snug line-clamp-2 mb-2 flex-1 break-words">
+        <h3 className="font-extrabold text-white text-[15.5px] leading-snug line-clamp-2 mb-2.5 group-hover:text-amber-300 transition-colors">
           {pkg.title}
         </h3>
 
-        {/* Inclusion Icons Bar (Hotel, Airfare, Breakfast, Sightseeing, Transfers) */}
-        <div className="flex flex-wrap items-center gap-1.5 mb-3 py-1.5 px-2 bg-slate-800/90 rounded-xl border border-slate-700/80 text-[10.5px] text-slate-300 overflow-hidden">
-          <span className="inline-flex items-center gap-1 font-semibold text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-md shrink-0">
-            🏨 Hotel
-          </span>
-          <span className="inline-flex items-center gap-1 font-semibold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md shrink-0">
-            ✈️ Flight
-          </span>
-          <span className="inline-flex items-center gap-1 font-semibold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md shrink-0">
-            🍳 Meals
-          </span>
-          <span className="inline-flex items-center gap-1 font-semibold text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded-md shrink-0">
-            🏛️ Tours
-          </span>
-          <span className="inline-flex items-center gap-1 font-semibold text-orange-400 bg-orange-500/10 px-2 py-0.5 rounded-md shrink-0">
-            🚗 Transfer
-          </span>
+        {/* Sleek Inclusions Strip (Vector Lucide Icons) */}
+        <div className="flex items-center gap-3 py-2 px-3 mb-3 bg-slate-900/70 backdrop-blur-md rounded-xl border border-slate-700/60 text-[11px] text-slate-300 overflow-x-auto scrollbar-none">
+          <div className="flex items-center gap-1.5 text-slate-200 shrink-0" title="Hotel included">
+            <Building2 className="h-3.5 w-3.5 text-amber-400" />
+            <span className="font-medium text-[11px]">Hotel</span>
+          </div>
+          <span className="w-1 h-1 rounded-full bg-slate-600 shrink-0" />
+          <div className="flex items-center gap-1.5 text-slate-200 shrink-0" title="Flight included">
+            <Plane className="h-3.5 w-3.5 text-sky-400" />
+            <span className="font-medium text-[11px]">Flight</span>
+          </div>
+          <span className="w-1 h-1 rounded-full bg-slate-600 shrink-0" />
+          <div className="flex items-center gap-1.5 text-slate-200 shrink-0" title="Meals included">
+            <UtensilsCrossed className="h-3.5 w-3.5 text-emerald-400" />
+            <span className="font-medium text-[11px]">Meals</span>
+          </div>
+          <span className="w-1 h-1 rounded-full bg-slate-600 shrink-0" />
+          <div className="flex items-center gap-1.5 text-slate-200 shrink-0" title="Sightseeing included">
+            <Camera className="h-3.5 w-3.5 text-purple-400" />
+            <span className="font-medium text-[11px]">Tours</span>
+          </div>
+          <span className="w-1 h-1 rounded-full bg-slate-600 shrink-0" />
+          <div className="flex items-center gap-1.5 text-slate-200 shrink-0" title="Transfers included">
+            <Car className="h-3.5 w-3.5 text-orange-400" />
+            <span className="font-medium text-[11px]">Transfer</span>
+          </div>
         </div>
 
         {/* Description */}
-        <p className="text-[12px] text-slate-400 line-clamp-2 leading-relaxed mb-4 break-words">
+        <p className="text-[12.5px] text-slate-400 line-clamp-2 leading-relaxed mb-4 break-words">
           {pkg.description}
         </p>
 
         {/* Price + CTA */}
-        <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-slate-600 mt-auto">
+        <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-slate-700/80 mt-auto">
           <div className="min-w-0 flex-1">
             {pkg.discount > 0 && pkg.price > 0 && (
               <p className="text-[11px] text-slate-500 line-through leading-none mb-0.5 truncate">
@@ -124,7 +133,7 @@ export const PackageCard = ({ pkg, handlePackageClick }: PackageCardProps) => {
               </p>
             )}
             <div className="flex items-baseline gap-1 flex-wrap">
-              <span className="text-[17px] font-extrabold text-slate-100 truncate">
+              <span className="text-[19px] font-black text-white truncate">
                 {discountedPrice > 0 ? `₹${discountedPrice.toLocaleString("en-IN")}` : "Contact Us"}
               </span>
               {discountedPrice > 0 && (
@@ -136,9 +145,10 @@ export const PackageCard = ({ pkg, handlePackageClick }: PackageCardProps) => {
           <Link
             href={`/packages/${pkg._id}`}
             onClick={(e) => e.stopPropagation()}
-            className="flex items-center gap-1.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-[12px] font-bold px-3.5 py-2 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-px shrink-0"
+            className="flex items-center gap-1.5 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white text-[12.5px] font-bold px-4 py-2 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 hover:-translate-y-px shrink-0"
           >
             View Details
+            <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
       </div>

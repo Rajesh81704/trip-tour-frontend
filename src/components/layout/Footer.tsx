@@ -67,9 +67,9 @@ export const Footer = () => {
             <Image
               src="/logo.png"
               alt="TripToo Travels"
-              width={140}
-              height={46}
-              className="h-12 w-auto brightness-0 invert"
+              width={200}
+              height={60}
+              className="h-14 lg:h-16 w-auto brightness-0 invert"
             />
             <p className="text-[14px] text-gray-400 leading-relaxed max-w-[280px]">
               Explore the world with us. Creating memories and lasting journeys, one destination at a time.

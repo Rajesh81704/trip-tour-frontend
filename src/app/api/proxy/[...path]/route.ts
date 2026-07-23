@@ -43,6 +43,18 @@ export async function GET(
       credentials: 'include',
     });
 
+    const contentType = response.headers.get('content-type') || '';
+    if (contentType.includes('image/') || contentType.includes('application/octet-stream')) {
+      const arrayBuffer = await response.arrayBuffer();
+      return new NextResponse(arrayBuffer, {
+        status: response.status,
+        headers: {
+          'Content-Type': contentType,
+          'Cache-Control': response.headers.get('cache-control') || 'public, max-age=31536000, immutable',
+        },
+      });
+    }
+
     const data = await response.json();
     return createProxiedResponse(data, response.status, response);
   } catch (error) {
