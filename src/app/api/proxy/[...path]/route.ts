@@ -6,6 +6,23 @@ import { NextRequest, NextResponse } from 'next/server';
  * Usage: /api/proxy/[endpoint] → proxies to BACKEND_URL/[endpoint]
  */
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function createProxiedResponse(data: any, status: number, backendRes: Response): NextResponse {
+  const nextRes = NextResponse.json(data, { status });
+  const setCookies = backendRes.headers.getSetCookie ? backendRes.headers.getSetCookie() : [];
+  if (setCookies && setCookies.length > 0) {
+    setCookies.forEach((cookieStr) => {
+      nextRes.headers.append('set-cookie', cookieStr);
+    });
+  } else {
+    const rawCookie = backendRes.headers.get('set-cookie');
+    if (rawCookie) {
+      nextRes.headers.append('set-cookie', rawCookie);
+    }
+  }
+  return nextRes;
+}
+
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ path: string[] }> }
@@ -13,19 +30,21 @@ export async function GET(
   try {
     const path = (await params).path.join('/');
     const searchParams = request.nextUrl.searchParams.toString();
-    const backendUrl = process.env.BACKEND_URL || 'http://localhost:5000';
+    const backendUrl = process.env.BACKEND_URL || 'http://localhost:8000';
     const targetUrl = `${backendUrl}/${path}${searchParams ? `?${searchParams}` : ''}`;
 
+    const cookieHeader = request.headers.get('cookie');
     const response = await fetch(targetUrl, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+        ...(cookieHeader ? { cookie: cookieHeader } : {}),
       },
       credentials: 'include',
     });
 
     const data = await response.json();
-    return NextResponse.json(data, { status: response.status });
+    return createProxiedResponse(data, response.status, response);
   } catch (error) {
     console.error('[PROXY] GET error:', error);
     return NextResponse.json(
@@ -42,20 +61,22 @@ export async function POST(
   try {
     const path = (await params).path.join('/');
     const body = await request.json();
-    const backendUrl = process.env.BACKEND_URL || 'http://localhost:5000';
+    const backendUrl = process.env.BACKEND_URL || 'http://localhost:8000';
     const targetUrl = `${backendUrl}/${path}`;
 
+    const cookieHeader = request.headers.get('cookie');
     const response = await fetch(targetUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        ...(cookieHeader ? { cookie: cookieHeader } : {}),
       },
       body: JSON.stringify(body),
       credentials: 'include',
     });
 
     const data = await response.json();
-    return NextResponse.json(data, { status: response.status });
+    return createProxiedResponse(data, response.status, response);
   } catch (error) {
     console.error('[PROXY] POST error:', error);
     return NextResponse.json(
@@ -72,20 +93,22 @@ export async function PUT(
   try {
     const path = (await params).path.join('/');
     const body = await request.json();
-    const backendUrl = process.env.BACKEND_URL || 'http://localhost:5000';
+    const backendUrl = process.env.BACKEND_URL || 'http://localhost:8000';
     const targetUrl = `${backendUrl}/${path}`;
 
+    const cookieHeader = request.headers.get('cookie');
     const response = await fetch(targetUrl, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
+        ...(cookieHeader ? { cookie: cookieHeader } : {}),
       },
       body: JSON.stringify(body),
       credentials: 'include',
     });
 
     const data = await response.json();
-    return NextResponse.json(data, { status: response.status });
+    return createProxiedResponse(data, response.status, response);
   } catch (error) {
     console.error('[PROXY] PUT error:', error);
     return NextResponse.json(
@@ -101,19 +124,21 @@ export async function DELETE(
 ) {
   try {
     const path = (await params).path.join('/');
-    const backendUrl = process.env.BACKEND_URL || 'http://localhost:5000';
+    const backendUrl = process.env.BACKEND_URL || 'http://localhost:8000';
     const targetUrl = `${backendUrl}/${path}`;
 
+    const cookieHeader = request.headers.get('cookie');
     const response = await fetch(targetUrl, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
+        ...(cookieHeader ? { cookie: cookieHeader } : {}),
       },
       credentials: 'include',
     });
 
     const data = await response.json();
-    return NextResponse.json(data, { status: response.status });
+    return createProxiedResponse(data, response.status, response);
   } catch (error) {
     console.error('[PROXY] DELETE error:', error);
     return NextResponse.json(
@@ -130,20 +155,22 @@ export async function PATCH(
   try {
     const path = (await params).path.join('/');
     const body = await request.json();
-    const backendUrl = process.env.BACKEND_URL || 'http://localhost:5000';
+    const backendUrl = process.env.BACKEND_URL || 'http://localhost:8000';
     const targetUrl = `${backendUrl}/${path}`;
 
+    const cookieHeader = request.headers.get('cookie');
     const response = await fetch(targetUrl, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
+        ...(cookieHeader ? { cookie: cookieHeader } : {}),
       },
       body: JSON.stringify(body),
       credentials: 'include',
     });
 
     const data = await response.json();
-    return NextResponse.json(data, { status: response.status });
+    return createProxiedResponse(data, response.status, response);
   } catch (error) {
     console.error('[PROXY] PATCH error:', error);
     return NextResponse.json(

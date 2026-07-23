@@ -7,6 +7,8 @@ interface User {
     id: string;
     email?: string;
     name?: string;
+    phone?: string;
+    avatar?: string;
 }
 
 interface AuthState {
@@ -21,7 +23,7 @@ export const checkAuthStatus = createAsyncThunk(
     'auth/checkAuthStatus',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await api.get('/auth/me');
+            const response = await api.get('/users/me');
             return response.data;
         } catch {
             // 401 = not logged in, 404 = route not deployed yet — both are "not authenticated", not a crash

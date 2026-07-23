@@ -87,29 +87,48 @@ export const PackageCard = ({ pkg, handlePackageClick }: PackageCardProps) => {
         </div>
 
         {/* Title */}
-        <h3 className="font-bold text-slate-100 text-[14.5px] leading-snug line-clamp-2 mb-2 flex-1">
+        <h3 className="font-bold text-slate-100 text-[14.5px] leading-snug line-clamp-2 mb-2 flex-1 break-words">
           {pkg.title}
         </h3>
 
+        {/* Inclusion Icons Bar (Hotel, Airfare, Breakfast, Sightseeing, Transfers) */}
+        <div className="flex flex-wrap items-center gap-1.5 mb-3 py-1.5 px-2 bg-slate-800/90 rounded-xl border border-slate-700/80 text-[10.5px] text-slate-300 overflow-hidden">
+          <span className="inline-flex items-center gap-1 font-semibold text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-md shrink-0">
+            🏨 Hotel
+          </span>
+          <span className="inline-flex items-center gap-1 font-semibold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md shrink-0">
+            ✈️ Flight
+          </span>
+          <span className="inline-flex items-center gap-1 font-semibold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md shrink-0">
+            🍳 Meals
+          </span>
+          <span className="inline-flex items-center gap-1 font-semibold text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded-md shrink-0">
+            🏛️ Tours
+          </span>
+          <span className="inline-flex items-center gap-1 font-semibold text-orange-400 bg-orange-500/10 px-2 py-0.5 rounded-md shrink-0">
+            🚗 Transfer
+          </span>
+        </div>
+
         {/* Description */}
-        <p className="text-[12px] text-slate-400 line-clamp-2 leading-relaxed mb-4">
+        <p className="text-[12px] text-slate-400 line-clamp-2 leading-relaxed mb-4 break-words">
           {pkg.description}
         </p>
 
         {/* Price + CTA */}
-        <div className="flex items-center justify-between pt-3 border-t border-slate-600 mt-auto">
-          <div>
+        <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-slate-600 mt-auto">
+          <div className="min-w-0 flex-1">
             {pkg.discount > 0 && pkg.price > 0 && (
-              <p className="text-[11px] text-slate-500 line-through leading-none mb-0.5">
+              <p className="text-[11px] text-slate-500 line-through leading-none mb-0.5 truncate">
                 ₹{pkg.price.toLocaleString("en-IN")}
               </p>
             )}
-            <div className="flex items-baseline gap-1">
-              <span className="text-[17px] font-extrabold text-slate-100">
+            <div className="flex items-baseline gap-1 flex-wrap">
+              <span className="text-[17px] font-extrabold text-slate-100 truncate">
                 {discountedPrice > 0 ? `₹${discountedPrice.toLocaleString("en-IN")}` : "Contact Us"}
               </span>
               {discountedPrice > 0 && (
-                <span className="text-[11px] text-slate-400 font-normal">/ person</span>
+                <span className="text-[11px] text-slate-400 font-normal shrink-0">/ person</span>
               )}
             </div>
           </div>
@@ -117,7 +136,7 @@ export const PackageCard = ({ pkg, handlePackageClick }: PackageCardProps) => {
           <Link
             href={`/packages/${pkg._id}`}
             onClick={(e) => e.stopPropagation()}
-            className="flex items-center gap-1.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-[12px] font-bold px-4 py-2.5 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-px whitespace-nowrap"
+            className="flex items-center gap-1.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-[12px] font-bold px-3.5 py-2 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-px shrink-0"
           >
             View Details
           </Link>

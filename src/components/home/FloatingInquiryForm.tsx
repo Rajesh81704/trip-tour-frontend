@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
 import { User, Phone, Mail, MapPin, MessageCircle, Send } from "lucide-react";
 import api from "@/lib/api";
+import { useAppSelector } from "@/store/hooks";
 
 const popularDestinations = [
   "Goa",
@@ -19,6 +20,8 @@ const popularDestinations = [
 ];
 
 export const FloatingInquiryForm = () => {
+  const user = useAppSelector((state) => state.auth.user);
+
   const [formData, setFormData] = useState({
     name: "",
     mobileNumber: "",
@@ -26,6 +29,17 @@ export const FloatingInquiryForm = () => {
     destination: "",
     message: "",
   });
+
+  useEffect(() => {
+    if (user) {
+      setFormData((prev) => ({
+        ...prev,
+        name: prev.name || user.name || "",
+        email: prev.email || user.email || "",
+        mobileNumber: prev.mobileNumber || user.phone || "",
+      }));
+    }
+  }, [user]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

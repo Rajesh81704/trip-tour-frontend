@@ -2,7 +2,7 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, User, LogOut, MapPin } from "lucide-react";
+import { Menu, X, User, LogOut, MapPin, FileText } from "lucide-react";
 import Login from "../forms/Login";
 import { useAppSelector, useAppDispatch, logoutThunk } from "@/store";
 import Image from "next/image";
@@ -10,6 +10,7 @@ import Image from "next/image";
 const NAV_ITEMS = [
   { name: "Home", path: "/" },
   { name: "Packages", path: "/packages" },
+  { name: "Visa Services", path: "/visa" },
   { name: "About Us", path: "/about" },
   { name: "B2B Partnership", path: "/b2b" },
   { name: "Contact Us", path: "/contact" },
@@ -118,6 +119,17 @@ export const Navbar = () => {
                 <MapPin className="h-4 w-4" />
                 Explore
               </Link>
+
+              {/* My Requests button when logged in */}
+              {isLoggedIn && (
+                <Link
+                  href="/my-requests"
+                  className="flex items-center gap-1.5 text-[13.5px] font-medium px-4 py-2 rounded-full border border-amber-500/40 text-amber-300 hover:bg-amber-500/10 transition-all duration-200"
+                >
+                  <FileText className="h-4 w-4" />
+                  My Requests
+                </Link>
+              )}
 
               {/* Divider */}
               <span className={`w-px h-5 ${isLight ? "bg-slate-600" : "bg-white/20"}`} />
@@ -234,6 +246,16 @@ export const Navbar = () => {
 
         {/* Drawer Footer */}
         <div className="px-4 py-5 border-t border-slate-700 space-y-2.5">
+          {isLoggedIn && (
+            <Link
+              href="/my-requests"
+              onClick={handleMenuClose}
+              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-amber-500/40 text-amber-300 text-sm font-medium hover:bg-amber-500/10 transition-colors"
+            >
+              <FileText className="h-4 w-4" />
+              My Requests
+            </Link>
+          )}
           {isLoggedIn ? (
             <button
               onClick={handleLogout}

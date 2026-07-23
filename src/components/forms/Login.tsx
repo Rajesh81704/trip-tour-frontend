@@ -73,9 +73,10 @@ export default function Login({ onClose }: { onClose?: () => void }) {
     try {
       const res = await api.post<ApiResponse>("/auth/login", { email, password });
 
-      if (res.data.success && res.data.user) {
-        dispatch(setUser(res.data.user));
-        toast.success(`Welcome back, ${res.data.user.name}! 👋`);
+      const userObj = res.data.user;
+      if (userObj) {
+        dispatch(setUser(userObj));
+        toast.success(`Welcome back, ${userObj.name}! 👋`);
         onClose?.();
         router.push("/");
       }
@@ -109,10 +110,10 @@ export default function Login({ onClose }: { onClose?: () => void }) {
     try {
       const res = await api.post<ApiResponse>("/auth/register", { name, email, password });
 
-      // Backend returns 201 on success
-      if ((res.status === 201 || res.status === 200) && res.data.user) {
-        dispatch(setUser(res.data.user));
-        toast.success(`Account created! Welcome, ${res.data.user.name}! 🎉`);
+      const userObj = res.data.user;
+      if (userObj) {
+        dispatch(setUser(userObj));
+        toast.success(`Account created! Welcome, ${userObj.name}! 🎉`);
         onClose?.();
         router.push("/");
       }

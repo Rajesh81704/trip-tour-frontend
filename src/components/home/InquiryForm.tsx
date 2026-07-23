@@ -1,9 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { X, Users, Mail, Phone, User, MessageCircle, Send, CheckCircle2, Shield, Headphones } from "lucide-react";
 import { toast } from "sonner";
 import api from "@/lib/api";
+import { useAppSelector } from "@/store/hooks";
 
 interface InquiryFormProps {
   packageTitle: string;
@@ -25,6 +26,8 @@ export const InquiryForm = ({
   onClose,
   destination,
 }: InquiryFormProps) => {
+  const user = useAppSelector((state) => state.auth.user);
+
   const [formData, setFormData] = useState({
     name: "",
     mobileNumber: "",
@@ -34,6 +37,17 @@ export const InquiryForm = ({
     message: "",
     packageId: packageId,
   });
+
+  useEffect(() => {
+    if (user) {
+      setFormData((prev) => ({
+        ...prev,
+        name: prev.name || user.name || "",
+        email: prev.email || user.email || "",
+        mobileNumber: prev.mobileNumber || user.phone || "",
+      }));
+    }
+  }, [user]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -287,7 +301,11 @@ export const InquiryForm = ({
                   </div>
                   <div className="flex items-center gap-2 text-[13px] text-[#374151]">
                     <Mail className="h-3.5 w-3.5 text-[#F59E0B] shrink-0" />
-                    info@bookitinerary.com
+                    info@triptootravels.com
+                  </div>
+                  <div className="flex items-center gap-2 text-[13px] text-[#374151]">
+                    <Mail className="h-3.5 w-3.5 text-[#F59E0B] shrink-0" />
+                    pooja.gupta@triptootravels.com
                   </div>
                   <div className="flex items-center gap-2 text-[13px] text-[#374151]">
                     <span className="w-3.5 h-3.5 text-[#F59E0B] shrink-0 flex items-center justify-center text-[10px]">🕐</span>

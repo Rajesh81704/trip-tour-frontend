@@ -4,8 +4,6 @@ import {
   PackageHeader,
   ImageGallery,
   PackageDetails,
-  // InquiryForm,
-  // RelatedPackages,
   PackageData,
   IReview,
 } from "@/components/packages";
@@ -13,6 +11,10 @@ import { InquiryForm } from "@/components/home/InquiryForm";
 import api from "@/lib/api";
 import { notFound } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useAppSelector } from "@/store";
+import Login from "@/components/forms/Login";
+import { Download, CreditCard, Building, PhoneCall, MessageSquare, X, CheckCircle, ShieldCheck } from "lucide-react";
+import { toast } from "sonner";
 
 interface PackageDetailPageProps {
   params: Promise<{
@@ -25,6 +27,10 @@ export default function PackageDetailPage({ params }: PackageDetailPageProps) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [showInquiryForm, setShowInquiryForm] = useState(false);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+
+  const { isLoggedIn, user } = useAppSelector((state) => state.auth);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,18 +39,14 @@ export default function PackageDetailPage({ params }: PackageDetailPageProps) {
         setError(null);
 
         const { id } = await params;
-        console.log("Fetching package with ID:", id);
-
         const response = await api.get<{
           success: boolean;
           package: PackageData;
           reviews: IReview[];
         }>(`/packages/${id}`);
-        console.log("API Response:", response);
 
         if (response.data.success && response.data.package) {
           setPackageData(response.data.package);
-          console.log("Package data set:", response.data.package);
         } else {
           throw new Error("Package not found");
         }
@@ -58,6 +60,19 @@ export default function PackageDetailPage({ params }: PackageDetailPageProps) {
 
     fetchData();
   }, [params]);
+
+  const handleDownloadBrochure = () => {
+    if (!isLoggedIn) {
+      toast.info("Please sign up or log in to download the package brochure.");
+      setShowLoginModal(true);
+      return;
+    }
+
+    toast.success("Preparing your package brochure PDF...");
+    setTimeout(() => {
+      window.print();
+    }, 500);
+  };
 
   if (loading) {
     return (
@@ -121,11 +136,11 @@ export default function PackageDetailPage({ params }: PackageDetailPageProps) {
             />
           </div>
 
-          {/* Booking sidebar — always visible */}
+          {/* Booking sidebar */}
           <div className="space-y-5 lg:space-y-6">
-            <div className="bg-white rounded-[20px] p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)] border border-[#E5E7EB] sticky top-[88px]">
-              <div className="flex items-center gap-2 mb-1">
-                <span className="text-[11px] font-bold text-[#F59E0B] uppercase tracking-widest">Special Offer</span>
+            <div className="bg-white rounded-[20px] p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)] border border-[#E5E7EB] sticky top-[88px] space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] font-bold text-[#F59E0B] uppercase tracking-widest">Special Price</span>
                 {packageData.discount > 0 && (
                   <span className="bg-[#EF4444] text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
                     {packageData.discount}% OFF
@@ -133,34 +148,43 @@ export default function PackageDetailPage({ params }: PackageDetailPageProps) {
                 )}
               </div>
               {packageData.discount > 0 && (
-                <div className="mb-1">
+                <div>
                   <span className="text-[13px] text-[#9CA3AF] line-through">
                     ₹{packageData.price?.toLocaleString("en-IN")}
                   </span>
                 </div>
               )}
-              <div className="text-[32px] font-extrabold text-[#111827] leading-none mb-1">
+              <div className="text-[32px] font-extrabold text-[#111827] leading-none">
                 ₹{Math.round(packageData.price * (1 - (packageData.discount || 0) / 100)).toLocaleString("en-IN")}
                 <span className="text-[14px] text-[#6B7280] font-normal ml-1">/ Person</span>
               </div>
-              <p className="text-[13px] text-[#6B7280] mb-5 mt-2 leading-relaxed">
-                Get detailed information, pricing, and book your dream vacation.
-              </p>
 
-              <button
-                onClick={() => setShowInquiryForm(true)}
-                className="w-full flex items-center justify-center gap-2 bg-[#F59E0B] hover:bg-[#D97706] text-white font-bold py-4 px-6 rounded-[14px] shadow-md hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5 text-[15px]"
-              >
-                ✈️ Get Quote &amp; Book Now
-              </button>
+              {/* Action Buttons */}
+              <div className="space-y-3 pt-2">
+                <button
+                  onClick={() => setShowPaymentModal(true)}
+                  className="w-full flex items-center justify-center gap-2 bg-[#F59E0B] hover:bg-[#D97706] text-white font-bold py-3.5 px-6 rounded-[14px] shadow-md hover:shadow-lg transition-all duration-200 text-[15px]"
+                >
+                  <CreditCard className="w-4 h-4" /> Book Now & Payment Details
+                </button>
 
-              <div className="mt-4 flex items-center justify-center gap-2 text-[12px] text-[#9CA3AF]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#22C55E]" />
-                Free cancellation available
+                <button
+                  onClick={handleDownloadBrochure}
+                  className="w-full flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold py-3 px-6 rounded-[14px] border border-slate-800 transition-all duration-200 text-xs"
+                >
+                  <Download className="w-4 h-4 text-amber-400" /> Download Brochure (PDF)
+                </button>
+
+                <button
+                  onClick={() => setShowInquiryForm(true)}
+                  className="w-full flex items-center justify-center gap-2 bg-blue-50 hover:bg-blue-100 text-blue-700 font-semibold py-3 px-6 rounded-[14px] border border-blue-200 transition-all duration-200 text-xs"
+                >
+                  ✈️ Get Custom Quote
+                </button>
               </div>
 
               {/* Quick info */}
-              <div className="mt-5 pt-5 border-t border-[#E5E7EB] grid grid-cols-2 gap-3">
+              <div className="pt-4 border-t border-[#E5E7EB] grid grid-cols-2 gap-3">
                 <div className="bg-[#F8FAFC] rounded-[10px] p-3 text-center">
                   <div className="text-[11px] text-[#9CA3AF] mb-0.5">Duration</div>
                   <div className="text-[13px] font-bold text-[#111827]">
@@ -179,7 +203,7 @@ export default function PackageDetailPage({ params }: PackageDetailPageProps) {
         </div>
       </div>
 
-      {/* Inquiry Form Modal — rendered at page root so fixed overlay works correctly */}
+      {/* Inquiry Form Modal */}
       {showInquiryForm && (
         <InquiryForm
           packageTitle={packageData.title}
@@ -187,6 +211,104 @@ export default function PackageDetailPage({ params }: PackageDetailPageProps) {
           destination={`${packageData.location.city}, ${packageData.location.state}, ${packageData.location.destination}`}
           onClose={() => setShowInquiryForm(false)}
         />
+      )}
+
+      {/* Login Modal */}
+      {showLoginModal && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <Login onClose={() => setShowLoginModal(false)} />
+        </div>
+      )}
+
+      {/* Payment & Bank Details Modal */}
+      {showPaymentModal && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="w-full max-w-xl bg-slate-900 border border-slate-800 rounded-3xl p-6 lg:p-8 text-slate-100 shadow-2xl space-y-6 relative max-h-[90vh] overflow-y-auto">
+            <button
+              onClick={() => setShowPaymentModal(false)}
+              className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="space-y-2 border-b border-slate-800 pb-4">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 text-xs font-bold uppercase tracking-wider">
+                <ShieldCheck className="w-4 h-4" /> Direct Official Booking
+              </div>
+              <h3 className="text-2xl font-extrabold text-white">Payment & Account Details</h3>
+              <p className="text-xs text-slate-400">
+                To confirm your booking for <span className="text-amber-400 font-bold">{packageData.title}</span>, please deposit via IMPS/NEFT/RTGS to our official company account.
+              </p>
+            </div>
+
+            {/* Bank details card */}
+            <div className="bg-slate-950 border border-slate-800 rounded-2xl p-5 space-y-3.5 text-xs text-slate-300">
+              <div className="flex items-center justify-between border-b border-slate-800/80 pb-2.5">
+                <span className="text-slate-400">Company Name:</span>
+                <span className="font-bold text-white text-sm">TRIPTOO TRAVELS PRIVATE LIMITED</span>
+              </div>
+              <div className="flex items-center justify-between border-b border-slate-800/80 pb-2.5">
+                <span className="text-slate-400">Bank Name:</span>
+                <span className="font-bold text-white">ICICI Bank</span>
+              </div>
+              <div className="flex items-center justify-between border-b border-slate-800/80 pb-2.5">
+                <span className="text-slate-400">Account Number:</span>
+                <span className="font-mono font-bold text-amber-400 text-sm">924020012345678</span>
+              </div>
+              <div className="flex items-center justify-between border-b border-slate-800/80 pb-2.5">
+                <span className="text-slate-400">IFSC Code:</span>
+                <span className="font-mono font-bold text-emerald-400 text-sm">ICIC0000123</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-slate-400">Branch Location:</span>
+                <span className="font-semibold text-white">Faridabad Sector 11D, Haryana</span>
+              </div>
+            </div>
+
+            {/* Contact & International WhatsApp */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <a
+                href="tel:+919315666960"
+                className="p-3.5 bg-slate-800/80 hover:bg-slate-800 border border-slate-700/60 rounded-2xl flex items-center gap-3 transition-colors"
+              >
+                <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center shrink-0">
+                  <PhoneCall className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Support Desk</p>
+                  <p className="text-xs font-bold text-white">+91 9315666960</p>
+                </div>
+              </a>
+
+              <a
+                href={`https://wa.me/919315666960?text=Hi%20Triptoo%20Travels,%20I%20want%20to%20confirm%20my%20booking%20for%20${encodeURIComponent(packageData.title)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3.5 bg-emerald-950/60 hover:bg-emerald-900/60 border border-emerald-800/60 rounded-2xl flex items-center gap-3 transition-colors"
+              >
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+                  <MessageSquare className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-[10px] text-emerald-400 uppercase font-bold tracking-wider">International WhatsApp</p>
+                  <p className="text-xs font-bold text-white">Click to Chat</p>
+                </div>
+              </a>
+            </div>
+
+            <div className="pt-2 text-center">
+              <button
+                onClick={() => {
+                  setShowPaymentModal(false);
+                  setShowInquiryForm(true);
+                }}
+                className="w-full py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-2xl text-xs transition-colors"
+              >
+                Send Receipt &amp; Confirm Booking
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

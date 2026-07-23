@@ -625,22 +625,71 @@ export function PackageDetails({
         <TabsContent value="itinerary" className="p-6">
           <h3 className="text-[16px] font-bold text-[#111827] mb-5 flex items-center gap-2">
             <MapPin className="h-4 w-4 text-[#F59E0B]" />
-            Day-by-Day Itinerary
+            Day-by-Day Itinerary & Sightseeings
           </h3>
           <div className="relative">
             <div className="absolute left-5 top-0 bottom-0 w-px bg-[#E5E7EB]" />
             <div className="space-y-5">
-              {itinerary.map((day, i) => (
-                <div key={i} className="relative ml-12">
-                  <div className="absolute -left-[2.1rem] top-1 w-8 h-8 bg-[#2563EB] rounded-full flex items-center justify-center shadow-sm shrink-0">
-                    <span className="text-white font-bold text-[11px]">{day.day}</span>
+              {itinerary.map((day, i) => {
+                // Find matching sightseeings for this day's title or description
+                const matchedSightseeings = sightseeings.filter((s) =>
+                  s.name && (
+                    day.title?.toLowerCase().includes(s.name.toLowerCase()) ||
+                    day.description?.toLowerCase().includes(s.name.toLowerCase())
+                  )
+                );
+
+                return (
+                  <div key={i} className="relative ml-12">
+                    <div className="absolute -left-[2.1rem] top-1 w-8 h-8 bg-[#2563EB] rounded-full flex items-center justify-center shadow-sm shrink-0">
+                      <span className="text-white font-bold text-[11px]">{day.day}</span>
+                    </div>
+                    <div className="bg-[#F8FAFC] border border-[#E5E7EB] rounded-[14px] p-5 hover:shadow-md transition-all">
+                      <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                        <h4 className="font-bold text-[#111827] text-[15px]">{day.title}</h4>
+                        {day.city && (
+                          <span className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-1 rounded-full uppercase tracking-wider">
+                            📍 {day.city}
+                          </span>
+                        )}
+                      </div>
+
+                      <p className="text-[13.5px] text-[#4B5563] leading-relaxed mb-3">{day.description}</p>
+
+                      {/* Hotel info for this day */}
+                      {day.hotelName && (
+                        <div className="mt-2 pt-2 border-t border-slate-200/60 flex items-center gap-2 text-xs font-semibold text-slate-700">
+                          <Building2 className="w-4 h-4 text-amber-500" />
+                          <span>Hotel Option: <span className="text-blue-600 font-bold">{day.hotelName}</span></span>
+                        </div>
+                      )}
+
+                      {/* Matched Sightseeing Photos */}
+                      {matchedSightseeings.length > 0 && (
+                        <div className="mt-3 pt-3 border-t border-slate-200/80">
+                          <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2 flex items-center gap-1">
+                            <Camera className="w-3.5 h-3.5 text-amber-500" /> Sightseeing Highlights:
+                          </p>
+                          <div className="flex flex-wrap gap-3">
+                            {matchedSightseeings.map((s, idx) => (
+                              <div key={idx} className="flex items-center gap-2 bg-white border border-slate-200 rounded-xl p-1.5 shadow-xs">
+                                {s.images?.[0]?.url && (
+                                  // eslint-disable-next-line @next/next/no-img-element
+                                  <img src={s.images[0].url} alt={s.name} className="w-12 h-12 object-cover rounded-lg" />
+                                )}
+                                <div className="pr-2">
+                                  <p className="text-xs font-bold text-slate-800">{s.name}</p>
+                                  {s.duration && <p className="text-[10px] text-slate-500">⏱️ {s.duration}</p>}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                  <div className="bg-[#F8FAFC] border border-[#E5E7EB] rounded-[14px] p-4 hover:shadow-sm transition-shadow">
-                    <h4 className="font-bold text-[#111827] text-[14px] mb-1.5">{day.title}</h4>
-                    <p className="text-[13px] text-[#6B7280] leading-relaxed">{day.description}</p>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </TabsContent>

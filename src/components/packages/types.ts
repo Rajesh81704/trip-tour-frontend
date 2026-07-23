@@ -101,6 +101,8 @@ export interface ItineraryDay {
     day: number;
     title: string;
     description: string;
+    city?: string;
+    hotelName?: string;
     _id?: string;
 }
 

@@ -42,23 +42,20 @@ export const Hero = () => {
         <div className="absolute inset-0 flex flex-col justify-center pt-[68px] pb-20">
           <div className="max-w-[1320px] mx-auto w-full px-6 lg:px-16">
             <div className="max-w-[600px]">
-              <div className="inline-flex items-center gap-2 bg-slate-700/12 backdrop-blur-md border border-white/20 text-white/90 text-[11px] font-semibold px-4 py-1.5 rounded-full mb-6 tracking-widest uppercase hover-lift-premium cursor-pointer">
-                <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#F59E0B] to-[#EF4444] animate-pulse shrink-0" />
-                ✨ Trusted by 50,000+ Happy Travelers
-              </div>
+
 
               <h1
                 className="font-extrabold text-white leading-[1.1] tracking-tight drop-shadow-2xl mb-4 heading-premium"
-                style={{ fontSize: "clamp(2.0rem, 4.5vw, 3.2rem)" }}
+                style={{ fontSize: "clamp(2.2rem, 4.8vw, 3.5rem)" }}
               >
-                Explore The World<br />
-                <span className="text-gradient-premium italic" style={{ fontSize: "clamp(1.4rem, 3.2vw, 2.2rem)" }}>
-                  With Unforgettable Journeys
+                Explore The World <br />
+                <span className="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 bg-clip-text text-transparent italic" style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.4rem)" }}>
+                  With Legendary Live Journeys
                 </span>
               </h1>
 
-              <p className="text-white/75 text-[15px] sm:text-[17px] leading-relaxed font-normal mb-7 max-w-[460px]">
-                Handpicked travel packages for your dream vacation. Best price guaranteed — every time.
+              <p className="text-white/85 text-[15px] sm:text-[17px] leading-relaxed font-normal mb-7 max-w-[480px]">
+                Handcrafted premium holiday packages, flight reservations, luxury stays, and fast-track global visa services.
               </p>
 
               <div className="flex flex-wrap items-center gap-3 mb-8">

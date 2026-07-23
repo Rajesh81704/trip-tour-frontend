@@ -18,9 +18,9 @@ const topDestinations = [
 
 const supportLinks = [
   { name: "FAQs", href: "/contact" },
-  { name: "Privacy Policy", href: "/contact" },
-  { name: "Terms & Conditions", href: "/contact" },
-  { name: "Refund Policy", href: "/contact" },
+  { name: "Privacy Policy", href: "/privacy-policy" },
+  { name: "Terms & Conditions", href: "/terms-and-conditions" },
+  { name: "Refund Policy", href: "/refund-policy" },
 ];
 
 export const Footer = () => {
@@ -66,7 +66,7 @@ export const Footer = () => {
           <div className="lg:col-span-2 space-y-5">
             <Image
               src="/logo.png"
-              alt="NatureVacation"
+              alt="TripToo Travels"
               width={140}
               height={46}
               className="h-12 w-auto brightness-0 invert"
@@ -80,6 +80,10 @@ export const Footer = () => {
               <div className="flex items-center gap-2.5 text-[13px] text-gray-400">
                 <Phone className="h-4 w-4 text-[#F59E0B] shrink-0" />
                 <span>+91 9315666960</span>
+              </div>
+              <div className="flex items-center gap-2.5 text-[13px] text-gray-400">
+                <Mail className="h-4 w-4 text-[#F59E0B] shrink-0" />
+                <span>pooja.gupta@triptootravels.com</span>
               </div>
               <div className="flex items-center gap-2.5 text-[13px] text-gray-400">
                 <Mail className="h-4 w-4 text-[#F59E0B] shrink-0" />

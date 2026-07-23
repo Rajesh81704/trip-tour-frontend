@@ -6,6 +6,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { UserWrapper } from "@/components/layout/UserWrapper";
 import { ReduxStoreProvider } from "@/store";
+import { ChatBot } from "@/components/layout/ChatBot";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -14,9 +15,22 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "TripToo Travels - Curated Journeys. Lasting Memories.",
+  title: "Triptoo Travels - Curated Journeys, Premium Tour Packages & Visa Assistance",
   description:
-    "Discover breathtaking destinations and unforgettable experiences with TripToo Travels. Curated journeys, lasting memories.",
+    "Book luxury and budget travel tour packages, flight bookings, hotel stays, visa application assistance, and customized holiday itineraries with Triptoo Travels.",
+  keywords: [
+    "Triptoo Travels", "Tour Packages", "Holiday Packages", "Kashmir Tour Packages",
+    "Meghalaya Tours", "Dubai Visa", "Flight Bookings", "Travel Agency Faridabad",
+    "International Vacations", "Customized Itineraries"
+  ],
+  openGraph: {
+    title: "Triptoo Travels - Curated Journeys & World Class Vacations",
+    description: "Explore hand-crafted holiday packages, flights, hotels, and hassle-free visa processing.",
+    url: "https://www.triptootravels.com",
+    siteName: "Triptoo Travels",
+    locale: "en_US",
+    type: "website",
+  },
   icons: {
     icon: "/logo.png",
     shortcut: "/logo.png",
@@ -38,6 +52,7 @@ export default function RootLayout({
           <UserWrapper>
             <Navbar />
             {children}
+            <ChatBot />
             <Footer />
             <Toaster />
           </UserWrapper>

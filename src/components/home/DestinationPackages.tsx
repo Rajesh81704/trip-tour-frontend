@@ -117,8 +117,8 @@ const DestinationPackages = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
-                    <div className="absolute bottom-6 left-6 right-6 text-white">
-                      <h3 className="text-xl font-bold mb-2 leading-tight">
+                    <div className="absolute bottom-5 left-5 right-5 text-white">
+                      <h3 className="text-lg font-bold mb-2 leading-snug line-clamp-2 break-words">
                         {pkg.title}
                       </h3>
                       <Badge

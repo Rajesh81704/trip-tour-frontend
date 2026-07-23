@@ -78,29 +78,49 @@ const About = () => {
   return (
     <div className="min-h-screen bg-white text-[#111827]">
 
-      {/* ── Hero ────────────────────────────────────────────────────────── */}
-      <section className="relative pt-[68px] overflow-hidden">
-        {/* Full-bleed image */}
-        <div className="relative h-[480px] sm:h-[540px]">
+      {/* ── Hero & Running Image Showcase ── */}
+      <section className="relative pt-[68px] bg-slate-950 overflow-hidden">
+        <div className="relative h-[420px] sm:h-[480px]">
           <Image
             src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=80"
             alt="Travel"
             fill
-            className="object-cover"
+            className="object-cover opacity-60"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
 
-          <div className="absolute inset-0 flex items-end">
-            <div className="max-w-[1200px] mx-auto w-full px-6 lg:px-8 pb-14">
-              <p className="text-[12px] font-bold text-[#F59E0B] uppercase tracking-[0.2em] mb-3">
-                Our Story
+          <div className="absolute inset-0 flex items-center">
+            <div className="max-w-[1200px] mx-auto w-full px-6 lg:px-8">
+              <p className="text-[12px] font-bold text-amber-400 uppercase tracking-[0.2em] mb-3">
+                Crafting Unforgettable Journeys
               </p>
-              <h1 className="text-[2.6rem] sm:text-[3.4rem] font-extrabold text-white leading-tight max-w-2xl">
-                Turning Destinations<br />
-                into Memories
+              <h1 className="text-[2.6rem] sm:text-[3.6rem] font-extrabold text-white leading-tight max-w-2xl drop-shadow-2xl">
+                Turning Destinations <br />
+                into <span className="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 bg-clip-text text-transparent italic">Lasting Memories</span>
               </h1>
             </div>
+          </div>
+        </div>
+
+        {/* Dynamic Running Image Showcase Strip */}
+        <div className="bg-slate-900 border-y border-slate-800 py-6 overflow-hidden relative">
+          <div className="flex gap-4 animate-marquee whitespace-nowrap">
+            {[
+              "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
+              "https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=600&q=80",
+              "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=600&q=80",
+              "https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=600&q=80",
+              "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80",
+              "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
+              "https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=600&q=80",
+            ].map((imgUrl, idx) => (
+              <div key={idx} className="w-[240px] h-[140px] rounded-2xl overflow-hidden shrink-0 border border-slate-700/60 shadow-lg relative group">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={imgUrl} alt="" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -249,7 +269,7 @@ const About = () => {
               </div>
             </a>
             <a
-              href="mailto:info@bookitinerary.com"
+              href="mailto:info@triptootravels.com"
               className="flex items-center gap-4 bg-[#F8FAFC] border border-[#E5E7EB] rounded-[14px] px-6 py-4 hover:border-[#2563EB] hover:bg-[#EFF6FF] transition-all duration-200 group"
             >
               <div className="w-10 h-10 rounded-full bg-[#EFF6FF] border border-[#DBEAFE] flex items-center justify-center shrink-0">
@@ -258,7 +278,7 @@ const About = () => {
               <div>
                 <p className="text-[11px] text-[#9CA3AF] font-semibold uppercase tracking-wider mb-0.5">Email Us</p>
                 <p className="text-[15px] font-bold text-[#111827] group-hover:text-[#2563EB] transition-colors">
-                  info@bookitinerary.com
+                  info@triptootravels.com
                 </p>
               </div>
             </a>
