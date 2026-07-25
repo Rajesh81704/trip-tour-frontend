@@ -47,7 +47,7 @@ const offices = [
   {
     flag: "🇮🇳",
     country: "India — Headquarters",
-    name: "Book Itinerary Tours & Travel",
+    name: "TriptooTravels.com",
     address: "Flat/Office-201, 2nd Floor, A Wing, Agnes Paradise Building, Opp. Vijay Paradise, Vasai East, 401208",
     note: null,
   },
