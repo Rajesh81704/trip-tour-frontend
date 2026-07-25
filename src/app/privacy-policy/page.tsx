@@ -62,7 +62,7 @@ export default function PrivacyPolicyPage() {
             <div className="mt-4 pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-400">
               <p className="text-white font-semibold">Triptoo Travels Privacy Desk:</p>
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-amber-400" /> pooja.gupta@triptootravels.com | info@triptootravels.com | support@triptootravels.com
+                <Mail className="w-4 h-4 text-amber-400" /> reservations@triptootravels.com | pooja.gupta@triptootravels.com | info@triptootravels.com | support@triptootravels.com
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-amber-400" /> +91 8767656900 / +18046504477 (24x7 WhatsApp Support)

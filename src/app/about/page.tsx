@@ -285,7 +285,7 @@ const About = () => {
               </div>
             </a>
             <a
-              href="mailto:info@triptootravels.com"
+              href="mailto:reservations@triptootravels.com"
               className="flex items-center gap-4 bg-[#F8FAFC] border border-[#E5E7EB] rounded-[14px] px-6 py-4 hover:border-[#2563EB] hover:bg-[#EFF6FF] transition-all duration-200 group"
             >
               <div className="w-10 h-10 rounded-full bg-[#EFF6FF] border border-[#DBEAFE] flex items-center justify-center shrink-0">
@@ -294,7 +294,7 @@ const About = () => {
               <div>
                 <p className="text-[11px] text-[#9CA3AF] font-semibold uppercase tracking-wider mb-0.5">Email Us</p>
                 <p className="text-[15px] font-bold text-[#111827] group-hover:text-[#2563EB] transition-colors">
-                  info@triptootravels.com
+                  reservations@triptootravels.com
                 </p>
               </div>
             </a>

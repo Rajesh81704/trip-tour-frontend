@@ -53,7 +53,7 @@ export const ChatBot: React.FC = () => {
 
     // Simulate Bot response
     setTimeout(() => {
-      let botResponse = "Thank you for your message! Our travel specialist will assist you shortly. You can also reach us directly at +91 8767656900 or 24x7 WhatsApp support at +18046504477 / info@triptootravels.com.";
+      let botResponse = "Thank you for your message! Our travel specialist will assist you shortly. You can also reach us directly at +91 8767656900 or 24x7 WhatsApp support at +18046504477 / reservations@triptootravels.com.";
       let newOptions: { label: string; action: string }[] | undefined;
 
       const lower = textToSend.toLowerCase();
@@ -71,7 +71,7 @@ export const ChatBot: React.FC = () => {
           { label: "Apply Visa Online", action: "visa_apply" },
         ];
       } else if (lower.includes("contact") || lower.includes("call") || lower.includes("phone")) {
-        botResponse = "📞 Call us at +91 8767656900 (India) or 24x7 WhatsApp support at +18046504477. Address: Flat/Office-201, 2nd floor, A wing Building, Vasai East, Agnes Paradise Building, Opposite Vijay Paradise, 401208. Emails: info@triptootravels.com & support@triptootravels.com";
+        botResponse = "📞 Call us at +91 8767656900 (India) or 24x7 WhatsApp support at +18046504477. Address: Flat/Office-201, 2nd floor, A wing Building, Vasai East, Agnes Paradise Building, Opposite Vijay Paradise, 401208. Emails: reservations@triptootravels.com, info@triptootravels.com & support@triptootravels.com";
       } else if (lower.includes("whatsapp")) {
         window.open("https://wa.me/18046504477?text=Hi%20Triptoo%20Travels,%20I%20want%20to%20inquire%20about%20a%20tour%20package", "_blank");
         botResponse = "Redirecting you to our official 24x7 WhatsApp support line (+18046504477)...";

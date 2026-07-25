@@ -85,7 +85,7 @@ export const Footer = () => {
               </div>
               <div className="flex items-center gap-2.5 text-[13px] text-gray-400">
                 <Mail className="h-4 w-4 text-[#F59E0B] shrink-0" />
-                <span>pooja.gupta@triptootravels.com</span>
+                <span>reservations@triptootravels.com</span>
               </div>
               <div className="flex items-center gap-2.5 text-[13px] text-gray-400">
                 <Mail className="h-4 w-4 text-[#F59E0B] shrink-0" />
@@ -94,6 +94,10 @@ export const Footer = () => {
               <div className="flex items-center gap-2.5 text-[13px] text-gray-400">
                 <Mail className="h-4 w-4 text-[#F59E0B] shrink-0" />
                 <span>support@triptootravels.com</span>
+              </div>
+              <div className="flex items-center gap-2.5 text-[13px] text-gray-400">
+                <Mail className="h-4 w-4 text-[#F59E0B] shrink-0" />
+                <span>pooja.gupta@triptootravels.com</span>
               </div>
               <div className="flex items-start gap-2.5 text-[13px] text-gray-400">
                 <MapPin className="h-4 w-4 text-[#F59E0B] shrink-0 mt-0.5" />

@@ -51,7 +51,7 @@ export default function TermsPage() {
             </p>
             <div className="mt-4 pt-4 border-t border-slate-800 text-xs text-slate-400 space-y-1">
               <p className="text-white font-semibold">Support Desk:</p>
-              <p>Email: info@triptootravels.com | support@triptootravels.com</p>
+              <p>Email: reservations@triptootravels.com | info@triptootravels.com | support@triptootravels.com</p>
               <p>Phone / WhatsApp: +91 8767656900 / +18046504477 (24x7 Support)</p>
             </div>
           </section>

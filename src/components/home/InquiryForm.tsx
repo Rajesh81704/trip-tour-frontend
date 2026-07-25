@@ -301,6 +301,10 @@ export const InquiryForm = ({
                   </div>
                   <div className="flex items-center gap-2 text-[13px] text-[#374151]">
                     <Mail className="h-3.5 w-3.5 text-[#F59E0B] shrink-0" />
+                    reservations@triptootravels.com
+                  </div>
+                  <div className="flex items-center gap-2 text-[13px] text-[#374151]">
+                    <Mail className="h-3.5 w-3.5 text-[#F59E0B] shrink-0" />
                     info@triptootravels.com
                   </div>
                   <div className="flex items-center gap-2 text-[13px] text-[#374151]">

@@ -233,7 +233,10 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <span className="text-slate-400 block">Email Inquiry</span>
-                    <a href="mailto:info@triptootravels.com" className="font-semibold text-white hover:text-amber-400 transition-colors">
+                    <a href="mailto:reservations@triptootravels.com" className="font-semibold text-amber-400 hover:text-amber-300 transition-colors block">
+                      reservations@triptootravels.com
+                    </a>
+                    <a href="mailto:info@triptootravels.com" className="font-semibold text-white hover:text-amber-400 transition-colors block mt-0.5">
                       info@triptootravels.com
                     </a>
                   </div>
