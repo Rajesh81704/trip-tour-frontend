@@ -85,15 +85,15 @@ export const Footer = () => {
               </div>
               <div className="flex items-center gap-2.5 text-[13px] text-gray-400">
                 <Mail className="h-4 w-4 text-[#F59E0B] shrink-0" />
-                <span>reservations@triptootravels.com</span>
-              </div>
-              <div className="flex items-center gap-2.5 text-[13px] text-gray-400">
-                <Mail className="h-4 w-4 text-[#F59E0B] shrink-0" />
                 <span>info@triptootravels.com</span>
               </div>
               <div className="flex items-center gap-2.5 text-[13px] text-gray-400">
                 <Mail className="h-4 w-4 text-[#F59E0B] shrink-0" />
                 <span>support@triptootravels.com</span>
+              </div>
+              <div className="flex items-center gap-2.5 text-[13px] text-gray-400">
+                <Mail className="h-4 w-4 text-[#F59E0B] shrink-0" />
+                <span>reservations@triptootravels.com</span>
               </div>
               <div className="flex items-center gap-2.5 text-[13px] text-gray-400">
                 <Mail className="h-4 w-4 text-[#F59E0B] shrink-0" />

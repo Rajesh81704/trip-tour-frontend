@@ -284,20 +284,19 @@ const About = () => {
                 </p>
               </div>
             </a>
-            <a
-              href="mailto:reservations@triptootravels.com"
-              className="flex items-center gap-4 bg-[#F8FAFC] border border-[#E5E7EB] rounded-[14px] px-6 py-4 hover:border-[#2563EB] hover:bg-[#EFF6FF] transition-all duration-200 group"
-            >
+            <div className="flex items-center gap-4 bg-[#F8FAFC] border border-[#E5E7EB] rounded-[14px] px-6 py-4 transition-all duration-200 group">
               <div className="w-10 h-10 rounded-full bg-[#EFF6FF] border border-[#DBEAFE] flex items-center justify-center shrink-0">
                 <Mail className="h-4 w-4 text-[#2563EB]" />
               </div>
               <div>
-                <p className="text-[11px] text-[#9CA3AF] font-semibold uppercase tracking-wider mb-0.5">Email Us</p>
-                <p className="text-[15px] font-bold text-[#111827] group-hover:text-[#2563EB] transition-colors">
-                  reservations@triptootravels.com
-                </p>
+                <p className="text-[11px] text-[#9CA3AF] font-semibold uppercase tracking-wider mb-0.5">Email Support</p>
+                <div className="flex flex-col gap-0.5 text-[13px] font-bold text-[#111827]">
+                  <a href="mailto:info@triptootravels.com" className="hover:text-[#2563EB] transition-colors">info@triptootravels.com</a>
+                  <a href="mailto:support@triptootravels.com" className="hover:text-[#2563EB] transition-colors">support@triptootravels.com</a>
+                  <a href="mailto:reservations@triptootravels.com" className="hover:text-[#2563EB] transition-colors text-amber-600">reservations@triptootravels.com</a>
+                </div>
               </div>
-            </a>
+            </div>
           </div>
 
           {/* Offices */}
