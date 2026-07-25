@@ -297,7 +297,7 @@ export const InquiryForm = ({
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-[13px] text-[#374151]">
                     <Phone className="h-3.5 w-3.5 text-[#F59E0B] shrink-0" />
-                    +91 9315666960
+                    +91 8767656900 / +18046504477
                   </div>
                   <div className="flex items-center gap-2 text-[13px] text-[#374151]">
                     <Mail className="h-3.5 w-3.5 text-[#F59E0B] shrink-0" />
@@ -309,7 +309,7 @@ export const InquiryForm = ({
                   </div>
                   <div className="flex items-center gap-2 text-[13px] text-[#374151]">
                     <span className="w-3.5 h-3.5 text-[#F59E0B] shrink-0 flex items-center justify-center text-[10px]">🕐</span>
-                    Mon - Sat: 9:00 AM - 7:00 PM
+                    24x7 WhatsApp Support
                   </div>
                 </div>
               </div>

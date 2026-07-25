@@ -215,10 +215,15 @@ export default function ContactPage() {
                     <Phone className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-slate-400 block">Phone Support</span>
-                    <a href="tel:+919315666960" className="font-semibold text-white hover:text-amber-400 transition-colors">
-                      +91 9315666960
-                    </a>
+                    <span className="text-slate-400 block">Phone & WhatsApp Support (24x7)</span>
+                    <div className="flex flex-col gap-0.5 mt-0.5">
+                      <a href="tel:+918767656900" className="font-semibold text-white hover:text-amber-400 transition-colors">
+                        +91 8767656900 (India Desk)
+                      </a>
+                      <a href="https://wa.me/18046504477" target="_blank" rel="noopener noreferrer" className="font-semibold text-amber-400 hover:text-amber-300 transition-colors">
+                        +18046504477 (WhatsApp 24x7)
+                      </a>
+                    </div>
                   </div>
                 </div>
 
@@ -240,7 +245,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <span className="text-slate-400 block">Working Hours</span>
-                    <span className="font-semibold text-white">Mon - Sat: 9:00 AM - 7:00 PM</span>
+                    <span className="font-semibold text-white">24x7 Support Available</span>
                   </div>
                 </div>
 
@@ -251,7 +256,8 @@ export default function ContactPage() {
                   <div>
                     <span className="text-slate-400 block">Head Office Address</span>
                     <span className="font-semibold text-white leading-relaxed">
-                      SCF-37, Sector 11D, Haryana – 121006, India
+                      Flat/Office-201, second floor, A wing Building, Vasai East<br />
+                      Agnes Paradise Building, Opposite Vijay Paradise, 401208.
                     </span>
                   </div>
                 </div>

@@ -210,7 +210,7 @@ export default function VisaPage() {
                       Apply Online <ArrowRight className="w-3.5 h-3.5" />
                     </button>
                     <a
-                      href={`https://wa.me/919315666960?text=Hi%20Triptoo%20Travels,%20I%20want%20to%20apply%20for%20a%20${encodeURIComponent(visa.country)}%20Visa`}
+                      href={`https://wa.me/18046504477?text=Hi%20Triptoo%20Travels,%20I%20want%20to%20apply%20for%20a%20${encodeURIComponent(visa.country)}%20Visa`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="py-3 px-3.5 bg-slate-800/80 hover:bg-slate-700 text-slate-300 font-semibold rounded-xl text-xs flex items-center justify-center border border-slate-700/80 transition-colors"
@@ -283,10 +283,18 @@ export default function VisaPage() {
               <FileCheck className="w-4 h-4" /> Submit Inquiry Online
             </button>
             <a
-              href="tel:+919315666960"
+              href="tel:+918767656900"
               className="px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-bold text-xs flex items-center gap-2 transition-colors"
             >
-              <PhoneCall className="w-4 h-4 text-amber-400" /> +91 9315666960
+              <PhoneCall className="w-4 h-4 text-amber-400" /> +91 8767656900
+            </a>
+            <a
+              href="https://wa.me/18046504477"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3.5 rounded-xl bg-emerald-950/60 hover:bg-emerald-900/60 border border-emerald-800/60 text-emerald-300 font-bold text-xs flex items-center gap-2 transition-colors"
+            >
+              💬 +18046504477 (WhatsApp)
             </a>
           </div>
         </div>

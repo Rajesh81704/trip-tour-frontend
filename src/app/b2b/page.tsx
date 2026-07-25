@@ -193,7 +193,7 @@ export default function B2BPage() {
               </span>
               <div className="flex items-center justify-between text-slate-200">
                 <span className="flex items-center gap-1.5">
-                  <Phone className="w-3.5 h-3.5 text-amber-400" /> Phone: +91 9315666960
+                  <Phone className="w-3.5 h-3.5 text-amber-400" /> Phone: +91 8767656900 / +18046504477
                 </span>
                 <span className="flex items-center gap-1.5">
                   <Mail className="w-3.5 h-3.5 text-amber-400" /> b2b@triptootravels.com

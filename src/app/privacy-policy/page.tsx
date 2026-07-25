@@ -65,10 +65,10 @@ export default function PrivacyPolicyPage() {
                 <Mail className="w-4 h-4 text-amber-400" /> pooja.gupta@triptootravels.com | info@triptootravels.com | support@triptootravels.com
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-amber-400" /> +91 9315666960 / +91 98765 43210
+                <Phone className="w-4 h-4 text-amber-400" /> +91 8767656900 / +18046504477 (24x7 WhatsApp Support)
               </div>
               <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-amber-400" /> SCF-37, Sector 11D, Faridabad, Haryana – 121006
+                <MapPin className="w-4 h-4 text-amber-400" /> Flat/Office-201, second floor, A wing Building, Vasai East, Agnes Paradise Building, Opposite Vijay Paradise, 401208
               </div>
             </div>
           </section>

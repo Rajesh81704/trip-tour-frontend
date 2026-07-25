@@ -48,7 +48,7 @@ const offices = [
     flag: "🇮🇳",
     country: "India — Headquarters",
     name: "Book Itinerary Tours & Travel",
-    address: "SCF-37, Sector 11D, Haryana – 121006",
+    address: "Flat/Office-201, 2nd Floor, A Wing, Agnes Paradise Building, Opp. Vijay Paradise, Vasai East, 401208",
     note: null,
   },
   {
@@ -255,16 +255,32 @@ const About = () => {
           {/* Contact links */}
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
             <a
-              href="tel:+919315666960"
+              href="tel:+918767656900"
               className="flex items-center gap-4 bg-[#F8FAFC] border border-[#E5E7EB] rounded-[14px] px-6 py-4 hover:border-[#2563EB] hover:bg-[#EFF6FF] transition-all duration-200 group"
             >
               <div className="w-10 h-10 rounded-full bg-[#FFFBEB] border border-[#FDE68A] flex items-center justify-center shrink-0">
                 <Phone className="h-4 w-4 text-[#D97706]" />
               </div>
               <div>
-                <p className="text-[11px] text-[#9CA3AF] font-semibold uppercase tracking-wider mb-0.5">Call Us</p>
+                <p className="text-[11px] text-[#9CA3AF] font-semibold uppercase tracking-wider mb-0.5">Call Us (India)</p>
                 <p className="text-[15px] font-bold text-[#111827] group-hover:text-[#2563EB] transition-colors">
-                  +91 93156 66960
+                  +91 87676 56900
+                </p>
+              </div>
+            </a>
+            <a
+              href="https://wa.me/18046504477"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 bg-[#F8FAFC] border border-[#E5E7EB] rounded-[14px] px-6 py-4 hover:border-[#2563EB] hover:bg-[#EFF6FF] transition-all duration-200 group"
+            >
+              <div className="w-10 h-10 rounded-full bg-[#EFF6FF] border border-[#DBEAFE] flex items-center justify-center shrink-0">
+                <Phone className="h-4 w-4 text-[#2563EB]" />
+              </div>
+              <div>
+                <p className="text-[11px] text-[#9CA3AF] font-semibold uppercase tracking-wider mb-0.5">WhatsApp Support (24x7)</p>
+                <p className="text-[15px] font-bold text-[#111827] group-hover:text-[#2563EB] transition-colors">
+                  +18046504477
                 </p>
               </div>
             </a>

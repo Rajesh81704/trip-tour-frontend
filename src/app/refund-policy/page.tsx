@@ -63,7 +63,7 @@ export default function RefundPolicyPage() {
             <div className="mt-4 pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-400">
               <p className="text-white font-semibold">For Cancellation Requests & Support:</p>
               <p>Email: <span className="text-amber-400">support@triptootravels.com</span> | <span className="text-amber-400">pooja.gupta@triptootravels.com</span></p>
-              <p>Phone / WhatsApp: <span className="text-amber-400">+91 9315666960</span></p>
+              <p>Phone / WhatsApp: <span className="text-amber-400">+91 8767656900</span> / <span className="text-amber-400">+18046504477 (24x7 WhatsApp)</span></p>
             </div>
           </section>
         </div>

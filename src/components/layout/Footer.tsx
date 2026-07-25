@@ -64,13 +64,15 @@ export const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-5">
-            <Image
-              src="/logo.png"
-              alt="TripToo Travels"
-              width={200}
-              height={60}
-              className="h-14 lg:h-16 w-auto brightness-0 invert"
-            />
+            <div className="bg-white/95 backdrop-blur-sm rounded-xl px-3.5 py-2 inline-flex items-center justify-center shadow-md">
+              <Image
+                src="/logo.png"
+                alt="TripToo Travels"
+                width={200}
+                height={200}
+                className="h-12 lg:h-14 w-auto object-contain"
+              />
+            </div>
             <p className="text-[14px] text-gray-400 leading-relaxed max-w-[280px]">
               Explore the world with us. Creating memories and lasting journeys, one destination at a time.
             </p>
@@ -79,7 +81,7 @@ export const Footer = () => {
             <div className="space-y-2.5">
               <div className="flex items-center gap-2.5 text-[13px] text-gray-400">
                 <Phone className="h-4 w-4 text-[#F59E0B] shrink-0" />
-                <span>+91 9315666960</span>
+                <span>+91 8767656900 / +18046504477 (24x7 WhatsApp)</span>
               </div>
               <div className="flex items-center gap-2.5 text-[13px] text-gray-400">
                 <Mail className="h-4 w-4 text-[#F59E0B] shrink-0" />
@@ -95,7 +97,7 @@ export const Footer = () => {
               </div>
               <div className="flex items-start gap-2.5 text-[13px] text-gray-400">
                 <MapPin className="h-4 w-4 text-[#F59E0B] shrink-0 mt-0.5" />
-                <span>SCF-37, Sector 11D, Haryana – 121006</span>
+                <span>Flat/Office-201, 2nd Floor, A Wing, Agnes Paradise Building, Opp. Vijay Paradise, Vasai East, 401208</span>
               </div>
             </div>
 
@@ -181,7 +183,7 @@ export const Footer = () => {
           <h4 className="text-white font-bold text-[15px] mb-4">Find Us</h4>
           <div className="rounded-[16px] overflow-hidden border border-gray-700 w-full h-[280px]">
             <iframe
-              src="https://maps.google.com/maps?q=Bookitinerary+Tours+and+Travel+Company,+SCF-37+2nd+Floor,+near+Pumping+Iron+Gym+%26+Fitness,+Pocket+D,+Sector+11,+Faridabad,+Haryana+121006&output=embed&z=16"
+              src="https://maps.google.com/maps?q=Flat/Office-201,+second+floor,+A+wing+Building,+Agnes+Paradise+Building,+Opposite+Vijay+Paradise,+Vasai+East,+401208&output=embed&z=16"
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -200,7 +202,7 @@ export const Footer = () => {
             {[
               {
                 city: "India (HQ)",
-                address: "SCF-37, Sector 11D, Haryana – 121006",
+                address: "Flat/Office-201, 2nd Floor, A Wing, Agnes Paradise Building, Opp. Vijay Paradise, Vasai East, 401208",
                 flag: "🇮🇳",
               },
               {

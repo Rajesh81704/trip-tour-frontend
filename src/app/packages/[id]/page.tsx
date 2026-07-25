@@ -261,27 +261,27 @@ export default function PackageDetailPage({ params }: PackageDetailPageProps) {
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-slate-400">Branch Location:</span>
-                <span className="font-semibold text-white">Faridabad Sector 11D, Haryana</span>
+                <span className="font-semibold text-white">Vasai East, 401208</span>
               </div>
             </div>
 
             {/* Contact & International WhatsApp */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
               <a
-                href="tel:+919315666960"
+                href="tel:+918767656900"
                 className="p-3.5 bg-slate-800/80 hover:bg-slate-800 border border-slate-700/60 rounded-2xl flex items-center gap-3 transition-colors"
               >
                 <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center shrink-0">
                   <PhoneCall className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Support Desk</p>
-                  <p className="text-xs font-bold text-white">+91 9315666960</p>
+                  <p className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">India Support Desk</p>
+                  <p className="text-xs font-bold text-white">+91 8767656900</p>
                 </div>
               </a>
 
               <a
-                href={`https://wa.me/919315666960?text=Hi%20Triptoo%20Travels,%20I%20want%20to%20confirm%20my%20booking%20for%20${encodeURIComponent(packageData.title)}`}
+                href={`https://wa.me/18046504477?text=Hi%20Triptoo%20Travels,%20I%20want%20to%20confirm%20my%20booking%20for%20${encodeURIComponent(packageData.title)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3.5 bg-emerald-950/60 hover:bg-emerald-900/60 border border-emerald-800/60 rounded-2xl flex items-center gap-3 transition-colors"
