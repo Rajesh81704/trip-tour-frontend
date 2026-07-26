@@ -48,36 +48,55 @@ function HotelsSection({ hotels }: { hotels: HotelOption[] }) {
     ).values()
   );
 
-  const [activeLocation, setActiveLocation] = useState(locations[0]?.location ?? "");
+  const [activeLocation, setActiveLocation] = useState("all");
 
-  const filtered = hotels.filter((h) => h.location === activeLocation);
+  const filtered =
+    activeLocation === "all"
+      ? hotels
+      : hotels.filter((h) => h.location === activeLocation);
 
   return (
     <div>
       {/* Section header */}
-      <div className="flex items-center gap-3 mb-5">
-        <div className="w-9 h-9 rounded-full bg-[#EFF6FF] flex items-center justify-center shrink-0">
-          <Building2 className="w-4.5 h-4.5 text-[#2563EB]" />
+      <div className="flex items-center justify-between mb-5">
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 rounded-full bg-[#EFF6FF] flex items-center justify-center shrink-0">
+            <Building2 className="w-4.5 h-4.5 text-[#2563EB]" />
+          </div>
+          <h3 className="text-[18px] font-bold text-[#111827]">
+            Accommodations & Hotels ({hotels.length})
+          </h3>
         </div>
-        <h3 className="text-[18px] font-bold text-[#111827]">Hotels</h3>
       </div>
 
       {/* Location filter tabs */}
-      <div className="flex flex-wrap gap-2 mb-5">
-        {locations.map((loc) => (
+      {locations.length > 1 && (
+        <div className="flex flex-wrap gap-2 mb-5">
           <button
-            key={loc.location}
-            onClick={() => setActiveLocation(loc.location)}
+            onClick={() => setActiveLocation("all")}
             className={`px-4 py-2 rounded-full text-[13px] font-semibold border transition-all ${
-              activeLocation === loc.location
+              activeLocation === "all"
                 ? "bg-[#B91C1C] text-white border-[#B91C1C]"
                 : "bg-white text-[#374151] border-[#D1D5DB] hover:border-[#B91C1C] hover:text-[#B91C1C]"
             }`}
           >
-            {loc.location} ({loc.nights}N)
+            All Hotels ({hotels.length})
           </button>
-        ))}
-      </div>
+          {locations.map((loc) => (
+            <button
+              key={loc.location}
+              onClick={() => setActiveLocation(loc.location)}
+              className={`px-4 py-2 rounded-full text-[13px] font-semibold border transition-all ${
+                activeLocation === loc.location
+                  ? "bg-[#B91C1C] text-white border-[#B91C1C]"
+                  : "bg-white text-[#374151] border-[#D1D5DB] hover:border-[#B91C1C] hover:text-[#B91C1C]"
+              }`}
+            >
+              {loc.location} ({loc.nights}N)
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* Hotel cards */}
       <div className="space-y-4">
