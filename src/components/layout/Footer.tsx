@@ -25,7 +25,7 @@ const supportLinks = [
 
 export const Footer = () => {
   return (
-    <footer className="bg-[#0F172A] text-gray-400">
+    <footer className="bg-[#0F172A] text-gray-400 print:hidden">
       {/* Newsletter Banner */}
       <div className="bg-linear-to-r from-[#1E3A8A] to-[#1D4ED8]">
         <div className="max-w-[1320px] mx-auto px-6 lg:px-8 py-10">

@@ -4,6 +4,7 @@ import {
   PackageHeader,
   ImageGallery,
   PackageDetails,
+  PackageBrochure,
   PackageData,
   IReview,
 } from "@/components/packages";
@@ -68,10 +69,7 @@ export default function PackageDetailPage({ params }: PackageDetailPageProps) {
       return;
     }
 
-    toast.success("Preparing your package brochure PDF...");
-    setTimeout(() => {
-      window.print();
-    }, 500);
+    window.print();
   };
 
   if (loading) {
@@ -94,7 +92,8 @@ export default function PackageDetailPage({ params }: PackageDetailPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] pt-[68px]">
+    <>
+      <div className="min-h-screen bg-[#F8FAFC] pt-[68px] print:hidden">
       <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-10">
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 lg:gap-8">
           <div className="xl:col-span-2 space-y-5 lg:space-y-7">
@@ -310,6 +309,10 @@ export default function PackageDetailPage({ params }: PackageDetailPageProps) {
           </div>
         </div>
       )}
-    </div>
+      </div>
+
+      {/* ── Official PDF Brochure (Only visible on Print/PDF Export) ── */}
+      <PackageBrochure packageData={packageData} />
+    </>
   );
 }
