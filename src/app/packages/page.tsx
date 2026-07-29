@@ -44,7 +44,8 @@ const PackagesContent = () => {
   const [searchInput, setSearchInput]         = useState(searchParams.get("search") || "");
   const [category, setCategory]               = useState(searchParams.get("category") || "");
   const [sortBy, setSortBy]                   = useState(searchParams.get("sort") || "newest");
-  const [selectedStates, setSelectedStates]   = useState<string[]>(searchParams.get("state") ? [searchParams.get("state")!] : []);
+  const initialLoc = searchParams.get("state") || searchParams.get("destination") || searchParams.get("city") || "";
+  const [selectedStates, setSelectedStates]   = useState<string[]>(initialLoc ? [initialLoc] : []);
   const [durationFilter, setDurationFilter]   = useState<{ minDays?: number; maxDays?: number }>({});
   const [onSale, setOnSale]                   = useState(false);
   const [minPrice, setMinPrice]               = useState<string>("");
